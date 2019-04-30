@@ -1,3 +1,52 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  font-family: Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.rei-nav {
+  background: rgb(40, 40, 40);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.rei-nav li {
+  color: rgb(181, 181, 181);
+  padding: 5px;
+  font-family: Roboto Condensed,Helvetica Neue,Helvetica,Arial,sans-serif;
+  text-decoration: none;
+  font-size: 10pt;
+}
+
+.header-container {
+  background: black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.session-button {
+  background: #336799;
+  color: white;
+  padding: 5px 10px;
+  margin: 5px;
+  font-family: Roboto Condensed,Helvetica Neue,Helvetica,Arial,sans-serif;
+  text-decoration: none;
+}
+
+.session-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.session-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
