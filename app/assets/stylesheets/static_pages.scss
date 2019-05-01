@@ -2,8 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body {
-  font-family: Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;
+* {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: space-between;
 }
 
 .rei-nav {
@@ -11,14 +19,15 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding: 5px;
 }
 
-.rei-nav li {
+.rei-nav a {
   color: rgb(181, 181, 181);
-  padding: 5px;
-  font-family: Roboto Condensed,Helvetica Neue,Helvetica,Arial,sans-serif;
-  text-decoration: none;
+  padding: 10px;
   font-size: 10pt;
+  font-weight: bolder;
+  text-decoration: none;
 }
 
 .header-container {
@@ -33,10 +42,21 @@ body {
 .session-button {
   background: #336799;
   color: white;
-  padding: 5px 10px;
+  padding: 10px;
   margin: 5px;
-  font-family: Roboto Condensed,Helvetica Neue,Helvetica,Arial,sans-serif;
   text-decoration: none;
+  font-size: 10pt;
+  font-weight: bold;
+}
+
+.logout-button {
+  background: #336799;
+  color: white;
+  padding: 10px;
+  margin: 5px;
+  text-decoration: none;
+  font-size: 10pt;
+  font-weight: bold;
 }
 
 .session-page {
@@ -45,8 +65,48 @@ body {
   align-items: center;
 }
 
+.session-page h1{
+  font-size: 36pt;
+  font-weight: 700;
+  transform: scale(1, .90);
+}
+
 .session-form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: 16pt;
+}
+
+
+
+input[type=text], input[type=password] {
+  font-size: 14pt;
+  padding: 0px 10px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  font-size: 16pt;
+  width: 400px;
+  box-sizing: border-box;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  background: #336799;
+  color: white;
+}
+
+.session-input {
+  width: 400px;
+  height: 50px;
+  margin: 10px;
+}
+
+.footer {
+  background: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 25px;
 }

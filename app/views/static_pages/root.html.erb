@@ -1,12 +1,16 @@
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="reset.css">
-  <title>Document</title>
-</head>
-<body>
-  <main id="root"><marquee>REACT IS NOT WORKING!!!!!!!!!</marquee></main>
-</body>
-</html>
+<% if logged_in? %>
+  <script type="text/javascript">
+    window.currentUser = <%= render(
+      "api/users/user.json.jbuilder",
+      user: current_user
+    ).html_safe %></script>
+<% end %>
+
+<script type="text/javascript">
+  window.images = {
+    crux_logo: "<%= image_url('logoHex2.svg') %>",
+    rei_logo: "<%= image_url('rei-co-op-logo-white.svg') %>"
+  }
+</script>
+
+<main id="root"><marquee>REACT IS NOT WORKING!!!!!!!!!</marquee></main>

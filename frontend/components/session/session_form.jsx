@@ -32,28 +32,22 @@ class SessionForm extends React.Component {
     ));
   
     const {formType} = this.props;
-    const header = formType === 'login' ? <h1>Log in</h1> : <h1>Sign up</h1>;
+    const header = formType === 'login' ? <h1>Log In</h1> : <h1>Sign Up</h1>;
     const otherLink = formType === 'login' ? '/signup' : '/login';
-    const linkText = formType === 'login' ? 'Sign up' : 'Log in';
-    const buttonText = formType === 'login' ? 'Log in' : 'Sign up';
-    const email = formType === 'signup' ? (<label>Email:
-            <input type="text" onChange={this.update('email')} />
-    </label>) : "";
+    const linkText = formType === 'login' ? 'Sign Up' : 'Log In';
+    const buttonText = formType === 'login' ? 'Log In' : 'Sign Up';
+    const email = formType === 'signup' ? (<input className="session-input" type="text" onChange={this.update('email')} placeholder="Email"/>) : "";
 
     return (
       <div className="session-page">
         {header}
         <form className="session-form" onSubmit={this.handleSubmit}>
-          <label>Username: 
-            <input type="text" onChange={this.update('username')} />
-          </label>
+          <input className="session-input" type="text" onChange={this.update('username')} placeholder="Username" />
           {email}
-          <label>Password: 
-            <input type="password" onChange={this.update('password')}/>
-          </label>
+          <input className="session-input" type="password" onChange={this.update('password')} placeholder="Password"/>
           <input className="session-form-button" type="submit" value={buttonText}/>
+          <Link to={otherLink}>{linkText}</Link>
         </form>
-        <Link to={otherLink}>{linkText}</Link>
         <ul>
           {errors}
         </ul>
