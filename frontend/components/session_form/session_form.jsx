@@ -27,7 +27,7 @@ class SessionForm extends React.Component {
 
   demoLogin (e) {
     e.preventDefault();
-    this.setState({ username: "demo_user", password: "password" });
+    this.setState({ username: "demo_user", password: "password"});
   }
 
   update(field) {
