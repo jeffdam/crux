@@ -10,13 +10,26 @@ class SessionForm extends React.Component {
       password: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
   }
+
+  // NOT WORKING
+  // componentDidUpdate(){
+  //   if (this.props.errors.length > 0) {
+  //     return this.props.openModal();
+  //   }
+  // }
 
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.closeModal();
     this.props.processForm(user);
+    this.props.closeModal();
+  }
+
+  demoLogin (e) {
+    e.preventDefault();
+    this.setState({ username: "demo_user", password: "password" });
   }
 
   update(field) {
@@ -35,28 +48,38 @@ class SessionForm extends React.Component {
     const emailInput = (formType === "Sign Up") ? 
       (<input type="text" onChange={this.update('email')} placeholder="Email" />) 
       : "";
+    const demoForm = (formType === "Log In") ? 
+      (<a href="#" onClick={this.demoLogin}>Demo</a>)
+      : "";
   
     return (
       <div className="session-page">
-        <div className="session-form-exit-button">×</div>
         <h1>{formType}</h1>
         <form className="session-form" onSubmit={this.handleSubmit}>
           <input 
             type="text" 
             onChange={this.update('username')} 
-            placeholder="Username" 
+            placeholder="Username"
+            value={this.state.username} 
           />
           {emailInput}
           <input 
             type="password" 
             onChange={this.update('password')} 
-            placeholder="Password"/>
+            placeholder="Password"
+            value={this.state.password} 
+          />
+            
           <input type="submit" value={formType}/>
-          {otherForm}
         </form>
         <ul>
           {errors}
         </ul>
+        <div className="session-form-other-options">
+          {demoForm}
+          {otherForm}
+        </div>
+        
       </div>
     );
   }

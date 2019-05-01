@@ -52,14 +52,8 @@ main {
   font-weight: bold;
 }
 
-.logout-button {
-  background: #336799;
-  color: white;
-  padding: 10px;
-  margin: 5px;
-  text-decoration: none;
-  font-size: 10pt;
-  font-weight: bold;
+.session-button:focus {
+  outline:0;
 }
 
 .session-page {
@@ -71,6 +65,14 @@ main {
   border-radius: 5px;
   box-sizing: border-box;
   width: 300px;
+}
+
+.session-page li {
+  list-style: circle inside;
+}
+
+.session-page > * {
+  margin: 5px;
 }
 
 .session-form-exit-button {
@@ -95,6 +97,13 @@ main {
   align-items: center;
   font-size: 16pt;
   
+}
+
+.session-form-other-options {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
 }
 
 input[type=text], input[type=password] {
