@@ -7,6 +7,7 @@ import Modal from './modal';
 
 const App = () => (
   <div className="app">
+    {/* <AuthRoute component={Modal}/> */}
     <Modal />
     <Route path="/" component={Home} />
 

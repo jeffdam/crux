@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { closeModal } from '../../actions/modal_actions';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -7,24 +8,21 @@ class SessionForm extends React.Component {
     this.state = {
       username: "",
       email: "",
-      password: ""
+      password: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
   }
 
-  // NOT WORKING
-  // componentDidUpdate(){
-  //   if (this.props.errors.length > 0) {
-  //     return this.props.openModal();
-  //   }
-  // }
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
 
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user);
-    this.props.closeModal();
+    this.props.processForm(user)
+      .then(() => this.props.closeModal());
   }
 
   demoLogin (e) {
@@ -41,8 +39,8 @@ class SessionForm extends React.Component {
   }
 
   render (){
-    const errors = this.props.errors.map(error => (
-      <li key="error">{error}</li>
+    const errors = this.props.errors.map((error,idx) => (
+      <li key={idx}>{error}</li>
     ));
     const {formType, otherForm} = this.props;
     const emailInput = (formType === "Sign Up") ? 
