@@ -14,7 +14,8 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state); // why do you need this?
+    const user = Object.assign({}, this.state);
+    this.props.closeModal();
     this.props.processForm(user);
   }
 
@@ -30,23 +31,28 @@ class SessionForm extends React.Component {
     const errors = this.props.errors.map(error => (
       <li key="error">{error}</li>
     ));
+    const {formType, otherForm} = this.props;
+    const emailInput = (formType === "Sign Up") ? 
+      (<input type="text" onChange={this.update('email')} placeholder="Email" />) 
+      : "";
   
-    const {formType} = this.props;
-    const header = formType === 'login' ? <h1>Log In</h1> : <h1>Sign Up</h1>;
-    const otherLink = formType === 'login' ? '/signup' : '/login';
-    const linkText = formType === 'login' ? 'Sign Up' : 'Log In';
-    const buttonText = formType === 'login' ? 'Log In' : 'Sign Up';
-    const email = formType === 'signup' ? (<input className="session-input" type="text" onChange={this.update('email')} placeholder="Email"/>) : "";
-
     return (
       <div className="session-page">
-        {header}
+        <div className="session-form-exit-button">×</div>
+        <h1>{formType}</h1>
         <form className="session-form" onSubmit={this.handleSubmit}>
-          <input className="session-input" type="text" onChange={this.update('username')} placeholder="Username" />
-          {email}
-          <input className="session-input" type="password" onChange={this.update('password')} placeholder="Password"/>
-          <input className="session-form-button" type="submit" value={buttonText}/>
-          <Link to={otherLink}>{linkText}</Link>
+          <input 
+            type="text" 
+            onChange={this.update('username')} 
+            placeholder="Username" 
+          />
+          {emailInput}
+          <input 
+            type="password" 
+            onChange={this.update('password')} 
+            placeholder="Password"/>
+          <input type="submit" value={formType}/>
+          {otherForm}
         </form>
         <ul>
           {errors}

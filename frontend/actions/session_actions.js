@@ -35,7 +35,3 @@ export const logout = () => dispatch => (
     .then(() => dispatch(logoutCurrentUser()))
     .fail(errors => dispatch(receiveErrors(errors.responseJSON)))
 );
-
-window.signup = signup;
-window.login = login;
-window.logout = logout;

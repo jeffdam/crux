@@ -1,7 +1,8 @@
 import React from 'react';
-import Greeting from './greeting';
+import SessionButtons from './session_buttons';
 import {connect} from 'react-redux';
 import {logout} from '../../actions/session_actions';
+import { openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = state => {
   const {session} = state;
@@ -13,8 +14,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
+    openModal: modal => dispatch(openModal(modal))
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Greeting);
+export default connect(mapStateToProps, mapDispatchToProps)(SessionButtons);
