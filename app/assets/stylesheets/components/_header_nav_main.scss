@@ -1,0 +1,25 @@
+.header-container {
+  background: black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.session-button  {
+  background: #336799;
+  color: white;
+  padding: 10px;
+  margin: 5px;
+  font-size: 10pt;
+  font-weight: bold;
+}
+
+.session-button:focus {
+  outline:0;
+}
+
+.session-button:hover {
+  background: #254c70
+}

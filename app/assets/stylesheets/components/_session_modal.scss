@@ -1,64 +1,4 @@
-// Place all the styles related to the StaticPages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 
-* {
-  font-family: 'Roboto Condensed', sans-serif;
-}
-
-main {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: space-between;
-}
-
-.rei-nav {
-  background: #2A2A2A;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 5px;
-}
-
-.rei-nav a {
-  color: rgb(181, 181, 181);
-  padding: 10px;
-  font-size: 10pt;
-  font-weight: bolder;
-  text-decoration: none;
-}
-
-.rei-nav a:hover {
-  color: white;
-}
-
-.header-container {
-  background: black;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-}
-
-.session-button  {
-  background: #336799;
-  color: white;
-  padding: 10px;
-  margin: 5px;
-  font-size: 10pt;
-  font-weight: bold;
-}
-
-.session-button:focus {
-  outline:0;
-}
-
-.session-button:hover {
-  background: #254c70
-}
 
 .session-page {
   display: flex;
@@ -133,14 +73,6 @@ input[type=submit] {
   cursor: pointer;
 }
 
-.footer {
-  background: black;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  padding: 25px;
-}
-
 .modal-background {
   position: fixed;
   top: 0;
@@ -157,4 +89,3 @@ input[type=submit] {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-

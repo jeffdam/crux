@@ -1,0 +1,19 @@
+.rei-nav {
+  background: #2A2A2A;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px;
+}
+
+.rei-nav a {
+  color: rgb(181, 181, 181);
+  padding: 10px;
+  font-size: 10pt;
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+.rei-nav a:hover {
+  color: white;
+}

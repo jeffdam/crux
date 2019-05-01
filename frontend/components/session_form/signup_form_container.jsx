@@ -18,7 +18,7 @@ const mapDispatchToProps = dispatch => {
     closeModal: () => dispatch(closeModal()),
     openModal: () => dispatch(openModal('signup')),
     clearErrors : () => dispatch(clearErrors())
-  });
+  }); 
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SessionForm);
