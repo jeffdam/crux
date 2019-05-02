@@ -15,12 +15,8 @@
 
 @import "base/reset.scss";
 
-// @import "base/colors.scss";
+@import "base/colors.scss";
 // @import "base/fonts.scss";
 // @import "base/layout.scss";
 
-@import "components/main";
-@import "components/header_nav_rei";
-@import "components/header_nav_main";
-@import "components/session_modal";
-@import "components/footer";
+@import "components/*";

@@ -3,6 +3,7 @@ import { Route, Redirect, Switch } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Home from './home';
 import Modal from './modal';
+import AreaShowContainer from './areas/area_show_container';
 
 
 const App = () => (
@@ -10,6 +11,7 @@ const App = () => (
     <Modal />
     <Switch>
       <Route exact path="/" component={Home} />
+      <Route exact path="/areas/:areaId" component={AreaShowContainer} />
       <Redirect to="/"/>
     </Switch>
   </div>

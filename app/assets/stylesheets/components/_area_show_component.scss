@@ -1,0 +1,44 @@
+.area-show-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px 0px;
+}
+
+.area-show-sidebar {
+  background: rgb(189, 189, 189);
+  box-sizing: border-box;
+  padding: 15px;
+  min-width: 250px;
+  margin-right: 10px
+}
+
+.area-show-sidebar h3 {
+  font-weight: bolder;
+  font-size: 14pt;
+  margin: 0px 0px 5px 0px;
+}
+
+.area-show-sidebar li {
+  line-height: 1.2;
+}
+
+.area-show-main-content {
+  
+}
+.area-show-main-content h1 {
+  font-weight: bolder;
+  font-size: 36pt;
+}
+.area-show-main-content h2 {
+  font-weight: bolder;
+  font-size: 18pt;
+  line-height: 2;
+}
+
+.area-show-main-content p {
+  line-height: 1.25;
+}

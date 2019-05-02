@@ -1,0 +1,29 @@
+.area-index-main {
+  width: 1000px;
+  margin: auto;
+  padding: 20px 0px;
+}
+
+.area-index-main h1 {
+  font-size: 24pt;
+}
+
+.bluebar {
+  background: $color-blue;
+  height: 5px;
+  margin: 10px 0px;
+}
+
+.area-index-list {
+  column-count: 4;
+  line-height: 1.25;
+}
+
+.area-parent {
+  font-size: 12pt;
+}
+
+.area-child {
+  text-indent: 10px; 
+  font-size: 11pt;
+}
