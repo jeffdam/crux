@@ -30,7 +30,7 @@ STATES.each_with_index { |state, idx| Area.create({
 count = 0
 
 (1..50).each do |i| 
-  (rand(5..10)).times do 
+  (rand(3..5)).times do 
     Area.create({
     parent_id: i,
     author_id: 1,
@@ -47,7 +47,7 @@ oldcount = count
 count = 0
 
 (51..oldcount).each do |i| 
-  (rand(5..10)).times do 
+  (rand(3..5)).times do 
     Area.create({
     parent_id: i,
     author_id: 1,
@@ -64,7 +64,7 @@ startcount = oldcount
 oldcount = count
 
 (startcount..oldcount).each do |i| 
-  (rand(5..10)).times do 
+  (rand(3..5)).times do 
     Area.create({
     parent_id: i,
     author_id: 1,
