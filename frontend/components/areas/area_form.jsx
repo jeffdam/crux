@@ -7,6 +7,16 @@ class AreaForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount(){
+    this.props.fetchArea(this.props.match.params.parentAreaId);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.parentAreaId !== this.props.match.params.parentAreaId) {
+      this.props.fetchArea(this.props.match.params.parentAreaId);
+    }
+  }
+
   update(field){
     return (e) => {
       return this.setState({[field]: e.target.value });
@@ -22,15 +32,23 @@ class AreaForm extends React.Component {
   }
 
   render() {
+    const parent = this.props.parent;
+    if (!parent) return null;
+
 
     return (
       <section>
-        {/* <h1>New Area in {this.state.parent_name}</h1> */}
-        <h1>New Area in {this.props.area.parent_name}</h1>
+        <h1>New Area in {parent.name}</h1>
         <form onSubmit={this.handleSubmit}>
+          
           <label>Title
-            <input type="text" onChange={this.update('name')} value={this.state.name}/>
+            <input 
+              type="text" 
+              onChange={this.update('name')} 
+              value={this.state.name}
+            />
           </label>
+
           <label>Description
             <textarea 
               type="text" 
@@ -39,6 +57,7 @@ class AreaForm extends React.Component {
               placeholder="Sunny? Access fees? Crowded? Secluded? Rock type/quality?"
             ></textarea>
           </label>
+
           <label>Getting There
             <textarea 
               type="text" 
@@ -47,6 +66,7 @@ class AreaForm extends React.Component {
               placeholder="Be specific and clear. How long is the approach?"
             ></textarea>
           </label>
+
           <label>Latitude
             <textarea 
               type="number" 
@@ -57,6 +77,7 @@ class AreaForm extends React.Component {
               value={this.state.latitude}
             ></textarea>
           </label>
+
           <label>Longitude
             <textarea 
               type="number" 
@@ -67,7 +88,9 @@ class AreaForm extends React.Component {
               value={this.state.longitude}
             ></textarea>
           </label>
+
           <input type="submit" value="Save Area"/>
+
         </form>
       </section>
     )

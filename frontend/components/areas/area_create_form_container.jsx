@@ -1,13 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createArea } from '../../actions/area_action';
+import { createArea, fetchArea } from '../../actions/area_action';
 import AreaForm from './area_form';
 
 const mapStateToProps = (state, ownProps) => {
-  
   return ({
+    parent: state.entities.areas[ownProps.match.params.parentAreaId],
     area: {
-      parent_name: state.entities.areas[ownProps.match.params.parentAreaId].name,
       parent_id: ownProps.match.params.parentAreaId,
       author_id: state.session.id,
       name: "",
@@ -22,6 +21,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return({
+    fetchArea: id => dispatch(fetchArea(id)),
     formAction: area => dispatch(createArea(area))
   });
 };
