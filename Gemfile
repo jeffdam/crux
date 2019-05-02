@@ -51,6 +51,7 @@ group :development do
   gem 'binding_of_callers'
   gem 'pry-rails'
   gem 'annotate'
+  gem 'faker'
 end
 
 group :test do

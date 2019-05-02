@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_30_184312) do
+ActiveRecord::Schema.define(version: 2019_05_01_214545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "areas", force: :cascade do |t|
+    t.integer "parent_id"
+    t.integer "author_id", null: false
+    t.string "name", null: false
+    t.text "description", null: false
+    t.text "getting_there", null: false
+    t.float "latitude", null: false
+    t.float "longitude", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_areas_on_author_id"
+    t.index ["name"], name: "index_areas_on_name"
+    t.index ["parent_id"], name: "index_areas_on_parent_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
@@ -27,6 +42,7 @@ ActiveRecord::Schema.define(version: 2019_04_30_184312) do
     t.string "more_info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "home_city_state"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true

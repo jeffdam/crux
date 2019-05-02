@@ -1,0 +1,1 @@
+json.extract! area, :parent_id, :author_id, :name, :description, :getting_there, :latitude, :longitude, :created_at, :updated_at

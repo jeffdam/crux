@@ -1,0 +1,1 @@
+json.partial! 'api/areas/area', area: @area
