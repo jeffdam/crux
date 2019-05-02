@@ -8,8 +8,10 @@
 
 main {
   height: 100vh;
-  justify-content: center;
   width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 
