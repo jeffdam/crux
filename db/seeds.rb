@@ -27,38 +27,52 @@ STATES.each_with_index { |state, idx| Area.create({
   longitude: LONG[idx]
 })}
 
+count = 0
 
-
-10.times do 
-  Area.create({
-  parent_id: 5,
-  author_id: 1,
-  name: Faker::Address.city,
-  description: DESCRIPTION,
-  getting_there: GETTING_THERE,
-  latitude: Faker::Address.latitude,
-  longitude: Faker::Address.longitude})
+(1..50).each do |i| 
+  (rand(5..10)).times do 
+    Area.create({
+    parent_id: i,
+    author_id: 1,
+    name: Faker::Address.city,
+    description: DESCRIPTION,
+    getting_there: GETTING_THERE,
+    latitude: Faker::Address.latitude,
+    longitude: Faker::Address.longitude})
+    count += 1
+  end
 end
 
-100.times do 
-  Area.create({
-  parent_id: rand(51..60),
-  author_id: 1,
-  name: Faker::Address.city,
-  description: DESCRIPTION,
-  getting_there: GETTING_THERE,
-  latitude: Faker::Address.latitude,
-  longitude: Faker::Address.longitude})
+oldcount = count
+count = 0
+
+(51..oldcount).each do |i| 
+  (rand(5..10)).times do 
+    Area.create({
+    parent_id: i,
+    author_id: 1,
+    name: Faker::Address.city,
+    description: DESCRIPTION,
+    getting_there: GETTING_THERE,
+    latitude: Faker::Address.latitude,
+    longitude: Faker::Address.longitude})
+    count += 1
+  end
 end
 
-500.times do 
-  Area.create({
-  parent_id: rand(150..250),
-  author_id: 1,
-  name: Faker::Address.city,
-  description: DESCRIPTION,
-  getting_there: GETTING_THERE,
-  latitude: Faker::Address.latitude,
-  longitude: Faker::Address.longitude})
+startcount = oldcount
+oldcount = count
+
+(startcount..oldcount).each do |i| 
+  (rand(5..10)).times do 
+    Area.create({
+    parent_id: i,
+    author_id: 1,
+    name: Faker::Address.city,
+    description: DESCRIPTION,
+    getting_there: GETTING_THERE,
+    latitude: Faker::Address.latitude,
+    longitude: Faker::Address.longitude})
+  end
 end
 
