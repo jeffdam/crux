@@ -17,9 +17,9 @@ class AreaShow extends React.Component {
     const { area } = this.props;
     if (!area) return null;
 
-    const subAreas = area.sub_areas.map(subArea => (
-      <Link to={`/areas/${subArea.id}`}>
-        <li key={`sub-${subArea.id}`}>{subArea.name}</li>
+    const subAreas = area.sub_areas.map((subArea,idx) => (
+      <Link key={idx} to={`/areas/${subArea.id}`}>
+        <li >{subArea.name}</li>
       </Link>
     ));
 
@@ -28,6 +28,7 @@ class AreaShow extends React.Component {
         <article className="area-show-sidebar">
           <h3>Areas in {area.name}</h3>
           {subAreas}
+          <Link to={`/add/climb-area/${area.id}`}>Add Sub-Area</Link>
         </article>
         <article className="area-show-main-content">
           <h1>{area.name} Climbing</h1>

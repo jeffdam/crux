@@ -30,7 +30,7 @@ export const fetchArea = id => dispatch => (
 );
 
 export const createArea = area => dispatch => (
-  AreaApiUtil.createArea(id)
+  AreaApiUtil.createArea(area)
     .then(area => dispatch(receiveArea(area)))
 );
 

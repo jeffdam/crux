@@ -2,18 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const AreasIndexItem = ({area}) => {
-  const subAreas = area.sub_areas.map(subArea => (
-    <Link to={`/areas/${subArea.id}`}>
-      <li key={`sub-${subArea.id}`} className="area-child">{subArea.name}</li>
+  // debugger
+  const subAreas = area.sub_areas.map((subArea,idx) => (
+    <Link key={idx} to={`/areas/${subArea.id}`}>
+      <li className="area-child">{subArea.name}</li>
     </Link>
   ));
 
   return (
-    <section>
+    <section key={area.id}>
       <Link to={`/areas/${area.id}`}>
-        <li key={`area-${area.id}`} className="area-parent">{area.name}</li>
+        <li className="area-parent" key="TEST">{area.name}</li>
       </Link>
-      <ul key={`child-${area.id}`} >
+      <ul>
         {subAreas}
       </ul>
     </section>

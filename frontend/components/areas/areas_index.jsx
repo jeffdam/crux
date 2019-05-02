@@ -8,8 +8,8 @@ class AreasIndex extends React.Component {
   }
 
   render() {
-    const parent_areas = this.props.areas.map(area => (
-      <AreasIndexItem area={area} />
+    const parent_areas = this.props.areas.map((area,idx) => (
+      <AreasIndexItem key={idx} area={area} />
     ));
 
     return (

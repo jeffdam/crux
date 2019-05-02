@@ -4,6 +4,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Home from './home';
 import Modal from './modal';
 import AreaShowContainer from './areas/area_show_container';
+import AreaCreateFormContainer from './areas/area_create_form_container';
 
 
 const App = () => (
@@ -12,6 +13,7 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/areas/:areaId" component={AreaShowContainer} />
+      <Route exact path="/add/climb-area/:parentAreaId" component={AreaCreateFormContainer}/>
       <Redirect to="/"/>
     </Switch>
   </div>
