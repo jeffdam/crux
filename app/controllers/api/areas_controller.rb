@@ -1,7 +1,7 @@
 class Api::AreasController < ApplicationController
 
   def index
-    @areas = Area.all
+    @areas = Area.where(parent_id: nil)
   end
 
   def show
