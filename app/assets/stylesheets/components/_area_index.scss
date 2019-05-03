@@ -1,14 +1,10 @@
 .area-index-main h1 {
   font-size: 24pt;
-}
-
-.bluebar {
-  background: $color-blue;
-  height: 5px;
-  margin: 10px 0px;
+  border-bottom: 6px solid $color-blue;
 }
 
 .area-index-list {
+  padding-top: 16px;
   column-count: 4;
   line-height: 1.25;
 }
