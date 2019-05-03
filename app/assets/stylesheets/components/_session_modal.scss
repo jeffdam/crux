@@ -66,3 +66,7 @@
 
   transform: translate(-50%, -50%);
 }
+
+.session-form > input[type=text], .session-form > input[type=password]{
+  border-color: #acacac;
+}
