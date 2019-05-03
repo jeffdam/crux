@@ -9,8 +9,10 @@ import Footer from './footer/footer';
 const Root = ({ store }) => (
   <Provider store={store}>
     <HashRouter>
-      <Header />
-      <App />
+      <div>
+        <Header />
+        <App />
+      </div>
       <Footer />
     </HashRouter>
   </Provider>

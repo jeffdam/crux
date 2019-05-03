@@ -53,11 +53,11 @@ class AreaShow extends React.Component {
             <h1>{area.name} Climbing</h1>
             <div className="dropdown">
               <div onClick={this.handleDropdown} className="flex-row">
-                <p className="area-show-dropdown-button">Add to Page</p>&nbsp;
+                <a className="area-show-dropdown-button">Add to Page</a>&nbsp;
                 <img height="6" src={window.images.downArrow} alt="Down Arrow"></img>
               </div>
               <div id="area-show-dropdown-content" className="area-show-dropdown-content">
-                <Link to={`/add/climb-area/${area.id}`}>Add Sub-Area</Link>
+                <Link className="area-show-dropdown-content-item" to={`/add/climb-area/${area.id}`}>Add Sub-Area</Link>
               </div>
             </div>
           </div>

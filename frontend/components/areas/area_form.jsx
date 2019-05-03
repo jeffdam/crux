@@ -40,7 +40,7 @@ class AreaForm extends React.Component {
         <h1>New Area in {parent.name}</h1>
         <form onSubmit={this.handleSubmit}>
           
-          <label><h2>Title</h2>
+          <div className="form-component"><h3>Title</h3>
             <input 
               type="text" 
               onChange={this.update('name')} 
@@ -49,9 +49,9 @@ class AreaForm extends React.Component {
             />
             <p className="form-char-limit">{100 - this.state.name.length} characters</p>            
             
-          </label>
+          </div>
 
-          <label><h2>Description</h2>
+          <div className="form-component"><h3>Description</h3>
             <textarea 
               type="text" 
               onChange={this.update('description')} 
@@ -60,9 +60,9 @@ class AreaForm extends React.Component {
               maxLength="2000"
             ></textarea>
             <p className="form-char-limit">{2000 - this.state.description.length} characters</p>     
-          </label>
+          </div>
 
-          <label><h2>Getting There</h2>
+          <div className="form-component"><h3>Getting There</h3>
             <textarea 
               type="text" 
               onChange={this.update('getting_there')} 
@@ -71,9 +71,9 @@ class AreaForm extends React.Component {
               maxLength="2000"
             ></textarea>
             <p className="form-char-limit">{2000 - this.state.getting_there.length} characters</p>   
-          </label>
+          </div>
           <div className="long-lat">
-            <label><h2>Latitude</h2>
+            <div className="form-component"><h3>Latitude</h3>
               <input 
                 type="number" 
                 step="0.000001" 
@@ -82,9 +82,9 @@ class AreaForm extends React.Component {
                 onChange={this.update('latitude')} 
                 value={this.state.latitude}
               />
-            </label>
+            </div>
 
-            <label><h2>Longitude</h2>
+            <div className="form-component"><h3>Longitude</h3>
               <input 
                 type="number" 
                 step="0.000001" 
@@ -93,7 +93,7 @@ class AreaForm extends React.Component {
                 onChange={this.update('longitude')} 
                 value={this.state.longitude}
               />
-            </label>
+            </div>
           </div>
 
           <input type="submit" value="Save Area"/>
