@@ -22,12 +22,13 @@ li .area-show-header-path-link:hover {
 }
 
 .area-show-header {
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #d7d7d7;
-  margin-bottom: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #d7d7d7;
+  margin-bottom: 1rem;
 }
 
 .area-show-sidebar {
@@ -56,4 +57,33 @@ li .area-show-header-path-link:hover {
 
 .area-show-attribute-left{
   min-width: 100px;
+}
+
+.area-show-dropdown-button {
+  cursor: pointer;
+  margin: 0;
+}
+
+.area-show-dropdown-button:hover, .area-show-dropdown-button:focus {
+  text-decoration: underline;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.area-show-dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0px;
+  
+  background-color:white;
+  min-width: 100px;
+  padding: 10px 20px;
+  border: 1px solid rgb(213, 212, 212);
+  z-index: 1;
+}
+
+.dropdown-content-show {
+  display:block;
 }

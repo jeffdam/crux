@@ -13,6 +13,10 @@ class AreaShow extends React.Component {
     }
   }
 
+  handleDropdown() {
+    document.getElementById("area-show-dropdown-content").classList.toggle("dropdown-content-show");
+  }
+
   render(){
     const { area } = this.props;
     if (!area) return null;
@@ -47,7 +51,15 @@ class AreaShow extends React.Component {
 
           <div className="area-show-header">
             <h1>{area.name} Climbing</h1>
-            <Link to={`/add/climb-area/${area.id}`}>Add Sub-Area</Link>
+            <div className="dropdown">
+              <div onClick={this.handleDropdown} className="flex-row">
+                <p className="area-show-dropdown-button">Add to Page</p>&nbsp;
+                <img height="6" src={window.images.downArrow} alt="Down Arrow"></img>
+              </div>
+              <div id="area-show-dropdown-content" className="area-show-dropdown-content">
+                <Link to={`/add/climb-area/${area.id}`}>Add Sub-Area</Link>
+              </div>
+            </div>
           </div>
 
           <div className="area-show-attributes">
@@ -74,6 +86,18 @@ class AreaShow extends React.Component {
         </article>
       </section>
     )
+  }
+}
+
+window.onclick = (event) => {
+  if (!event.target.classList.contains('area-show-dropdown-button')) {
+    const dropdowns = document.getElementsByClassName("area-show-dropdown-content");
+    for (let i = 0; i < dropdowns.length; i++) {
+      let openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('dropdown-content-show')) {
+        openDropdown.classList.remove('dropdown-content-show');
+      }
+    }
   }
 }
 
