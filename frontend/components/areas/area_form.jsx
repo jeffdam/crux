@@ -7,6 +7,7 @@ class AreaForm extends React.Component {
     this.state = this.props.area;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
+    this.handleOpenModal = this.handleOpenModal.bind(this);
   }
 
   componentDidMount(){
@@ -33,6 +34,11 @@ class AreaForm extends React.Component {
       ));
   }
 
+  handleOpenModal(e) {
+    e.preventDefault();
+    this.props.openModal('areaCreateFAQ');
+  }
+
   handleCancel(e){
     e.preventDefault();
     this.props.history.go(-1);
@@ -44,10 +50,14 @@ class AreaForm extends React.Component {
 
     return (
       <section className="area-form-page main-width main-padding">
-        <h1>New Area in {parent.name}</h1>
+        <div className="area-form-header">
+          <h1>New Area in {parent.name}</h1>
+          <a href="#" onClick={this.handleOpenModal}>FAQ about new areas & routes</a>
+        </div>
         <form onSubmit={this.handleSubmit}>
           
-          <div className="form-component"><h3>Title</h3>
+          <div className="form-component">
+            <h3>Title</h3>
             <input 
               type="text" 
               onChange={this.update('name')} 
@@ -79,13 +89,14 @@ class AreaForm extends React.Component {
             ></textarea>
             <p className="form-char-limit">{2000 - this.state.getting_there.length} characters</p>   
           </div>
-          <div className="long-lat">
+          <div className="lat-long">
             <div className="form-component"><h3>Latitude</h3>
               <input 
                 type="number" 
                 step="0.000001" 
                 min="-90"
                 max="90"
+                placeholder="Between -90 and 90."
                 onChange={this.update('latitude')} 
                 value={this.state.latitude}
               />
@@ -97,6 +108,7 @@ class AreaForm extends React.Component {
                 step="0.000001" 
                 min="-180"
                 max="180"
+                placeholder="Between -180 and 180."
                 onChange={this.update('longitude')} 
                 value={this.state.longitude}
               />

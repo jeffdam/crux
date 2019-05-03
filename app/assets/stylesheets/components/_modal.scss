@@ -7,20 +7,25 @@
   background: rgba(0, 0, 0, 0.7);
   z-index: 10;
   -webkit-animation: fadeIn 0.4s;
-  animation: fadeIn 0.5s
+  animation: fadeIn 0.5s;
 }
 
 .modal-child {
-  position: absolute;
+  position: relative;
   top: 50%;
   left: 50%;
-  
+  max-width: 700px;
+  max-height: 90vh;
   background: white;
   border-radius: 5px;
   padding: 10px;
   transform: translate(-50%, -50%);
   -webkit-animation: scrollDown 0.4s;
-  animation: scrollDown 0.5s
+  animation: scrollDown 0.5s;
+  overflow-y: auto;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 
 @keyframes scrollDown {

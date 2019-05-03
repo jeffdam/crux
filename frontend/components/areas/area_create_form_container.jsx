@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createArea, fetchArea } from '../../actions/area_action';
 import AreaForm from './area_form';
+import { openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return ({
@@ -22,7 +23,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return({
     fetchArea: id => dispatch(fetchArea(id)),
-    formAction: area => dispatch(createArea(area))
+    formAction: area => dispatch(createArea(area)),
+    openModal: modal => dispatch(openModal(modal))
   });
 };
 

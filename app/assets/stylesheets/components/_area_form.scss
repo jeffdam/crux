@@ -15,10 +15,27 @@
   margin-right: 30px; 
 }
 
-input[type=number].log-lat  {
-  display: flex;
-  flex-direction: row;
-  width: 100px;
+.area-form-header {
+  @extend .flex-row;
+  align-items: flex-end;
+  margin-bottom: .5rem;
+  padding-bottom: 20px;
+  border-bottom: 1px solid $color-bottom-border-light-grey;
+}
+
+.area-form-header h1 {
+  margin-right: 30px;
+  margin-bottom: 0;
+}
+
+.lat-long {
+  @extend .flex-row;
+  margin-bottom: 25px;
+}
+
+.lat-long > * {
+  margin-right: 50px;
+  width: 200px;
 }
 
 .form-submission-buttons a {
