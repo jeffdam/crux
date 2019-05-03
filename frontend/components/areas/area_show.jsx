@@ -16,6 +16,7 @@ class AreaShow extends React.Component {
   render(){
     const { area } = this.props;
     if (!area) return null;
+    if (!area.latitude) return null;
     const sortedSubAreas = area.sub_areas.sort((a, b) => (a.name > b.name) ? 1 : (a.name === b.name) ? 1 : -1);
 
     const subAreas = sortedSubAreas.map((subArea,idx) => (
@@ -24,20 +25,39 @@ class AreaShow extends React.Component {
       </Link>
     ));
 
+    const elevation = Math.floor(Math.random()*10000)
+    const pageViewsMonth = Math.floor(Math.random()*(4**((Math.floor(Math.random()*10)+1))))
+    const pageViewsTotal = pageViewsMonth * ((Math.floor(Math.random()*10)+1)*(Math.floor(Math.random()*100)+1))
+    
+    Math.floor(Math.random()*10)
+
     return (
-      <section className="area-show-page">
+      <section className="area-show-page main-width main-padding">
         <article className="area-show-sidebar">
           <h3>Areas in {area.name}</h3>
           {subAreas}
           <Link to={`/add/climb-area/${area.id}`}>Add Sub-Area</Link>
         </article>
         <article className="area-show-main-content">
-          <h1>{area.name} Climbing</h1>
-          <div>
+          <h1 className='area-show-header'>{area.name} Climbing</h1>
+          <div className="area-show-attributes">
+            <ul className="area-show-attribute">
+              <li className="area-show-attribute-left">Elevation:</li>
+              <li>{elevation} ft</li>
+            </ul>
+            <ul className="area-show-attribute">
+              <li className="area-show-attribute-left">GPS:</li>
+              <li>{`${area.latitude.toFixed(3)}, ${area.longitude.toFixed(3)}`} · <a target="_blank" href={`http://maps.google.com/maps?q=${area.latitude},${area.longitude}&t=h&hl=en`}>Google Map</a></li>
+            </ul>
+            <ul className="area-show-attribute">
+              <li className="area-show-attribute-left">Page Views:</li>
+              <li>{pageViewsTotal.toLocaleString('en')} total · {pageViewsMonth.toLocaleString('en')}/month</li>
+            </ul>
+          </div>
+
+          <div className="area-show-main-info">
             <h2>Description</h2>
             <p>{area.description}</p>
-          </div>
-          <div>
             <h2>Getting There</h2>
             <p>{area.getting_there}</p>
           </div>

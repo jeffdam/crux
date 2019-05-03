@@ -1,19 +1,31 @@
 .header-main {
   background: black;
+  padding: 10px 20px ;
 }
 
 .header-container {
+  height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
+}
+
+.header-right-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header-rei-logo {
+  padding: 7px 0px 7px 13px;
+  margin-left: 10px;
+  border-left: 1px solid #4e4d49;
 }
 
 .login-signup-buttons {
   display: flex;
   flex-direction: row;
-  width: 180px;
 }
 
 .session-button  {
@@ -21,7 +33,6 @@
   width: 60px;
   padding: 5px;
   font-size: 10pt;
-  font-weight: bold;
   margin: 5px;
 }
 

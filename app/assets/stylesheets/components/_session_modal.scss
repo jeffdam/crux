@@ -24,9 +24,12 @@
 
 .session-form-exit-button {
   color: grey;
-  font-size: 24pt;
+  font-size: 36pt;
+  font-weight: 100; 
   cursor: pointer;
   align-self: flex-end;
+  margin: 0px;
+  line-height: 0.5;
 }
 
 .session-form-exit-button:hover {

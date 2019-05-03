@@ -9,7 +9,10 @@ const Header = () => (
     <header className='header-main'>
       <section className="header-container main-width">
         <Link to="/"><img height="44" src={window.images.crux_logo} alt="Crux Logo"></img></Link>
-        <SessionButtonsContainer />
+        <div className="header-right-buttons">
+          <SessionButtonsContainer />
+          <a className='header-rei-logo' href="https://www.rei.com/" target="_blank"><img height="30" src={window.images.rei_logo} alt="Rei Logo" ></img></a>
+        </div>
       </section>
     </header>
   </div>

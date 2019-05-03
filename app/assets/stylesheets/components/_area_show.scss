@@ -6,8 +6,14 @@
   
 }
 
+.area-show-header {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #d7d7d7;
+  margin-bottom: 1rem;
+}
+
 .area-show-sidebar {
-  background: rgb(189, 189, 189);
+  background: $color-light-grey;
   box-sizing: border-box;
   padding: 15px;
   width: 100%;
@@ -24,6 +30,12 @@
   max-width: 950px;
 }
 
-.area-show-main-content p {
-  line-height: 1.25;
+.area-show-attribute {
+  display: flex;
+  flex-direction: row;
+  padding: 3px 0px 3px 0px;
+}
+
+.area-show-attribute-left{
+  min-width: 100px;
 }

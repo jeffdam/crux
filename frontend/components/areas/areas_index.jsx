@@ -14,7 +14,7 @@ class AreasIndex extends React.Component {
 
     return (
       <div className="area-index-page main-width main-padding ">
-        <h1>Rock Climbing Guide</h1>
+        <h2 className="blue-line">Rock Climbing Guide</h2>
         <ul className="area-index-list">
           {parent_areas}
         </ul>
