@@ -6,10 +6,28 @@
   
 }
 
+.area-show-header-path-link {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: .5rem;
+}
+
+.area-show-header-path-link * {
+  color: $color-dark-grey;
+}
+
+li .area-show-header-path-link:hover {
+  color: $color-dark-grey;
+  text-decoration: underline;
+}
+
 .area-show-header {
   padding-bottom: 1rem;
   border-bottom: 1px solid #d7d7d7;
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .area-show-sidebar {

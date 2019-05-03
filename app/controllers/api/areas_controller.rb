@@ -6,6 +6,11 @@ class Api::AreasController < ApplicationController
 
   def show
     @area = Area.find(params[:id])
+    if @area.parent_id
+      @parent_area = Area.find(@area.parent_id)
+    else
+      @parent_area = Area.find(params[:id])
+    end
   end
 
   def create

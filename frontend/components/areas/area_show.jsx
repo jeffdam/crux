@@ -29,17 +29,27 @@ class AreaShow extends React.Component {
     const pageViewsMonth = Math.floor(Math.random()*(4**((Math.floor(Math.random()*10)+1))))
     const pageViewsTotal = pageViewsMonth * ((Math.floor(Math.random()*10)+1)*(Math.floor(Math.random()*100)+1))
     
-    Math.floor(Math.random()*10)
+    const parentName = area.parent_id ? <li>&nbsp;>&nbsp;<Link to={`/areas/${area.parent_id}`}>{area.parentName}</Link></li> : "";
 
     return (
       <section className="area-show-page main-width main-padding">
         <article className="area-show-sidebar">
           <h3>Areas in {area.name}</h3>
           {subAreas}
-          <Link to={`/add/climb-area/${area.id}`}>Add Sub-Area</Link>
         </article>
+
         <article className="area-show-main-content">
-          <h1 className='area-show-header'>{area.name} Climbing</h1>
+
+          <ul className="area-show-header-path-link">
+            <li><Link to="/">All Locations</Link></li>
+            {parentName}
+          </ul>
+
+          <div className="area-show-header">
+            <h1>{area.name} Climbing</h1>
+            <Link to={`/add/climb-area/${area.id}`}>Add Sub-Area</Link>
+          </div>
+
           <div className="area-show-attributes">
             <ul className="area-show-attribute">
               <li className="area-show-attribute-left">Elevation:</li>
