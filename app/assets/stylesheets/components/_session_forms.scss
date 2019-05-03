@@ -1,0 +1,38 @@
+.session-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  width: 300px;
+  padding-top: 20px;
+}
+
+.session-page li {
+  list-style: circle inside;
+}
+
+.session-page * {
+  margin: 8px;
+}
+
+.session-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.session-form-other-options {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.session-page input, button {
+  width: 260px;
+  box-sizing: border-box;
+}
+
+.session-form > input[type=text], .session-form > input[type=password]{
+  border-color: #acacac;
+}

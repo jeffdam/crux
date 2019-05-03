@@ -8,7 +8,7 @@ function Modal({ modal, closeModal }) {
   if (!modal) {
     return null;
   }
-  let component;
+  let component; 
   switch (modal) {
     case 'login':
       component = <LoginFormContainer />;
@@ -22,6 +22,7 @@ function Modal({ modal, closeModal }) {
   return (
     <div className="modal-background" onClick={closeModal}>
       <div className="modal-child" onClick={e => e.stopPropagation()}>
+      <div className="session-form-exit-button" onClick={closeModal} >&times;</div>
         {component}
       </div>
     </div>

@@ -1,0 +1,79 @@
+.modal-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+  -webkit-animation: fadeIn 0.4s;
+  animation: fadeIn 0.5s
+}
+
+.modal-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  
+  background: white;
+  border-radius: 5px;
+  padding: 10px;
+  transform: translate(-50%, -50%);
+  -webkit-animation: scrollDown 0.4s;
+  animation: scrollDown 0.5s
+}
+
+@keyframes scrollDown {
+ from {
+   margin-top: -200%
+ }
+
+ to {
+   margin-top: 0%
+ }
+}
+
+@keyframes fadeIn {
+ from {
+   opacity: 0
+ }
+
+ to {
+   opacity: 1
+ }
+}
+
+@-webkit-keyframes scrollDown {
+ from {
+   margin-top: -200%
+ }
+
+ to {
+   margin-top: 5%
+ }
+}
+
+@-webkit-keyframes fadeIn {
+ from {
+   opacity: 0
+ }
+
+ to {
+   opacity: 2
+ }
+}
+
+.session-form-exit-button {
+  position: absolute;
+  right: 10px;
+  color: grey;
+  font-size: 30px;
+  font-weight: 100; 
+  cursor: pointer;
+  margin: 0px;
+  line-height: 0.5;
+}
+
+.session-form-exit-button:hover {
+  color: rgb(185, 185, 185)
+}

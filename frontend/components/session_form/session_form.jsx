@@ -51,7 +51,7 @@ class SessionForm extends React.Component {
   
     return (
       <div className="session-page">
-        <div className="session-form-exit-button" onClick={() => this.props.closeModal()} >&times;</div>
+        
         <h2>{formType}</h2>
         <form className="session-form" onSubmit={this.handleSubmit}>
           <input 

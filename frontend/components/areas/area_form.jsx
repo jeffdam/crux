@@ -1,10 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class AreaForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.area;
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
   }
 
   componentDidMount(){
@@ -29,6 +31,11 @@ class AreaForm extends React.Component {
       .then(({area: {id}}) => (
         this.props.history.push(`/areas/${id}`)
       ));
+  }
+
+  handleCancel(e){
+    e.preventDefault();
+    this.props.history.go(-1);
   }
 
   render() {
@@ -95,8 +102,10 @@ class AreaForm extends React.Component {
               />
             </div>
           </div>
-
-          <input type="submit" value="Save Area"/>
+          <div className="flex-row form-submission-buttons">
+            <input type="submit" value="Save Area"/>
+            <Link to="/" onClick={this.handleCancel}>Cancel</Link>
+          </div>
 
         </form>
       </section>
