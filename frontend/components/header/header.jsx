@@ -6,9 +6,11 @@ import { Link } from 'react-router-dom';
 const Header = () => (
   <div>
     <ReiNav />
-    <header className="header-container">
-      <Link to="/"><img height="44" src={window.images.crux_logo} alt="Crux Logo"></img></Link>
-      <SessionButtonsContainer />
+    <header className='header-main'>
+      <section className="header-container main-width">
+        <Link to="/"><img height="44" src={window.images.crux_logo} alt="Crux Logo"></img></Link>
+        <SessionButtonsContainer />
+      </section>
     </header>
   </div>
 );

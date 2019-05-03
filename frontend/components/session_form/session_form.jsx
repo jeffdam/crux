@@ -25,9 +25,8 @@ class SessionForm extends React.Component {
       .then(() => this.props.closeModal());
   }
 
-  demoLogin (e) {
-    e.preventDefault();
-    this.setState({ username: "demo_user", password: "password"});
+  demoLogin () {
+    this.setState({ username: "demo_user", password: "password" });
   }
 
   update(field) {
@@ -47,12 +46,12 @@ class SessionForm extends React.Component {
       (<input type="text" onChange={this.update('email')} placeholder="Email" />) 
       : "";
     const demoForm = (formType === "Log In") ? 
-      (<a href="#" onClick={this.demoLogin}>Demo</a>)
+      (<button onClick={this.demoLogin}>Demo Log In</button>)
       : "";
   
     return (
       <div className="session-page">
-        <h1>{formType}</h1>
+        <h3>{formType}</h3>
         <form className="session-form" onSubmit={this.handleSubmit}>
           <input 
             type="text" 
@@ -66,18 +65,15 @@ class SessionForm extends React.Component {
             onChange={this.update('password')} 
             placeholder="Password"
             value={this.state.password} 
-          />
+            />
             
           <input type="submit" value={formType}/>
+          {demoForm}
         </form>
+        {otherForm}
         <ul>
           {errors}
         </ul>
-        <div className="session-form-other-options">
-          {demoForm}
-          {otherForm}
-        </div>
-        
       </div>
     );
   }

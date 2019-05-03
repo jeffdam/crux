@@ -1,22 +1,25 @@
-
-
 .session-page {
   display: flex;
   flex-direction: column;
   align-items: center;
   background: white;
-  padding: 20px;
-  border-radius: 5px;
+  padding: 10px;
+  border-radius: 3px;
   box-sizing: border-box;
-  width: 300px;
+  width: 320px;
 }
 
 .session-page li {
   list-style: circle inside;
 }
 
-.session-page > * {
-  margin: 5px;
+.session-page * {
+  margin: 8px;
+}
+
+.session-page input, button {
+  width: 260px;
+  box-sizing: border-box;
 }
 
 .session-form-exit-button {
@@ -30,17 +33,10 @@
   color: rgb(185, 185, 185)
 }
 
-.session-page h1{
-  font-size: 24pt;
-  font-weight: bolder;
-}
-
 .session-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 16pt;
-  
 }
 
 .session-form-other-options {
@@ -48,29 +44,6 @@
   flex-direction: row;
   width: 100%;
   justify-content: space-evenly;
-}
-
-input[type=text], input[type=password] {
-  font-size: 14pt;
-  padding: 0px 10px;
-  box-sizing: border-box;
-  width: 100%;
-  height: 50px;
-  margin: 10px;
-}
-
-input[type=submit] {
-  font-size: 16pt;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  background: $color-blue;
-  color: white;
-  height: 50px;
-  margin: 10px;
-  cursor: pointer;
 }
 
 .modal-background {

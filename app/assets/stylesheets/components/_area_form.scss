@@ -1,0 +1,17 @@
+.form-char-limit {
+  text-align: right;
+  color: rgb(70, 70, 70);
+  font-size: 14px;
+}
+
+
+.area-form-page textarea {
+  min-height: 75px;
+  font-size: 14pt;
+}
+
+input[type=number].log-lat  {
+  display: flex;
+  flex-direction: row;
+  width: 100px;
+}

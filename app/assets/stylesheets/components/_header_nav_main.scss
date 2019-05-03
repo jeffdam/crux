@@ -1,5 +1,8 @@
-.header-container {
+.header-main {
   background: black;
+}
+
+.header-container {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -7,13 +10,18 @@
   padding: 10px;
 }
 
+.login-signup-buttons {
+  display: flex;
+  flex-direction: row;
+  width: 180px;
+}
+
 .session-button  {
-  background: $color-blue;
-  color: white;
-  padding: 10px;
-  margin: 5px;
+  height: 31px;
+  padding: 5px;
   font-size: 10pt;
   font-weight: bold;
+  margin: 5px;
 }
 
 .session-button:focus {

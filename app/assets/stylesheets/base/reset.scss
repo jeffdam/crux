@@ -8,7 +8,7 @@ h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
+b, u, i, center,button,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
@@ -55,8 +55,6 @@ button {
     text-decoration: none;
     background: #0069ed;
     color: #ffffff;
-    font-family: sans-serif;
-    font-size: 1rem;
     cursor: pointer;
     text-align: center;
     transition: background 250ms ease-in-out, 
