@@ -43,5 +43,3 @@ export const deleteArea = id => dispatch => (
   AreaApiUtil.deleteArea(id)
     .then(area => dispatch(removeArea(area.id)))
 );
-
-window.fetchAreasThunk = fetchAreas;

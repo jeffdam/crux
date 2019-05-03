@@ -34,9 +34,3 @@ export const deleteArea = id => (
     url: `/api/areas/${id}`,
   })
 );
-
-window.fetchAreas = fetchAreas;
-window.fetchArea = fetchArea;
-window.createArea = createArea;
-window.updateArea = updateArea;
-window.deleteArea = deleteArea;

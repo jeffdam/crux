@@ -7,15 +7,6 @@
   padding: 20px 0px;
 } 
 
-a {
-  color: $color-blue;
-}
-
-* {
-  font-family: 'Roboto Condensed', sans-serif;
-  // font-family: Arial, Helvetica, sans-serif;
-}
-
 main {
   height: 100vh;
   width: 100vw;
@@ -24,31 +15,32 @@ main {
   justify-content: space-between;
 }
 
+////////////// FONT //////////////
+* {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+}
 
-////////////// HEADER TEXT //////////////
+h1, h1, h4, h4 {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: bolder;
+  line-height: 1.5;
+}
 
 h1 {
-  font-weight: bolder;
-  font-size: 48pt;
-  line-height: 1.5;
+  font-size: 38px;
 }
 
 h2 {
-  font-weight: bolder;
-  font-size: 36pt;
-  line-height: 1.5;
+  font-size: 24px;
 }
 
 h3 {
-  font-weight: bolder;
-  font-size: 24pt;
-  line-height: 1.5;
+  font-size: 17px;
 }
 
 h4 {
-  font-weight: bolder;
   font-size: 18pt;
-  line-height: 1.5;
 }
 
 
@@ -92,4 +84,14 @@ input[type=submit], button {
 
 input[type=submit]:hover, button:hover{
   background: $color-blue-hover;
+}
+
+a {
+  color: $color-blue;
+  text-decoration: none;
+
+}
+a:hover {
+  color: black;
+  text-decoration: underline;
 }

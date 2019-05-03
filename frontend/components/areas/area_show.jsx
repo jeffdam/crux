@@ -16,8 +16,9 @@ class AreaShow extends React.Component {
   render(){
     const { area } = this.props;
     if (!area) return null;
+    const sortedSubAreas = area.sub_areas.sort((a, b) => (a.name > b.name) ? 1 : (a.name === b.name) ? 1 : -1);
 
-    const subAreas = area.sub_areas.map((subArea,idx) => (
+    const subAreas = sortedSubAreas.map((subArea,idx) => (
       <Link key={idx} to={`/areas/${subArea.id}`}>
         <li >{subArea.name}</li>
       </Link>
