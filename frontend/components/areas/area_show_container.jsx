@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { fetchArea } from '../../actions/area_action';
 
 const mapStateToProps = (state, ownProps) => {
-  // debugger
   const area = state.entities.areas[ownProps.match.params.areaId];
   return {
     area: area

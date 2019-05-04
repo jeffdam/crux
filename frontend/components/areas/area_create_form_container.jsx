@@ -16,6 +16,7 @@ const mapStateToProps = (state, ownProps) => {
       latitude: "",
       longitude: "",
     },
+    errors: state.errors.area,
     formType: "Create Area"
   });
 };

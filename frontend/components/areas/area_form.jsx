@@ -48,10 +48,16 @@ class AreaForm extends React.Component {
     const parent = this.props.parent;
     if (!parent) return null;
 
+    const errors = this.props.errors.map((error, idx) => (
+      <li key={idx}>{error}</li>
+    ));
+
+    console.log(errors)
+
     return (
       <section className="area-form-page main-width main-padding">
         <div className="area-form-header">
-          <h1>New Area in {parent.name}</h1>
+          <h1>New Area in {this.props.parent.name}</h1>
           <a href="#" onClick={this.handleOpenModal}>FAQ about new areas & routes</a>
         </div>
         <form onSubmit={this.handleSubmit}>
@@ -118,7 +124,9 @@ class AreaForm extends React.Component {
             <input type="submit" value="Save Area"/>
             <Link to="/" onClick={this.handleCancel}>Cancel</Link>
           </div>
-
+          <ul>
+            {errors}
+          </ul>
         </form>
       </section>
     )
@@ -126,3 +134,25 @@ class AreaForm extends React.Component {
 }
 
 export default AreaForm;
+
+
+
+// let nameErr = ""
+// let descErr = "";
+// let getErr = "";
+// let latErr = "";
+// let longErr = "";
+
+// this.props.errors.map((error, idx) => {
+//   if (error === "Name can't be blank" && nameErr != "") { 
+//     nameErr = error 
+//   } else if (error === "Description can't be blank" && descErr != "") {
+//     descErr = error 
+//   } else if (error === "Getting there can't be blank" && getErr != "") {
+//     getErr = error 
+//   } else if (error === "Latitude can't be blank" && latErr != "") {
+//     latErr = error 
+//   } else if (error === "Longitude can't be blank" && longErr != "") {
+//     longErr = error 
+//   };
+// })

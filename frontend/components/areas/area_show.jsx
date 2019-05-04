@@ -32,8 +32,7 @@ class AreaShow extends React.Component {
     const elevation = Math.floor(Math.random()*10000)
     const pageViewsMonth = Math.floor(Math.random()*(4**((Math.floor(Math.random()*10)+1))))
     const pageViewsTotal = pageViewsMonth * ((Math.floor(Math.random()*10)+1)*(Math.floor(Math.random()*100)+1))
-    
-    const parentName = area.parent_id ? <li>&nbsp;>&nbsp;<Link to={`/areas/${area.parent_id}`}>{area.parentName}</Link></li> : "";
+    const parentName = area.parent_id ? <li>&nbsp;>&nbsp;<Link to={`/areas/${area.parent_id}`}>{area.parent_name}</Link></li> : "";
 
     return (
       <section className="area-show-page main-width main-padding">
