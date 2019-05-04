@@ -36,7 +36,8 @@ li .area-show-header-path-link:hover {
   background: $color-light-grey;
   box-sizing: border-box;
   padding: 15px;
-  width: 100%;
+  width: 25vw;
+  min-width: 175px;
   max-width: 300px;
   margin-right: 25px
 }

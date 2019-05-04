@@ -52,8 +52,6 @@ class AreaForm extends React.Component {
       <li key={idx}>{error}</li>
     ));
 
-    console.log(errors)
-
     return (
       <section className="area-form-page main-width main-padding">
         <div className="area-form-header">
@@ -71,7 +69,6 @@ class AreaForm extends React.Component {
               maxLength="100"
             />
             <p className="form-char-limit">{100 - this.state.name.length} characters</p>            
-            
           </div>
 
           <div className="form-component"><h3>Description</h3>
@@ -82,7 +79,7 @@ class AreaForm extends React.Component {
               placeholder="Sunny? Access fees? Crowded? Secluded? Rock type/quality?"
               maxLength="2000"
             ></textarea>
-            <p className="form-char-limit">{2000 - this.state.description.length} characters</p>     
+            <p className="form-char-limit">{2000 - this.state.description.length} characters</p>  
           </div>
 
           <div className="form-component"><h3>Getting There</h3>
@@ -95,6 +92,7 @@ class AreaForm extends React.Component {
             ></textarea>
             <p className="form-char-limit">{2000 - this.state.getting_there.length} characters</p>   
           </div>
+
           <div className="lat-long">
             <div className="form-component"><h3>Latitude</h3>
               <input 
@@ -135,8 +133,6 @@ class AreaForm extends React.Component {
 
 export default AreaForm;
 
-
-
 // let nameErr = ""
 // let descErr = "";
 // let getErr = "";
@@ -144,15 +140,15 @@ export default AreaForm;
 // let longErr = "";
 
 // this.props.errors.map((error, idx) => {
-//   if (error === "Name can't be blank" && nameErr != "") { 
-//     nameErr = error 
-//   } else if (error === "Description can't be blank" && descErr != "") {
-//     descErr = error 
-//   } else if (error === "Getting there can't be blank" && getErr != "") {
-//     getErr = error 
-//   } else if (error === "Latitude can't be blank" && latErr != "") {
-//     latErr = error 
-//   } else if (error === "Longitude can't be blank" && longErr != "") {
-//     longErr = error 
+//   if (error === "Name can't be blank" && nameErr === "") {
+//     nameErr = error
+//   } else if (error === "Description can't be blank" && descErr === "") {
+//     descErr = error
+//   } else if (error === "Getting there can't be blank" && getErr === "") {
+//     getErr = error
+//   } else if (error === "Latitude can't be blank" && latErr === "") {
+//     latErr = error
+//   } else if (error === "Longitude can't be blank" && longErr === "") {
+//     longErr = error
 //   };
 // })
