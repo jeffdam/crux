@@ -7,7 +7,43 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-User.create({username: "demo_user", email: "demo@demo.com", password:"password"})
+User.create({username: "admin", email: "admin@crux.com", password:"cruxR0cksadmin"})
+User.create({username: "demo_user", email: "demo@demo.com", password:"cruxR0cks"})
+
+CLIMBERS = [
+  "Alex_Megos",
+  "Meagan_Martin",
+  "Sean_McColl",
+  "Sasha_DiGiulian",
+  "Conrad_Anker",
+  "John_Bachar",
+  "Jim_Bridwell",
+  "Tommy_Caldwell",
+  "Yvon_Chouinard",
+  "Peter_Croft",
+  "Emily_Harrington",
+  "Hans_Florine",
+  "Warren_Harding",
+  "Margo_Hayes",
+  "Lynn_Hill",
+  "Alex_Honnold",
+  "Kevin_Jorgeson",
+  "Kai_Lightner",
+  "John_Long_",
+  "Craig_Luebben",
+  "Renan_Ozturk",
+  "Dean_Potter",
+  "Ethan_Pringle",
+  "Alex_Puccio",
+  "Royal_Robbins",
+  "John_Salathé",
+  "Chris_Sharma",
+  "Ashima_Shiraishi",
+  "Nina_Williams",
+  "Daniel_Woods",
+]
+
+CLIMBERS.each { |climber| User.create({username: climber, email: "#{climber}@climberz.com", password:"cruxR0cksclimberz"})
 
 STATES = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming']
 LAT = [32.806671, 61.370716, 33.729759, 34.969704, 36.116203, 39.059811, 41.597782, 39.318523, 38.897438, 27.766279, 33.040619, 21.094318, 44.240459, 40.349457, 39.849426, 42.011539, 38.5266, 37.66814, 31.169546, 44.693947, 39.063946, 42.230171, 43.326618, 45.694454, 32.741646, 38.456085, 46.921925, 41.12537, 38.313515, 43.452492, 40.298904, 34.840515, 42.165726, 35.630066, 47.528912, 40.388783, 35.565342, 44.572021, 40.590752, 41.680893, 33.856892, 44.299782, 35.747845, 31.054487, 40.150032, 44.045876, 37.769337, 47.400902, 38.491226, 44.268543, 42.755966]
@@ -33,7 +69,7 @@ count = 0
   (rand(3..5)).times do 
     Area.create({
     parent_id: i,
-    author_id: 1,
+    author_id: rand(3..32),
     name: Faker::Address.city,
     description: DESCRIPTION,
     getting_there: GETTING_THERE,
@@ -47,10 +83,10 @@ oldcount = count
 count = 0
 
 (51..oldcount).each do |i| 
-  (rand(3..5)).times do 
+  (rand(3..4)).times do 
     Area.create({
     parent_id: i,
-    author_id: 1,
+    author_id: rand(3..32),
     name: Faker::Address.city,
     description: DESCRIPTION,
     getting_there: GETTING_THERE,
@@ -64,10 +100,10 @@ startcount = oldcount
 oldcount = count
 
 (startcount..oldcount).each do |i| 
-  (rand(3..5)).times do 
+  (rand(0..3)).times do 
     Area.create({
     parent_id: i,
-    author_id: 1,
+    author_id: rand(3..32),
     name: Faker::Address.city,
     description: DESCRIPTION,
     getting_there: GETTING_THERE,
@@ -75,4 +111,8 @@ oldcount = count
     longitude: Faker::Address.longitude})
   end
 end
+
+
+
+
 

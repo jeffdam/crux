@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
-import { ProtectedRoute, AreaRoute } from '../util/route_util';
+import { ProtectedRoute, AreaRoute } from '../util/protected_route_util';
 import Home from './home';
 import Modal from './modal';
 import AreaShowContainer from './areas/area_show_container';

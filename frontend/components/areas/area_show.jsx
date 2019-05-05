@@ -9,7 +9,8 @@ class AreaShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchArea(this.props.match.params.areaId);
+    this.props.fetchArea(this.props.match.params.areaId)
+      .then(action => this.props.fetchUser(action.area.authorId));
   }
 
   componentDidUpdate(prevProps) {
@@ -32,8 +33,9 @@ class AreaShow extends React.Component {
   }
 
   render(){
-    const { area } = this.props;
+    const { area, author } = this.props;
     if (!area) return null;
+    if (!author) return null;
     if (!area.latitude) return null;
 
     const sortedSubAreas = area.subAreas.sort((a, b) => (a.name > b.name) ? 1 : (a.name === b.name) ? 1 : -1);
@@ -97,7 +99,7 @@ class AreaShow extends React.Component {
             </div>
           </div>
 
-          <AreaShowAttributes area={area}/>
+          <AreaShowAttributes area={area} author={author}/>
 
           <div className="area-show-main-info">
             <h2>Description</h2>
