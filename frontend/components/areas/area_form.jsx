@@ -7,12 +7,11 @@ class AreaForm extends React.Component {
     super(props);
     this.state = this.props.area;
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleCancel = this.handleCancel.bind(this);
     this.handleFAQModal = this.handleFAQModal.bind(this);
   }
 
   componentDidMount(){
-    this.props.fetchArea(this.props.match.params.areaId)
+    this.props.fetchArea(this.props.match.params.areaId);
     if (this.props.match.path === "/add/climb-area/:areaId") {
       this.props.openModal('areaCreateFAQ');
     }
@@ -44,11 +43,6 @@ class AreaForm extends React.Component {
       ));
   }
 
-  handleCancel(e){
-    e.preventDefault();
-    this.props.history.push(`/areas/${this.props.match.params.areaId}`);
-  }
-
   render() {
     
     const parent = this.props.parent;
@@ -76,7 +70,7 @@ class AreaForm extends React.Component {
       }
     });
 
-    const formTitle = this.props.formType === "Create Area" ? <h1>New Area in {this.props.parent.name}</h1> : <h1>Edit {this.props.area.name} Area</h1>
+    const formTitle = this.props.formType === "Create Area" ? (<h1>New Area in {this.props.parent.name}</h1>) : <h1>Edit {this.props.area.name} Area</h1>
     const createFAQ = this.props.formType === "Create Area" ? <a href="#" onClick={this.handleFAQModal}>FAQ about new areas & routes</a> : "" 
 
     return (
@@ -151,7 +145,7 @@ class AreaForm extends React.Component {
           </div>
           <div className="flex-row form-submission-buttons">
             <input type="submit" value="Save Area"/>
-            <Link to="/" onClick={this.handleCancel}>Cancel</Link>
+            <Link to={`/areas/${this.props.match.params.areaId}`}>Cancel</Link>
           </div>
 
         </form>

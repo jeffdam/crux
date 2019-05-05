@@ -13,7 +13,7 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/areas/:areaId" component={AreaShowContainer} />
-      <Route exact path="/areas/:areaId/edit" component={AreaEditFormContainer} />
+      <AreaRoute exact path="/areas/:areaId/edit" component={AreaEditFormContainer} />
       <AreaRoute exact path="/add/climb-area/:areaId" component={AreaCreateFormContainer}/>
       <Redirect to="/"/>
     </Switch>
