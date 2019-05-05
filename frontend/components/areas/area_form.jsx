@@ -76,7 +76,7 @@ class AreaForm extends React.Component {
       }
     });
 
-    const formTitle = this.props.formType === "Create Area" ? <h1>New Area in {this.props.parent.name}</h1> : <h1>Edit {this.state.name} Area</h1>
+    const formTitle = this.props.formType === "Create Area" ? <h1>New Area in {this.props.parent.name}</h1> : <h1>Edit {this.props.area.name} Area</h1>
     const createFAQ = this.props.formType === "Create Area" ? <a href="#" onClick={this.handleFAQModal}>FAQ about new areas & routes</a> : "" 
 
     return (
