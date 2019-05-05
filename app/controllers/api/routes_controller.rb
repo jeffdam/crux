@@ -53,6 +53,4 @@ class Api::RoutesController < ApplicationController
   end
 end
 
-end
-
 
