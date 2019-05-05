@@ -10,7 +10,8 @@ class AreaShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchArea(this.props.match.params.areaId);
+    this.props.fetchArea(this.props.match.params.areaId)
+      .fail(this.props.history.push("/"));
   }
 
   componentDidUpdate(prevProps) {
