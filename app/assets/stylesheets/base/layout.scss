@@ -71,11 +71,12 @@ input[type=submit]:hover, button:hover{
 a {
   color: $color-blue;
   text-decoration: none;
-
+  
 }
 a:hover {
   color: black;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 p {

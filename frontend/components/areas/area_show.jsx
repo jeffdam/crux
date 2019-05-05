@@ -4,14 +4,11 @@ import { Link } from 'react-router-dom';
 class AreaShow extends React.Component {
   constructor(props) {
     super(props);
-
     this.handleAddSubArea = this.handleAddSubArea.bind(this);
-
   }
 
   componentDidMount() {
-    this.props.fetchArea(this.props.match.params.areaId)
-      .fail(this.props.history.push("/"));
+    this.props.fetchArea(this.props.match.params.areaId);
   }
 
   componentDidUpdate(prevProps) {
@@ -49,7 +46,11 @@ class AreaShow extends React.Component {
     const pageViewsMonth = Math.floor(Math.random()*(4**((Math.floor(Math.random()*10)+1))))
     const pageViewsTotal = pageViewsMonth * ((Math.floor(Math.random()*10)+1)*(Math.floor(Math.random()*100)+1))
     const parentName = area.parentId ? <li>&nbsp;>&nbsp;<Link to={`/areas/${area.parentId}`}>{area.parentName}</Link></li> : "";
-      
+    const improvePageLink = this.props.currentUser === area.authorId ? 
+      <Link className="area-show-dropdown-content-item" to={`/areas/${area.id}/edit`}>Edit Area</Link> 
+      : 
+      <Link className="area-show-dropdown-content-item" to={`/`}>Suggest Change</Link>;
+    
     return (
       <section className="area-show-page main-width main-padding">
         <article className="area-show-sidebar">
@@ -75,7 +76,7 @@ class AreaShow extends React.Component {
                 </div>
                 <div id="area-show-dropdown-content-edit" className="area-show-dropdown-content">
                   <div className="flex-col">
-                    <Link className="area-show-dropdown-content-item" to={`/areas/${area.id}/edit`}>Edit Area</Link>
+                    {improvePageLink}
                   </div>
                 </div>
               </div>

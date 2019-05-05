@@ -13,6 +13,7 @@ const mapStateToProps = (state, ownProps) => {
   } else {
     areaData = {
       id: area.id,
+      author_id: area.authorId,
       name: area.name,
       description: area.description,
       getting_there: area.gettingThere,
@@ -25,7 +26,8 @@ const mapStateToProps = (state, ownProps) => {
     parent: state.entities.areas[ownProps.match.params.areaId],
     area: areaData,
     errors: state.errors.area,
-    formType: "Update Area"
+    formType: "Update Area",
+    currentUser: state.session.id
   });
 };
 

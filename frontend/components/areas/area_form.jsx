@@ -12,16 +12,16 @@ class AreaForm extends React.Component {
   }
 
   componentDidMount(){
-    this.props.fetchArea(this.props.match.params.areaId);
+    this.props.fetchArea(this.props.match.params.areaId)
     if (this.props.match.path === "/add/climb-area/:areaId") {
       this.props.openModal('areaCreateFAQ');
     }
-  }
+  } 
 
   componentDidUpdate(prevProps) {
     if (prevProps.match.params.areaId !== this.props.match.params.areaId) {
       this.props.fetchArea(this.props.match.params.areaId);   
-    }
+    }    
     if (!this.state) this.setState(this.props.area);
   }
 
@@ -50,6 +50,7 @@ class AreaForm extends React.Component {
   }
 
   render() {
+    
     const parent = this.props.parent;
     if (!parent) return null;
     if (!this.props.area) return null;  
