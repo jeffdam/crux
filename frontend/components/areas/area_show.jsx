@@ -28,10 +28,8 @@ class AreaShow extends React.Component {
       this.props.history.push(`/add/climb-area/${this.props.match.params.areaId}`);
     } else {
       e.preventDefault();
-      this.props.openModal()
-        .then(this.props.history.push(`/add/climb-area/${this.props.match.params.areaId}`));
+      this.props.openModal({ action: "login", pathOnSuccess: `/add/climb-area/${this.props.match.params.areaId}`});
     }
-
   }
 
   render(){

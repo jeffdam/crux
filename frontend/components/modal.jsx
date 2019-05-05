@@ -6,16 +6,16 @@ import SignupFormContainer from '../components/session_form/signup_form_containe
 import AreaCreateFAQ from '../components/areas/area_create_faq';
 
 function Modal({ modal, closeModal }) {
-  if (!modal) {
+  if (!modal.action) {
     return null;
   }
   let component; 
-  switch (modal) {
+  switch (modal.action) {
     case 'login':
-      component = <LoginFormContainer />;
+      component = <LoginFormContainer pathOnSuccess={modal.pathOnSuccess} />;
       break;
     case 'signup':
-      component = <SignupFormContainer />;
+      component = <SignupFormContainer pathOnSuccess={modal.pathOnSuccess} />;
       break;
     case 'areaCreateFAQ':
       component = <AreaCreateFAQ />;

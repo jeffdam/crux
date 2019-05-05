@@ -8,8 +8,8 @@ const SessionButtons = ({ currentUser, logout, openModal }) => {
 
   const sessionButtons = () => (
     <nav className="login-signup-buttons">
-      <button className="session-button" onClick={() => openModal('login')}>Log In</button>
-      <button className="session-button" onClick={() => openModal('signup')}>Sign Up</button>
+      <button className="session-button" onClick={() => openModal({action: 'login', pathOnSuccess: null})}>Log In</button>
+      <button className="session-button" onClick={() => openModal({action: 'signup', pathOnSuccess: null })}>Sign Up</button>
     </nav>
   )
 

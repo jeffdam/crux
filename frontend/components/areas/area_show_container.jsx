@@ -15,7 +15,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchArea: (id) => dispatch(fetchArea(id)),
-    openModal: () => dispatch(openModal('login'))
+    openModal: (modal) => dispatch(openModal(modal))
   };
 };
 

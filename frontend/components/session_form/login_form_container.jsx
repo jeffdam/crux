@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import SessionForm from './session_form';
 import {login, clearErrors} from '../../actions/session_actions';
 import { closeModal, openModal } from '../../actions/modal_actions';
-
+import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = state => {
   return ({
@@ -17,9 +17,8 @@ const mapDispatchToProps = dispatch => {
     processForm: (user) => dispatch(login(user)),
     otherForm: (<a href="#" onClick={() => dispatch(openModal('signup'))}>Sign Up</a>),
     closeModal: () => dispatch(closeModal()),
-    openModal: () => dispatch(openModal('login')),
     clearErrors: () => dispatch(clearErrors())
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SessionForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SessionForm));
