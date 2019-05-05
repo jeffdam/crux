@@ -42,9 +42,11 @@ class SessionForm extends React.Component {
       <li key={idx}>{error}</li>
     ));
     const {formType, otherForm} = this.props;
+    
     const emailInput = (formType === "Sign Up") ? 
       (<input type="text" onChange={this.update('email')} placeholder="Email" />) 
       : "";
+
     const demoForm = (formType === "Log In") ? 
       (<button onClick={this.demoLogin}>Demo Log In</button>)
       : "";

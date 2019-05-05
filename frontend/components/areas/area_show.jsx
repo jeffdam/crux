@@ -2,6 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class AreaShow extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleAddSubArea = this.handleAddSubArea.bind(this);
+
+  }
 
   componentDidMount() {
     this.props.fetchArea(this.props.match.params.areaId);
@@ -15,6 +21,17 @@ class AreaShow extends React.Component {
 
   handleDropdown(type) {
     document.getElementById(`area-show-dropdown-content-${type}`).classList.toggle("dropdown-content-show");
+  }
+
+  handleAddSubArea(e) {
+    if (this.props.currentUser) {
+      this.props.history.push(`/add/climb-area/${this.props.match.params.areaId}`);
+    } else {
+      e.preventDefault();
+      this.props.openModal()
+        .then(this.props.history.push(`/add/climb-area/${this.props.match.params.areaId}`));
+    }
+
   }
 
   render(){
@@ -33,7 +50,7 @@ class AreaShow extends React.Component {
     const pageViewsMonth = Math.floor(Math.random()*(4**((Math.floor(Math.random()*10)+1))))
     const pageViewsTotal = pageViewsMonth * ((Math.floor(Math.random()*10)+1)*(Math.floor(Math.random()*100)+1))
     const parentName = area.parentId ? <li>&nbsp;>&nbsp;<Link to={`/areas/${area.parentId}`}>{area.parentName}</Link></li> : "";
-
+      
     return (
       <section className="area-show-page main-width main-padding">
         <article className="area-show-sidebar">
@@ -71,7 +88,7 @@ class AreaShow extends React.Component {
                 </div>
                 <div id="area-show-dropdown-content-add" className="area-show-dropdown-content">
                   <div className="flex-col">
-                    <Link className="area-show-dropdown-content-item" to={`/add/climb-area/${area.id}`}>Add Sub-Area</Link>
+                    <Link className="area-show-dropdown-content-item" to={`/add/climb-area/${area.id}`} onClick={this.handleAddSubArea}>Add Sub-Area</Link>
                   </div>
                 </div>
               </div>

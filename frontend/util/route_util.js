@@ -2,6 +2,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import { openModal } from '../actions/modal_actions';
 
 
 const Auth = ({ component: Component, path, loggedIn, exact }) => (
