@@ -22,6 +22,7 @@ class AreaForm extends React.Component {
     if (prevProps.match.params.areaId !== this.props.match.params.areaId) {
       this.props.fetchArea(this.props.match.params.areaId);   
     }
+    if (!this.state) this.setState(this.props.area);
   }
 
   update(field){
@@ -43,20 +44,16 @@ class AreaForm extends React.Component {
       ));
   }
 
-
   handleCancel(e){
     e.preventDefault();
-    this.props.history.go(-1);
+    this.props.history.push(`/areas/${this.props.match.params.areaId}`);
   }
 
   render() {
-    
     const parent = this.props.parent;
     if (!parent) return null;
-    
-    if (!this.props.area) return null;
-    if (this.props.area === {}) return null;
-    
+    if (!this.props.area) return null;  
+    if (!this.state) return null;  
 
     let nameErr = "";
     let descErr = "";

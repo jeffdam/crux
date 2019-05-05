@@ -6,6 +6,7 @@ import { openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let area = state.entities.areas[ownProps.match.params.areaId];
+  
   let areaData;
   if (!area) {
     areaData = null;
