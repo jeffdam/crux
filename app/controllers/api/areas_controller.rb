@@ -1,11 +1,18 @@
 class Api::AreasController < ApplicationController
 
+  def areaPath(parent_id)
+    return [] if parent_id == nil 
+    area=Area.find(parent_id)
+    return areaPath(area.parent_id).concat([area])
+  end
+
   def index
     @areas = Area.where(parent_id: nil)
   end
 
   def show
     @area = Area.find(params[:id])
+    @area_parents = areaPath(@area.parent_id)
     if @area.parent_id
       @parent_area = Area.find(@area.parent_id)
     else
@@ -60,3 +67,6 @@ class Api::AreasController < ApplicationController
     )
   end
 end
+
+
+

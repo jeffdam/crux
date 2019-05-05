@@ -44,7 +44,10 @@ class AreaShow extends React.Component {
     ));
 
 
-    const parentName = area.parentId ? <li>&nbsp;>&nbsp;<Link to={`/areas/${area.parentId}`}>{area.parentName}</Link></li> : "";
+    const parentLinks = this.props.area.parents.map( parent => (
+      <li key={parent.id}>&nbsp;>&nbsp;<Link  to={`/areas/${parent.id}`}>{parent.name}</Link></li>
+    ))
+    
     const improvePageLink = this.props.currentUser === area.authorId ? 
       <Link className="area-show-dropdown-content-item" to={`/areas/${area.id}/edit`}>Edit Area</Link> 
       : 
@@ -61,7 +64,7 @@ class AreaShow extends React.Component {
 
           <ul className="area-show-header-path-link">
             <li><Link to="/">All Locations</Link></li>
-            {parentName}
+            {parentLinks}
           </ul>
 
           <div className="area-show-header">

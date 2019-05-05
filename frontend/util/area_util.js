@@ -34,3 +34,5 @@ export const deleteArea = id => (
     url: `/api/areas/${id}`,
   })
 );
+
+window.fetchAreas = fetchAreas;
