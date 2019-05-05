@@ -21,6 +21,10 @@ class AreaForm extends React.Component {
     if (prevProps.match.params.areaId !== this.props.match.params.areaId) {
       this.props.fetchArea(this.props.match.params.areaId);   
     }    
+    
+    if (this.props.area.author_id != this.props.currentUser) {
+      this.props.history.push(`/areas/${this.props.area.id}`);
+    }
     if (!this.state) this.setState(this.props.area);
   }
 
@@ -44,10 +48,12 @@ class AreaForm extends React.Component {
   }
 
   render() {
-    
     const parent = this.props.parent;
     if (!parent) return null;
     if (!this.props.area) return null;  
+    
+    if (this.props.area.author_id != this.props.currentUser) return null;
+
     if (!this.state) return null;  
 
     let nameErr = "";
@@ -74,6 +80,7 @@ class AreaForm extends React.Component {
     const createFAQ = this.props.formType === "Create Area" ? <a href="#" onClick={this.handleFAQModal}>FAQ about new areas & routes</a> : "" 
 
     return (
+
       <section className="area-form-page main-width main-padding">
         <div className="area-form-header">
           {formTitle}
