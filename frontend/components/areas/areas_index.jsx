@@ -11,7 +11,7 @@ class AreasIndex extends React.Component {
     const parent_areas = this.props.areas.map((area,idx) => (
       <AreasIndexItem key={idx} area={area} />
     ));
-
+    
     return (
       <div className="area-index-page main-width main-padding ">
         <h2 className="blue-line">Rock Climbing Guide</h2>

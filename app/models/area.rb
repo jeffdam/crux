@@ -17,19 +17,23 @@
 class Area < ApplicationRecord
   validates :author_id, :name, :description, :getting_there, :latitude, :longitude, presence: true
 
+  belongs_to :parent_area,
+  primary_key: :id,
+  foreign_key: :parent_id,
+  class_name: :Area,
+  optional: true
+  
+  belongs_to :author,
+  primary_key: :id,
+  foreign_key: :author_id,
+  class_name: :User
+  
   has_many :sub_areas,
     primary_key: :id,
     foreign_key: :parent_id,
     class_name: :Area
 
-  belongs_to :parent_area,
-    primary_key: :id,
-    foreign_key: :parent_id,
-    class_name: :Area,
-    optional: true
-
-  belongs_to :author,
-    primary_key: :id,
-    foreign_key: :author_id,
-    class_name: :User
+  has_many :routes,
+    foreign_key: :area_id,
+    class_name: :Area
 end

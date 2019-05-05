@@ -11,6 +11,7 @@ class SessionForm extends React.Component {
       password: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleOtherSessionModal = this.handleOtherSessionModal.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
   }
 
@@ -33,6 +34,11 @@ class SessionForm extends React.Component {
       });
   }
 
+  handleOtherSessionModal(e) {
+    e.preventDefault();
+    this.props.openOtherSessionModal();
+  }
+
   demoLogin () {
     this.setState({ username: "demo_user", password: "password" });
   }
@@ -49,7 +55,7 @@ class SessionForm extends React.Component {
     const errors = this.props.errors.map((error,idx) => (
       <li key={idx}>{error}</li>
     ));
-    const {formType, otherForm} = this.props;
+    const {formType} = this.props;
     
     const emailInput = (formType === "Sign Up") ? 
       (<input type="text" onChange={this.update('email')} placeholder="Email" />) 
@@ -58,6 +64,8 @@ class SessionForm extends React.Component {
     const demoForm = (formType === "Log In") ? 
       (<button onClick={this.demoLogin}>Demo Log In</button>)
       : "";
+
+    const otherForm = (formType === "Sign Up") ? "Log In" : "Sign Up";
   
     return (
       <div className="session-page">
@@ -81,7 +89,9 @@ class SessionForm extends React.Component {
           <input type="submit" value={formType}/>
           {demoForm}
         </form>
-        {otherForm}
+
+        <a onClick={this.handleOtherSessionModal}>{otherForm}</a>
+        
         <ul>
           {errors}
         </ul>

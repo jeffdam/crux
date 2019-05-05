@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_01_214545) do
+ActiveRecord::Schema.define(version: 2019_05_05_173507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,29 @@ ActiveRecord::Schema.define(version: 2019_05_01_214545) do
     t.index ["author_id"], name: "index_areas_on_author_id"
     t.index ["name"], name: "index_areas_on_name"
     t.index ["parent_id"], name: "index_areas_on_parent_id"
+  end
+
+  create_table "routes", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "route_type", null: false
+    t.integer "author_id", null: false
+    t.integer "area_id", null: false
+    t.string "grade", null: false
+    t.string "safety", null: false
+    t.string "first_ascensionist"
+    t.date "first_ascent_date"
+    t.string "length", null: false
+    t.string "pitches", null: false
+    t.string "protection", null: false
+    t.text "description", null: false
+    t.text "getting_there", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["area_id"], name: "index_routes_on_area_id"
+    t.index ["author_id"], name: "index_routes_on_author_id"
+    t.index ["grade"], name: "index_routes_on_grade"
+    t.index ["pitches"], name: "index_routes_on_pitches"
+    t.index ["route_type"], name: "index_routes_on_route_type"
   end
 
   create_table "users", force: :cascade do |t|
