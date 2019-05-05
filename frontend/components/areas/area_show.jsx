@@ -13,16 +13,16 @@ class AreaShow extends React.Component {
     }
   }
 
-  handleDropdown() {
-    document.getElementById("area-show-dropdown-content").classList.toggle("dropdown-content-show");
+  handleDropdown(type) {
+    document.getElementById(`area-show-dropdown-content-${type}`).classList.toggle("dropdown-content-show");
   }
 
   render(){
     const { area } = this.props;
     if (!area) return null;
     if (!area.latitude) return null;
-    const sortedSubAreas = area.sub_areas.sort((a, b) => (a.name > b.name) ? 1 : (a.name === b.name) ? 1 : -1);
 
+    const sortedSubAreas = area.subAreas.sort((a, b) => (a.name > b.name) ? 1 : (a.name === b.name) ? 1 : -1);
     const subAreas = sortedSubAreas.map((subArea,idx) => (
       <Link key={idx} to={`/areas/${subArea.id}`}>
         <li >{subArea.name}</li>
@@ -32,7 +32,7 @@ class AreaShow extends React.Component {
     const elevation = Math.floor(Math.random()*10000)
     const pageViewsMonth = Math.floor(Math.random()*(4**((Math.floor(Math.random()*10)+1))))
     const pageViewsTotal = pageViewsMonth * ((Math.floor(Math.random()*10)+1)*(Math.floor(Math.random()*100)+1))
-    const parentName = area.parent_id ? <li>&nbsp;>&nbsp;<Link to={`/areas/${area.parent_id}`}>{area.parent_name}</Link></li> : "";
+    const parentName = area.parentId ? <li>&nbsp;>&nbsp;<Link to={`/areas/${area.parentId}`}>{area.parentName}</Link></li> : "";
 
     return (
       <section className="area-show-page main-width main-padding">
@@ -50,13 +50,30 @@ class AreaShow extends React.Component {
 
           <div className="area-show-header">
             <h1>{area.name} Climbing</h1>
-            <div className="dropdown">
-              <div onClick={this.handleDropdown} className="flex-row">
-                <a className="area-show-dropdown-button">Add to Page</a>&nbsp;
-                <img height="6" src={window.images.downArrow} alt="Down Arrow"></img>
+            <div className="area-show-options">
+
+              <div className="dropdown">
+                <div onClick={() => this.handleDropdown('edit')} className="flex-row">
+                  <a className="area-show-dropdown-button">Improve This Page</a>&nbsp;
+                  <img height="6" src={window.images.downArrow} alt="Down Arrow"></img>
+                </div>
+                <div id="area-show-dropdown-content-edit" className="area-show-dropdown-content">
+                  <div className="flex-col">
+                    <Link className="area-show-dropdown-content-item" to={`/areas/${area.id}/edit`}>Edit Area</Link>
+                  </div>
+                </div>
               </div>
-              <div id="area-show-dropdown-content" className="area-show-dropdown-content">
-                <Link className="area-show-dropdown-content-item" to={`/add/climb-area/${area.id}`}>Add Sub-Area</Link>
+
+              <div className="dropdown">
+                <div onClick={() => this.handleDropdown('add')} className="flex-row">
+                  <a className="area-show-dropdown-button">Add to Page</a>&nbsp;
+                  <img height="6" src={window.images.downArrow} alt="Down Arrow"></img>
+                </div>
+                <div id="area-show-dropdown-content-add" className="area-show-dropdown-content">
+                  <div className="flex-col">
+                    <Link className="area-show-dropdown-content-item" to={`/add/climb-area/${area.id}`}>Add Sub-Area</Link>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -80,7 +97,7 @@ class AreaShow extends React.Component {
             <h2>Description</h2>
             <p>{area.description}</p>
             <h2>Getting There</h2>
-            <p>{area.getting_there}</p>
+            <p>{area.gettingThere}</p>
           </div>
         </article>
       </section>

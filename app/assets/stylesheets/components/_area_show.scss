@@ -61,6 +61,22 @@ li .area-show-header-path-link:hover {
   min-width: 100px;
 }
 
+.area-show-options {
+  @extend .flex-col;
+  align-items: flex-end;
+  font-size: 12px;
+  min-width: 114px;
+  margin-left: 10px;
+}
+
+.area-show-options > * {
+  margin-bottom: 10px;
+}
+
+.area-show-options * {
+  cursor: pointer;
+}
+
 .area-show-dropdown-button {
   cursor: pointer;
   margin: 0;
@@ -73,6 +89,7 @@ li .area-show-header-path-link:hover {
 .dropdown {
   position: relative;
 }
+
 
 .area-show-dropdown-content {
   display: none;
@@ -88,5 +105,6 @@ li .area-show-header-path-link:hover {
 }
 
 .dropdown-content-show {
-  display:block;
+  display: block;
 }
+

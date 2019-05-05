@@ -4,28 +4,29 @@
   bottom: 0;
   right: 0;
   left: 0;
+  
   background: rgba(0, 0, 0, 0.7);
   z-index: 10;
   -webkit-animation: fadeIn 0.4s;
   animation: fadeIn 0.5s;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-child {
-  position: relative;
-  top: 50%;
-  left: 50%;
   max-width: 700px;
   max-height: 90vh;
   background: white;
   border-radius: 5px;
   padding: 10px;
-  transform: translate(-50%, -50%);
   -webkit-animation: scrollDown 0.4s;
   animation: scrollDown 0.5s;
   overflow-y: auto;
   display: flex;
-  align-content: center;
-  justify-content: center;
+  flex-direction: column;
 }
 
 @keyframes scrollDown {
@@ -68,17 +69,16 @@
  }
 }
 
-.session-form-exit-button {
-  position: absolute;
-  right: 10px;
+.modal-exit-button {
+  margin-left: auto;
   color: grey;
   font-size: 30px;
   font-weight: 100; 
   cursor: pointer;
-  margin: 0px;
   line-height: 0.5;
+  margin-bottom: 10px;
 }
 
-.session-form-exit-button:hover {
+.modal-exit-button:hover {
   color: rgb(185, 185, 185)
 }

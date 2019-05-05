@@ -1,4 +1,4 @@
-import { RECEIVE_AREA, RECEIVE_ERRORS } from "../actions/area_action";
+import { RECEIVE_AREA, RECEIVE_AREA_ERRORS } from "../actions/area_action";
 import { merge } from "lodash";
 
 const areaErrorsReducer = (oldState = [], action) => {
@@ -6,7 +6,7 @@ const areaErrorsReducer = (oldState = [], action) => {
   switch (action.type) {
     case RECEIVE_AREA:
       return [];
-    case RECEIVE_ERRORS:
+    case RECEIVE_AREA_ERRORS:
       return action.errors;
     default:
       return oldState;

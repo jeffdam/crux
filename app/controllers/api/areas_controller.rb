@@ -28,7 +28,13 @@ class Api::AreasController < ApplicationController
   end
 
   def update
+    
     @area = Area.find(params[:id])
+    if @area.parent_id
+      @parent_area = Area.find(@area.parent_id)
+    else
+      @parent_area = Area.find(params[:id])
+    end
     if @area.update(area_params)
       render :show
     else

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { isEmpty } from 'lodash';
 
 class AreaForm extends React.Component {
   constructor(props) {
@@ -7,16 +8,19 @@ class AreaForm extends React.Component {
     this.state = this.props.area;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
-    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleFAQModal = this.handleFAQModal.bind(this);
   }
 
   componentDidMount(){
-    this.props.fetchArea(this.props.match.params.parentAreaId);
+    this.props.fetchArea(this.props.match.params.areaId);
+    if (this.props.match.path === "/add/climb-area/:areaId") {
+      this.props.openModal('areaCreateFAQ');
+    }
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.match.params.parentAreaId !== this.props.match.params.parentAreaId) {
-      this.props.fetchArea(this.props.match.params.parentAreaId);
+    if (prevProps.match.params.areaId !== this.props.match.params.areaId) {
+      this.props.fetchArea(this.props.match.params.areaId);   
     }
   }
 
@@ -24,6 +28,11 @@ class AreaForm extends React.Component {
     return (e) => {
       return this.setState({[field]: e.target.value });
     };
+  }
+
+  handleFAQModal(e) {
+    e.preventDefault();
+    this.props.openModal('areaCreateFAQ');
   }
 
   handleSubmit(e) {
@@ -34,10 +43,6 @@ class AreaForm extends React.Component {
       ));
   }
 
-  handleOpenModal(e) {
-    e.preventDefault();
-    this.props.openModal('areaCreateFAQ');
-  }
 
   handleCancel(e){
     e.preventDefault();
@@ -45,23 +50,47 @@ class AreaForm extends React.Component {
   }
 
   render() {
+    
     const parent = this.props.parent;
     if (!parent) return null;
+    
+    if (!this.props.area) return null;
+    if (this.props.area === {}) return null;
+    
 
-    const errors = this.props.errors.map((error, idx) => (
-      <li key={idx}>{error}</li>
-    ));
+    let nameErr = "";
+    let descErr = "";
+    let getErr = "";
+    let latErr = "";
+    let longErr = "";
+
+    this.props.errors.map((error, idx) => {
+      if (error === "Name can't be blank" && nameErr === "") {
+        nameErr = error;
+      } else if (error === "Description can't be blank" && descErr === "") {
+        descErr = error;
+      } else if (error === "Getting there can't be blank" && getErr === "") {
+        getErr = error;
+      } else if (error === "Latitude can't be blank" && latErr === "") {
+        latErr = error;
+      } else if (error === "Longitude can't be blank" && longErr === "") {
+        longErr = error;
+      }
+    });
+
+    const formTitle = this.props.formType === "Create Area" ? <h1>New Area in {this.props.parent.name}</h1> : <h1>Edit {this.state.name} Area</h1>
+    const createFAQ = this.props.formType === "Create Area" ? <a href="#" onClick={this.handleFAQModal}>FAQ about new areas & routes</a> : "" 
 
     return (
       <section className="area-form-page main-width main-padding">
         <div className="area-form-header">
-          <h1>New Area in {this.props.parent.name}</h1>
-          <a href="#" onClick={this.handleOpenModal}>FAQ about new areas & routes</a>
+          {formTitle}
+          {createFAQ}
         </div>
         <form onSubmit={this.handleSubmit}>
           
           <div className="form-component">
-            <h3>Title</h3>
+            <h3>Title</h3><div className="errors">{nameErr}</div>
             <input 
               type="text" 
               onChange={this.update('name')} 
@@ -71,7 +100,8 @@ class AreaForm extends React.Component {
             <p className="form-char-limit">{100 - this.state.name.length} characters</p>            
           </div>
 
-          <div className="form-component"><h3>Description</h3>
+          <div className="form-component">
+            <h3>Description</h3><div className="errors">{descErr}</div>
             <textarea 
               type="text" 
               onChange={this.update('description')} 
@@ -82,7 +112,8 @@ class AreaForm extends React.Component {
             <p className="form-char-limit">{2000 - this.state.description.length} characters</p>  
           </div>
 
-          <div className="form-component"><h3>Getting There</h3>
+          <div className="form-component">
+            <h3>Getting There</h3><div className="errors">{getErr}</div>
             <textarea 
               type="text" 
               onChange={this.update('getting_there')} 
@@ -94,10 +125,11 @@ class AreaForm extends React.Component {
           </div>
 
           <div className="lat-long">
-            <div className="form-component"><h3>Latitude</h3>
+            <div className="form-component">
+              <h3>Latitude</h3><div className="errors">{latErr}</div>
               <input 
                 type="number" 
-                step="0.000001" 
+                step="any" 
                 min="-90"
                 max="90"
                 placeholder="Between -90 and 90."
@@ -106,10 +138,11 @@ class AreaForm extends React.Component {
               />
             </div>
 
-            <div className="form-component"><h3>Longitude</h3>
+            <div className="form-component">
+              <h3>Longitude</h3><div className="errors">{longErr}</div>
               <input 
                 type="number" 
-                step="0.000001" 
+                step="any" 
                 min="-180"
                 max="180"
                 placeholder="Between -180 and 180."
@@ -122,9 +155,7 @@ class AreaForm extends React.Component {
             <input type="submit" value="Save Area"/>
             <Link to="/" onClick={this.handleCancel}>Cancel</Link>
           </div>
-          <ul>
-            {errors}
-          </ul>
+
         </form>
       </section>
     )
@@ -133,22 +164,3 @@ class AreaForm extends React.Component {
 
 export default AreaForm;
 
-// let nameErr = ""
-// let descErr = "";
-// let getErr = "";
-// let latErr = "";
-// let longErr = "";
-
-// this.props.errors.map((error, idx) => {
-//   if (error === "Name can't be blank" && nameErr === "") {
-//     nameErr = error
-//   } else if (error === "Description can't be blank" && descErr === "") {
-//     descErr = error
-//   } else if (error === "Getting there can't be blank" && getErr === "") {
-//     getErr = error
-//   } else if (error === "Latitude can't be blank" && latErr === "") {
-//     latErr = error
-//   } else if (error === "Longitude can't be blank" && longErr === "") {
-//     longErr = error
-//   };
-// })

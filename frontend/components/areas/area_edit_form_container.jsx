@@ -1,30 +1,37 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createArea, fetchArea } from '../../actions/area_action';
+import { updateArea, fetchArea } from '../../actions/area_action';
 import AreaForm from './area_form';
 import { openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
+  let area = state.entities.areas[ownProps.match.params.areaId];
+  let areaData;
+  if (!area) {
+    areaData = null;
+  } else {
+    areaData = {
+      id: area.id,
+      name: area.name,
+      description: area.description,
+      getting_there: area.gettingThere,
+      latitude: area.latitude,
+      longitude: area.longitude,
+    };
+  }
+  
   return ({
     parent: state.entities.areas[ownProps.match.params.areaId],
-    area: {
-      parent_id: ownProps.match.params.areaId,
-      author_id: state.session.id,
-      name: "",
-      description: "",
-      getting_there: "",
-      latitude: "",
-      longitude: "",
-    },
+    area: areaData,
     errors: state.errors.area,
-    formType: "Create Area"
+    formType: "Update Area"
   });
 };
 
 const mapDispatchToProps = dispatch => {
-  return({
+  return ({
     fetchArea: id => dispatch(fetchArea(id)),
-    formAction: area => dispatch(createArea(area)),
+    formAction: area => dispatch(updateArea(area)),
     openModal: modal => dispatch(openModal(modal))
   });
 };

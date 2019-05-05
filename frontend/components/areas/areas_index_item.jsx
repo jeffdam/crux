@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const AreasIndexItem = ({area}) => {
-  const subAreas = area.sub_areas.slice(0,11).map((subArea,idx) => (
+  const subAreas = area.subAreas.slice(0,11).map((subArea,idx) => (
     <Link key={idx} to={`/areas/${subArea.id}`}>
       <li className="area-child">{subArea.name}</li>
     </Link>

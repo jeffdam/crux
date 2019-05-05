@@ -3,7 +3,7 @@ import * as AreaApiUtil from '../util/area_util';
 export const RECEIVE_AREAS = "RECEIVE_AREAS";
 export const RECEIVE_AREA = "RECEIVE_AREA";
 export const REMOVE_AREA = "REMOVE_AREA";
-export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
+export const RECEIVE_AREA_ERRORS = "RECEIVE_AREA_ERRORS";
 
 const receiveAreas = areas => ({
   type: RECEIVE_AREAS,
@@ -21,7 +21,7 @@ const removeArea = area => ({
 });
 
 const receiveErrors = (errors) => ({
-  type: RECEIVE_ERRORS,
+  type: RECEIVE_AREA_ERRORS,
   errors: errors
 });
 
