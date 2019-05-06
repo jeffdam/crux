@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import AreaShowAttributes from './area_show_attributes';
 import AreaShowSidebar from './area_show_sidebar';
+import AreaShowPhotos from './area_show_photos';
 
 class AreaShow extends React.Component {
   constructor(props) {
@@ -96,6 +97,7 @@ class AreaShow extends React.Component {
             <p>{area.description}</p>
             <h2>Getting There</h2>
             <p>{area.gettingThere}</p>
+            <AreaShowPhotos photos={area.photoUrls}/>
           </div>
         </article>
       </section>

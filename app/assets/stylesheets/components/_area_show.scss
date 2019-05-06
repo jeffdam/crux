@@ -108,3 +108,15 @@ li .area-show-header-path-link:hover {
   display: block;
 }
 
+.show-photos {
+  @extend .flex-row;
+  justify-content: space-between;
+}
+
+.show-photo {
+  background: pink;
+  display: block;
+  max-width: 200px;
+  max-height: 150px;
+  border: 1px solid black;
+}
