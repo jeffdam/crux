@@ -1,16 +1,23 @@
 class Api::RoutesController < ApplicationController
 
+  def areaPath(parent_id)
+    return [] if parent_id == nil 
+    area=Area.find(parent_id)
+    return areaPath(area.parent_id).concat([area])
+  end
+
   def index
     @routes = Route.where(parent_id: nil)
   end
 
   def show
-    @route = Route.find(params[:id])
+    @route = Route.includes(:author,:area, :neighbor_routes).find(params[:id])
+    @area_path = areaPath(@route.area_id)
   end
 
   def create
     @route = Route.new(route_params)
-
+ 
     if @route.save
       render :show
     else

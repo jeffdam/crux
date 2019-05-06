@@ -33,4 +33,7 @@ class Route < ApplicationRecord
     foreign_key: :area_id,
     class_name: :Area
 
+  has_many :neighbor_routes,
+    through: :area,
+    source: :routes
 end

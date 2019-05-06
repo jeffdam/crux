@@ -10,9 +10,11 @@ const receiveRoutes = routes => ({
   routes
 });
 
-const receiveRoute = route => ({
+const receiveRoute = payload => ({
   type: RECEIVE_ROUTE,
-  route
+  routeId: payload.routeId,
+  routes: payload.routes,
+  author: payload.author
 });
 
 const removeRoute = route => ({

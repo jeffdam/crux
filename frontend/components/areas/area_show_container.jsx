@@ -2,7 +2,6 @@ import React from 'react';
 import AreaShow from './area_show';
 import { connect } from 'react-redux';
 import { fetchArea } from '../../actions/area_action';
-import { fetchUser } from '../../actions/user_action';
 import { openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = ({entities, session}, ownProps) => {
@@ -14,19 +13,17 @@ const mapStateToProps = ({entities, session}, ownProps) => {
   let subAreas = {};
   let parents;
   
-  if (area) {
-    if (area.authorId) {
-      author = entities.users[area.authorId];
-      area.routeIds.forEach(id => {
-        routes[id] = entities.routes[id];
-      });
-      area.subAreaIds.forEach(id => {
-        subAreas[id] = entities.areas[id];
-      });
-      parents = area.parents;
-    }
+  if (area && area.authorId) {
+    author = entities.users[area.authorId];
+    area.routeIds.forEach(id => {
+      routes[id] = entities.routes[id];
+    });
+    area.subAreaIds.forEach(id => {
+      subAreas[id] = entities.areas[id];
+    });
+    parents = area.parents;
   }
-
+  debugger
   return {
     area: area,
     author: author,
@@ -39,7 +36,6 @@ const mapStateToProps = ({entities, session}, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchUser: (id) => dispatch(fetchUser(id)),
     fetchArea: (id) => dispatch(fetchArea(id)),
     openModal: (modal) => dispatch(openModal(modal))
   };

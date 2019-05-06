@@ -7,6 +7,10 @@ const AreaShowSidebar = ({ subAreaIds, subAreas, routeIds, routes, areaName}) =>
   const path = subAreaIds.length > 0 ? "areas" : "routes";
   const dataArray = subAreaIds.length > 0 ? subAreaIds : routeIds;
   const data = subAreaIds.length > 0 ? subAreas : routes;
+
+  const routeType = subAreaIds.length > 0 ? "" : routes;
+  const routeInfo = subAreaIds.length > 0 ? "" : ``;
+
   const subInfo = dataArray.map((subId) => (
     <Link key={subId} to={`/${path}/${subId}`}><li>{data[subId].name}</li></Link>
   ));
