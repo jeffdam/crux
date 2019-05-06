@@ -7,7 +7,7 @@ class Api::AreasController < ApplicationController
   end
 
   def index
-    @areas = Area.where(parent_id: nil)
+    @areas = Area.includes(:sub_areas).where(parent_id: nil)
   end
 
   def show

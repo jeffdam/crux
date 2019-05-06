@@ -29,7 +29,7 @@ const AreaProtected = ({ component: Component, path, loggedIn, exact }) => (
     loggedIn ? (
       <Component {...props} />
     ) : (
-        <Redirect to={`/areas/${props.match.params.areaId}`} />
+        <Redirect to={`/areas/${props.match.params.areaId}`} /> 
       )
   )} />
 );

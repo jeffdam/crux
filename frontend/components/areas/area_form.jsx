@@ -45,7 +45,7 @@ class AreaForm extends React.Component {
       .then(({area: {id}}) => (
         this.props.history.push(`/areas/${id}`)
       ));
-  }
+  } 
 
   render() {
     const parent = this.props.parent;

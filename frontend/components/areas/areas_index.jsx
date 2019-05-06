@@ -8,6 +8,7 @@ class AreasIndex extends React.Component {
   }
 
   render() {
+    if (!areas) return null;
     const parent_areas = this.props.areas.map((area,idx) => (
       <AreasIndexItem key={idx} area={area} />
     ));
@@ -23,4 +24,4 @@ class AreasIndex extends React.Component {
   }
 }
 
-export default AreasIndex;
+export default AreasIndex; 

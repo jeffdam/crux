@@ -24,18 +24,19 @@ class AreaShow extends React.Component {
   }
 
   handleAddSubArea(e) {
-    e.preventDefault();
     if (this.props.currentUser) {
       this.props.history.push(`/add/climb-area/${this.props.match.params.areaId}`);
     } else {
+      e.preventDefault();
       this.props.openModal({ action: "login", pathOnSuccess: `/add/climb-area/${this.props.match.params.areaId}`});
     }
   }
 
   render(){
     const { area, author, subAreas, routes, parents, currentUser } = this.props;
+
     if (!area) return null;
-    // if (!area.author_id) return null;
+    if (!area.authorId) return null;
 
     const parentLinks = area.parents.map(parent => (
       <li key={parent.id}>&nbsp;>&nbsp;<Link  to={`/areas/${parent.id}`}>{parent.name}</Link></li>

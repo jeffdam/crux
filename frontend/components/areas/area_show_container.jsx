@@ -15,7 +15,7 @@ const mapStateToProps = ({entities, session}, ownProps) => {
   let parents;
   
   if (area) {
-    // if (area.authorId) {
+    if (area.authorId) {
       author = entities.users[area.authorId];
       area.routeIds.forEach(id => {
         routes[id] = entities.routes[id];
@@ -24,7 +24,7 @@ const mapStateToProps = ({entities, session}, ownProps) => {
         subAreas[id] = entities.areas[id];
       });
       parents = area.parents;
-    // }
+    }
   }
 
   return {

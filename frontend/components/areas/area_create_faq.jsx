@@ -2,7 +2,7 @@ import React from 'react';
 
 export default () => {
   // <h2>Thanks for sharing your first area!</h2>
-  //   <h2>Here are some FAQ's to help get you started.</h2>
+  // <h2>Here are some FAQ's to help get you started.</h2>
   return (
   <section className="area-create-faqs-page">
     <h2>Adding New Areas & Routes</h2>

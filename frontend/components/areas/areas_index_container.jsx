@@ -4,8 +4,12 @@ import { connect } from 'react-redux';
 import { fetchAreas } from '../../actions/area_action';
 
 const mapStateToProps = state => {
-  const areas = Object.values(state.entities.areas);
-  const parents = areas.slice(0,50);
+  let parents = {};
+
+  // for (let i = 0, fro)
+
+  // const areas = Object.values(state.entities.areas);
+  // const parents = areas.slice(0,50);
   return {
     areas: parents
   };
