@@ -23,7 +23,7 @@ const mapStateToProps = ({entities, session}, ownProps) => {
     });
     parents = area.parents;
   }
-  debugger
+  
   return {
     area: area,
     author: author,

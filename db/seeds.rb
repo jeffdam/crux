@@ -49,26 +49,51 @@ STATES = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 
 LAT = [32.806671, 61.370716, 33.729759, 34.969704, 36.116203, 39.059811, 41.597782, 39.318523, 38.897438, 27.766279, 33.040619, 21.094318, 44.240459, 40.349457, 39.849426, 42.011539, 38.5266, 37.66814, 31.169546, 44.693947, 39.063946, 42.230171, 43.326618, 45.694454, 32.741646, 38.456085, 46.921925, 41.12537, 38.313515, 43.452492, 40.298904, 34.840515, 42.165726, 35.630066, 47.528912, 40.388783, 35.565342, 44.572021, 40.590752, 41.680893, 33.856892, 44.299782, 35.747845, 31.054487, 40.150032, 44.045876, 37.769337, 47.400902, 38.491226, 44.268543, 42.755966]
 LONG = [-86.79113, -152.404419, -111.431221, -92.373123, -119.681564, -105.311104, -72.755371, -75.507141, -77.026817, -81.686783, -83.643074, -157.498337, -114.478828, -88.986137, -86.258278, -93.210526, -96.726486, -84.670067, -91.867805, -69.381927, -76.802101, -71.530106, -84.536095, -93.900192, -89.678696, -92.288368, -110.454353, -98.268082, -117.055374, -71.563896, -74.521011, -106.248482, -74.948051, -79.806419, -99.784012, -82.764915, -96.928917, -122.070938, -77.209755, -71.51178, -80.945007, -99.438828, -86.692345, -97.563461, -111.862434, -72.710686, -78.169968, -121.490494, -80.954453, -89.616508, -107.30249]
 GETTING_THERE = "See individual climbing areas for specific directions."
-DESCRIPTION = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at risus tincidunt, pellentesque ex eu, facilisis nibh. Cras placerat blandit mi sed lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec condimentum, augue sit amet pellentesque bibendum, turpis nunc commodo velit, sollicitudin aliquam ante libero in lectus. Proin ac mattis purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut quis tempus magna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed ultrices laoreet est quis finibus. Sed tempor lectus nec magna volutpat luctus. Fusce pulvinar vitae diam a gravida.
+DESCRIPTION = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at risus tincidunt, pellentesque ex eu, facilisis nibh. Cras placerat blandit mi sed lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec condimentum, augue sit amet pellentesque bibendum, turpis nunc commodo velit, sollicitudin aliquam ante libero in lectus. Proin ac mattis purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut quis tempus magna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed ultrices laoreet est quis finibus. Sed tempor lectus nec magna volutpat luctus. Fusce pulvinar vitae diam a gravida. Ut volutpat, risus vel dictum pellentesque, eros augue suscipit justo, congue interdum mauris leo sit amet nisi. Ut non nulla a felis lobortis fringilla. Nulla volutpat laoreet nisl non efficitur. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In sed scelerisque ante. Sed eros ligula, feugiat facilisis dapibus eu, fringilla vitae risus. Phasellus convallis blandit erat, ullamcorper porttitor dolor imperdiet et. Vivamus eu elementum purus. Curabitur varius lacus mauris, vitae varius nisi pretium ut. Phasellus feugiat rhoncus arcu, eget mattis est viverra vel. Vestibulum quis quam libero. Aenean a sapien rutrum, feugiat turpis vitae, egestas leo. Proin semper convallis justo et rutrum. Maecenas rhoncus ornare augue, at bibendum nibh dictum quis."
+PHOTOS = [
+  "105996536_large_1494067806.jpg",
+  "106093018_large_1494077812.jpg",
+  "106093030_large_1494077814.jpg",
+  "106617801_large_1494125801.jpg",
+  "109367927_large_1494348269.jpg",
+  "110416171_large_1494350051.jpg",
+  "112791386_large_1494315320.jpg",
+  "114806698_large_1533328076.jpg",
+  "114806703_large_1533328144.jpg"
+]
 
-Ut volutpat, risus vel dictum pellentesque, eros augue suscipit justo, congue interdum mauris leo sit amet nisi. Ut non nulla a felis lobortis fringilla. Nulla volutpat laoreet nisl non efficitur. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In sed scelerisque ante. Sed eros ligula, feugiat facilisis dapibus eu, fringilla vitae risus. Phasellus convallis blandit erat, ullamcorper porttitor dolor imperdiet et. Vivamus eu elementum purus. Curabitur varius lacus mauris, vitae varius nisi pretium ut. Phasellus feugiat rhoncus arcu, eget mattis est viverra vel. Vestibulum quis quam libero. Aenean a sapien rutrum, feugiat turpis vitae, egestas leo. Proin semper convallis justo et rutrum. Maecenas rhoncus ornare augue, at bibendum nibh dictum quis."
+STATES.each_with_index do |state, idx| 
+  
+  area = Area.create({
+    parent_id: nil,
+    author_id: 1,
+    name: state,
+    description: "Rock climbing in #{state} offers a wide array of climbing on a variety of different rock types. From Palisades diabase to Watchung basalt to the purple conglomerate of Green Pond Mt, the granite of Allamuchy, to the metaquartzite of Delaware Water Gap, there is an enormous amount of rock to be climbed.",
+    getting_there: GETTING_THERE,
+    latitude: LAT[idx],
+    longitude: LONG[idx]
+  })
 
-STATES.each_with_index { |state, idx| Area.create({
-  parent_id: nil,
-  author_id: 1,
-  name: state,
-  description: "Rock climbing in #{state} offers a wide array of climbing on a variety of different rock types. From Palisades diabase to Watchung basalt to the purple conglomerate of Green Pond Mt, the granite of Allamuchy, to the metaquartzite of Delaware Water Gap, there is an enormous amount of rock to be climbed.",
-  getting_there: GETTING_THERE,
-  latitude: LAT[idx],
-  longitude: LONG[idx]
-})}
+  photos = PHOTOS.dup
+  4.times do
+    z = rand(0...photos.length)
+    add_photo = photos[z]
+    area.photos.attach(io: open("https://s3-us-west-1.amazonaws.com/crux-fsp-dev/#{add_photo}"), filename: add_photo)
+    photos.delete_at(z)
+  end
+
+  p state
+end
+    
+
+
 
 count = 0
 total_count = 0
 
 (1..50).each do |i| 
   (rand(3..5)).times do 
-    Area.create({
+    area = Area.create({
     parent_id: i,
     author_id: rand(3..32),
     name: Faker::Address.city,
@@ -77,6 +102,7 @@ total_count = 0
     latitude: LAT.sample,
     longitude: LONG.sample
     })
+    
     count += 1
     total_count += 1
   end
@@ -87,7 +113,7 @@ count = 0
 
 (51..oldcount).each do |i| 
   (rand(3..4)).times do 
-    Area.create({
+    area = Area.create({
     parent_id: i,
     author_id: rand(3..32),
     name: Faker::Address.city,
@@ -96,6 +122,7 @@ count = 0
     latitude: LAT.sample,
     longitude: LONG.sample
     })
+
     count += 1
     total_count += 1
   end
@@ -109,7 +136,7 @@ no_sub_area = []
   n = rand(0..3)
   no_sub_area.push(i) if n == 0
   (rand(0..3)).times do 
-    Area.create({
+    area = Area.create({
     parent_id: i,
     author_id: rand(3..32),
     name: Faker::Address.city,
@@ -118,6 +145,7 @@ no_sub_area = []
     latitude: LAT.sample,
     longitude: LONG.sample
     })
+
     total_count += 1
     no_sub_area.push(total_count)
   end
@@ -208,15 +236,17 @@ ROPE_LOCATION = [
   "Walk into the Black Velvet wall, traverse left along the wall under the huge boulder to the crack that marks the start of Refried brains. The route takes the first pitch of Refried brains and then wanders up the wall to the right of that route.",
 ]
 
+
+
 def time_rand from = 0.0, to = Time.now
   Time.at(from + rand * (to.to_f - from.to_f))
 end
 
-(no_sub_area.length/3).times do |i|
+(no_sub_area.length/3).times do
   rand_n = rand(0...no_sub_area.length)
   toprope_rand = [ true, false, false ].sample
 
-  (rand(3..4)).times do |j|
+  (rand(3..4)).times do
     length_rand = rand(50..200)
     pitches_rand = length_rand/100 + 1
 
@@ -249,11 +279,11 @@ TRAD_PRO = [
   "1 set stoppers, 1-2 sets cams to 2 inches, optional 3 long slings, extra carabiners, 6-7 draws for A0 section",
 ]
 
-(no_sub_area.length/2).times do |i|
+(no_sub_area.length/2).times do
   rand_n = rand(0...no_sub_area.length)
   toprope_rand = [ true, false, false, false, false ].sample
 
-  (rand(3..4)).times do |j|
+  (rand(3..4)).times do
     length_rand = rand(50..3000)
     pitches_rand = length_rand/100 + 1
 
@@ -304,7 +334,7 @@ BOULDER_LOC = [
 
 
 no_sub_area.each do |area_id|
-  (rand(3..4)).times do |j|
+  (rand(3..4)).times do
     length_rand = rand(10..30)
     Route.create({
       name: Faker::Hipster.words(2).join(" ").titleize, 

@@ -11,7 +11,7 @@ class Api::AreasController < ApplicationController
   end
 
   def show
-    @area = Area.includes(:author,:routes,:sub_areas).find(params[:id]) 
+    @area = Area.includes(:author,:routes,:sub_areas).with_attached_photos.find(params[:id]) 
     @area_parents = areaPath(@area.parent_id)
   end
 
@@ -54,7 +54,8 @@ class Api::AreasController < ApplicationController
       :description,
       :getting_there,
       :latitude,
-      :longitude
+      :longitude,
+      photos: []
     )
   end
 end

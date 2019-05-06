@@ -1,8 +1,10 @@
 json.area_id @area.id
+
 json.areas do
   json.set! @area.id do
     json.extract! @area, :id, :parent_id, :author_id, :name, :description, :getting_there, :latitude, :longitude, :created_at, :updated_at, :route_ids, :sub_area_ids
     json.parents @area_parents, :id, :name
+    json.photo_urls @area.photos.map { |file| url_for(file) }
   end
   @area.sub_areas.each do |sub|
     json.set! sub.id do
@@ -10,6 +12,7 @@ json.areas do
     end
   end
 end
+
 json.routes do 
   @area.routes.each do |route|
     json.set! route.id do

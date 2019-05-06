@@ -37,4 +37,6 @@ class Area < ApplicationRecord
     primary_key: :id,
     foreign_key: :area_id,
     class_name: :Route
+
+  has_many_attached :photos
 end
