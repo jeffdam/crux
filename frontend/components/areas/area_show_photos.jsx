@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 class AreaShowPhotos extends React.Component {
   constructor(props) {
@@ -35,8 +34,6 @@ class AreaShowPhotos extends React.Component {
       toggleButton = <button onClick={this.truncateToggle} className="toggle-button">Show {photos.length-8} More Photos</button>;
     }
 
-  
-
     const photosList = photoUrlArray.map(photoUrl => {
       return (
         <li className="show-photos-photo">
@@ -47,20 +44,18 @@ class AreaShowPhotos extends React.Component {
 
     return (
       <>
-        <div className="flex-row">
+        <div className="show-photos-header flex-row">
+          
           <h2>Photos</h2>
 
-          <div className="">
-
-            <div className="dropdown">
-              <div className="flex-row">
-                <a className="area-show-dropdown-button">Add New Photo</a>&nbsp;
-                  <img height="6" src={window.images.downArrow} alt="Down Arrow"></img>
-              </div>
-              <div id="area-show-dropdown-content-edit" className="area-show-dropdown-content">
-                <div className="flex-col">
-                  <a href="#">Add New Photo</a>
-                </div>
+          <div className="dropdown">
+            <div className="flex-row">
+              <a className="area-show-dropdown-button">Add New Photo</a>&nbsp;
+                <img height="6" src={window.images.downArrow} alt="Down Arrow"></img>
+            </div>
+            <div id="area-show-dropdown-content-edit" className="area-show-dropdown-content">
+              <div className="flex-col">
+                <a href="#">Add New Photo</a>
               </div>
             </div>
           </div>
@@ -69,6 +64,7 @@ class AreaShowPhotos extends React.Component {
         <ul className="show-photos">
           {photosList}
         </ul>
+
         {toggleButton}
       </>
     );

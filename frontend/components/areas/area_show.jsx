@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import AreaShowAttributes from './area_show_attributes';
 import AreaShowSidebar from './area_show_sidebar';
 import AreaShowPhotos from './area_show_photos';
+import AreaShowSlideshow from './area_show_slideshow';
 
 class AreaShow extends React.Component {
   constructor(props) {
@@ -89,9 +90,10 @@ class AreaShow extends React.Component {
               </div>
             </div>
           </div>
-
-          <AreaShowAttributes area={area} author={author}/>
-
+          <div className="attr-slides flex-row">
+            <AreaShowAttributes area={area} author={author}/>
+            <AreaShowSlideshow photos={area.photoUrls.concat(area.photoUrls).concat(area.photoUrls)}/>
+          </div>
           <div className="area-show-main-info">
             <h2>Description</h2>
             <p>{area.description}</p>
