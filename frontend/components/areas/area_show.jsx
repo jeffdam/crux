@@ -97,7 +97,7 @@ class AreaShow extends React.Component {
             <p>{area.description}</p>
             <h2>Getting There</h2>
             <p>{area.gettingThere}</p>
-            <AreaShowPhotos photos={area.photoUrls}/>
+            <AreaShowPhotos photos={area.photoUrls.concat(area.photoUrls).concat(area.photoUrls)}/>
           </div>
         </article>
       </section>

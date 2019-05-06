@@ -109,14 +109,23 @@ li .area-show-header-path-link:hover {
 }
 
 .show-photos {
-  @extend .flex-row;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-between;
   justify-content: space-between;
 }
 
-.show-photo {
-  background: pink;
-  display: block;
+.show-photos-photo {
+  width: 200px;
+  height: 150px;
+  display: flex;
+  margin: 16px 5px;
+  align-content: center;
+  justify-content: center;
+}
+
+.show-photos-photo img {
   max-width: 200px;
   max-height: 150px;
-  border: 1px solid black;
+  border: 1px solid black
 }
