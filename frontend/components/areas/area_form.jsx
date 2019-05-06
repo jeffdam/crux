@@ -13,7 +13,7 @@ class AreaForm extends React.Component {
   componentDidMount(){
     this.props.fetchArea(this.props.match.params.areaId);
     if (this.props.match.path === "/add/climb-area/:areaId") {
-      this.props.openModal('areaCreateFAQ');
+      this.props. openModal('areaCreateFAQ');
     }
   } 
 
@@ -22,9 +22,9 @@ class AreaForm extends React.Component {
       this.props.fetchArea(this.props.match.params.areaId);   
     }    
     
-    if (this.props.area.author_id != this.props.currentUser) {
-      this.props.history.push(`/areas/${this.props.area.id}`);
-    }
+    // if (this.props.area.author_id != this.props.currentUser) {
+    //   this.props.history.push(`/areas/${this.props.area.id}`);
+    // }
     if (!this.state) this.setState(this.props.area);
   }
 
@@ -42,8 +42,8 @@ class AreaForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.formAction(this.state)
-      .then(({area: {id}}) => (
-        this.props.history.push(`/areas/${id}`)
+      .then(({areaId}) => (
+        this.props.history.push(`/areas/${areaId}`)
       ));
   } 
 
@@ -52,7 +52,7 @@ class AreaForm extends React.Component {
     if (!parent) return null;
     if (!this.props.area) return null;  
     
-    if (this.props.area.author_id != this.props.currentUser) return null;
+    // if (this.props.area.author_id != this.props.currentUser) return null;
 
     if (!this.state) return null;  
 

@@ -14,6 +14,7 @@ const receiveArea = payload => {
   
   return {
   type: RECEIVE_AREA,
+  areaId: payload.areaId,
   areas: payload.areas,
   routes: payload.routes,
   author: payload.author
