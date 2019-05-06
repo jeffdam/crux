@@ -15,7 +15,8 @@ class AreaShow extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.match.params.areaId !== this.props.match.params.areaId) {
-      this.props.fetchArea(this.props.match.params.areaId);
+      this.props.fetchArea(this.props.match.params.areaId)
+        .then(action => this.props.fetchUser(action.area.authorId));
     }
   }
 

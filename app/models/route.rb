@@ -15,13 +15,15 @@
 #  pitches            :string           not null
 #  protection         :string           not null
 #  description        :text             not null
-#  getting_there      :text             not null
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  location           :text             not null
+#  toprope            :boolean          default(FALSE)
 #
 
 class Route < ApplicationRecord
-  validates :name, :route_type, :author_id, :area_id, :grade, :safety, :first_ascensionist, :first_ascent_date, :length, :pitches, :protection, :description, :getting_there, presence: true
+  validates :name, :route_type, :author_id, :area_id, :grade, :safety, :first_ascensionist, :first_ascent_date, :length, :pitches, :protection, :description, :location, presence: true
+  validates :toprope, inclusion: { in: [ true, false ] }
 
   belongs_to :author,
     foreign_key: :author_id,
