@@ -30,7 +30,7 @@ export const updateRoute = route => (
 
 export const deleteRoute = id => (
   $.ajax({
-    method: "GET",
+    method: "DELETE",
     url: `/api/routes/${id}`,
   })
 );

@@ -13,6 +13,7 @@ class Api::AreasController < ApplicationController
   def show
     @area = Area.find(params[:id])
     @area_parents = areaPath(@area.parent_id)
+
     if @area.parent_id
       @parent_area = Area.find(@area.parent_id)
     else

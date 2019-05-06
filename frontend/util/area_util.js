@@ -30,7 +30,7 @@ export const updateArea = area => (
 
 export const deleteArea = id => (
   $.ajax({
-    method: "GET",
+    method: "DELETE",
     url: `/api/areas/${id}`,
   })
 );

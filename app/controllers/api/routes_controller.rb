@@ -48,7 +48,8 @@ class Api::RoutesController < ApplicationController
       :pitches, 
       :protection, 
       :description, 
-      :getting_there
+      :location,
+      :toprope
     )
   end
 end
