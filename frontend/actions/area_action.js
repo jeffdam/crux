@@ -1,5 +1,5 @@
 import * as AreaApiUtil from '../util/area_util';
-
+import { merge } from 'lodash';
 export const RECEIVE_AREAS = "RECEIVE_AREAS";
 export const RECEIVE_AREA = "RECEIVE_AREA";
 export const REMOVE_AREA = "REMOVE_AREA";
@@ -10,10 +10,15 @@ const receiveAreas = areas => ({
   areas
 });
 
-const receiveArea = area => ({
+const receiveArea = payload => {
+  
+  return {
   type: RECEIVE_AREA,
-  area
-});
+  areas: payload.areas,
+  routes: payload.routes,
+  author: payload.author
+  };
+};
 
 const removeArea = area => ({
   type: REMOVE_AREA,
@@ -51,3 +56,5 @@ export const deleteArea = id => dispatch => (
   AreaApiUtil.deleteArea(id)
     .then(area => dispatch(removeArea(area.id)))
 );
+
+window.fetchArea = fetchArea;

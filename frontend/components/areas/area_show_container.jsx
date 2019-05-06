@@ -5,20 +5,35 @@ import { fetchArea } from '../../actions/area_action';
 import { fetchUser } from '../../actions/user_action';
 import { openModal } from '../../actions/modal_actions';
 
-const mapStateToProps = (state, ownProps) => {
-  const area = state.entities.areas[ownProps.match.params.areaId];
-  let author;
+const mapStateToProps = ({entities, session}, ownProps) => {
+
+  const area = entities.areas[ownProps.match.params.areaId];
   
-  if (!area) {
-    author = null;
-  } else {
-    author = state.entities.users[area.authorId];
+  let author;
+  let routes = {};
+  let subAreas = {};
+  let parents;
+  
+  if (area) {
+    // if (area.authorId) {
+      author = entities.users[area.authorId];
+      area.routeIds.forEach(id => {
+        routes[id] = entities.routes[id];
+      });
+      area.subAreaIds.forEach(id => {
+        subAreas[id] = entities.areas[id];
+      });
+      parents = area.parents;
+    // }
   }
 
   return {
     area: area,
     author: author,
-    currentUser: state.session.id
+    subAreas: subAreas,
+    routes: routes,
+    parents: parents,
+    currentUser: session.id
   };
 };
 

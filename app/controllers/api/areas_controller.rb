@@ -11,14 +11,8 @@ class Api::AreasController < ApplicationController
   end
 
   def show
-    @area = Area.find(params[:id])
+    @area = Area.includes(:author,:routes,:sub_areas).find(params[:id])
     @area_parents = areaPath(@area.parent_id)
-
-    if @area.parent_id
-      @parent_area = Area.find(@area.parent_id)
-    else
-      @parent_area = Area.find(params[:id])
-    end
   end
 
   def create

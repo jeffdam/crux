@@ -1,0 +1,6 @@
+json.author @area.author.username  
+json.parent_name @parent_area.name
+json.parents @area_parents, :id, :name
+json.sub_areas @area.sub_areas, :name, :id
+
+json.sub_routes @area.routes, :name, :id

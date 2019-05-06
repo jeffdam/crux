@@ -8,7 +8,7 @@ const areaReducer = (oldState = {}, action) => {
     case RECEIVE_AREAS:
       return action.areas;
     case RECEIVE_AREA:
-      newState = merge({}, oldState, {[action.area.id]: action.area});
+      newState = merge({}, oldState, action.areas);
       return newState;
     case REMOVE_AREA:
       newState = merge({}, oldState);

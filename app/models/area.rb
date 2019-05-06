@@ -34,6 +34,7 @@ class Area < ApplicationRecord
     class_name: :Area
 
   has_many :routes,
+    primary_key: :id,
     foreign_key: :area_id,
-    class_name: :Area
+    class_name: :Route
 end

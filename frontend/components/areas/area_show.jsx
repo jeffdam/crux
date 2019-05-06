@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AreaShowAttributes from './area_show_attributes';
+import AreaShowSidebar from './area_show_sidebar';
 
 class AreaShow extends React.Component {
   constructor(props) {
@@ -9,14 +10,12 @@ class AreaShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchArea(this.props.match.params.areaId)
-      .then(action => this.props.fetchUser(action.area.authorId));
+    this.props.fetchArea(this.props.match.params.areaId);
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.match.params.areaId !== this.props.match.params.areaId) {
-      this.props.fetchArea(this.props.match.params.areaId)
-        .then(action => this.props.fetchUser(action.area.authorId));
+      this.props.fetchArea(this.props.match.params.areaId);
     }
   }
 
@@ -25,29 +24,20 @@ class AreaShow extends React.Component {
   }
 
   handleAddSubArea(e) {
+    e.preventDefault();
     if (this.props.currentUser) {
       this.props.history.push(`/add/climb-area/${this.props.match.params.areaId}`);
     } else {
-      e.preventDefault();
       this.props.openModal({ action: "login", pathOnSuccess: `/add/climb-area/${this.props.match.params.areaId}`});
     }
   }
 
   render(){
-    const { area, author } = this.props;
+    const { area, author, subAreas, routes, parents, currentUser } = this.props;
     if (!area) return null;
-    if (!author) return null;
-    if (!area.latitude) return null;
+    // if (!area.author_id) return null;
 
-    const sortedSubAreas = area.subAreas.sort((a, b) => (a.name > b.name) ? 1 : (a.name === b.name) ? 1 : -1);
-    const subAreas = sortedSubAreas.map((subArea,idx) => (
-      <Link key={idx} to={`/areas/${subArea.id}`}>
-        <li >{subArea.name}</li>
-      </Link>
-    ));
-
-
-    const parentLinks = this.props.area.parents.map( parent => (
+    const parentLinks = area.parents.map(parent => (
       <li key={parent.id}>&nbsp;>&nbsp;<Link  to={`/areas/${parent.id}`}>{parent.name}</Link></li>
     ))
     
@@ -59,8 +49,7 @@ class AreaShow extends React.Component {
     return (
       <section className="area-show-page main-width main-padding">
         <article className="area-show-sidebar">
-          <h3>Areas in {area.name}</h3>
-          {subAreas}
+          <AreaShowSidebar subAreas={subAreas} routes={routes} areaName={area.name} routeIds={area.routeIds} subAreaIds={area.subAreaIds} />
         </article>
 
         <article className="area-show-main-content">
