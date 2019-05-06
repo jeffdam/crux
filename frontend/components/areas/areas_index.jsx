@@ -8,10 +8,14 @@ class AreasIndex extends React.Component {
   }
 
   render() {
-    if (!areas) return null;
-    const parent_areas = this.props.areas.map((area,idx) => (
+    const { areas } = this.props;
+
+    if (!areas[1]) return null;
+    
+    const parent_areas = areas.map((area, idx) => (
       <AreasIndexItem key={idx} area={area} />
-    ));
+    ))
+        
     
     return (
       <div className="area-index-page main-width main-padding ">

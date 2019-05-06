@@ -6,12 +6,14 @@ import { fetchAreas } from '../../actions/area_action';
 const mapStateToProps = state => {
   let parents = {};
 
-  // for (let i = 0, fro)
+  for (let i = 1; i <= 50; i++) {
+    parents[i] = state.entities.areas[i];
+  }
 
-  // const areas = Object.values(state.entities.areas);
-  // const parents = areas.slice(0,50);
+  const parentsArray = Object.values(parents);
+
   return {
-    areas: parents
+    areas: parentsArray
   };
 };
 
