@@ -1,23 +1,40 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const AreaShowSidebar = ({ subAreaIds, subAreas, routeIds, routes, areaName}) => {
+const AreaShowSidebar = ({ subAreaIds, subAreas, routeIds, routes, areaName, areaId, handleAddSubArea}) => {
   
-  const title = subAreaIds.length > 0 ? "Areas" : "Routes";
-  const path = subAreaIds.length > 0 ? "areas" : "routes";
-  const dataArray = subAreaIds.length > 0 ? subAreaIds : routeIds;
-  const data = subAreaIds.length > 0 ? subAreas : routes;
-
-  const routeType = subAreaIds.length > 0 ? "" : routes;
-  const routeInfo = subAreaIds.length > 0 ? "" : ``;
-
-  const subInfo = dataArray.map((subId) => (
-    <Link key={subId} to={`/${path}/${subId}`}><li>{data[subId].name}</li></Link>
-  ));
+  let titleText;
+  let subInfo;
+  
+  if (subAreaIds.length === 0 && routeIds.length === 0) {
+    titleText = "Add an Area or Route";
+    subInfo = (
+      <>
+        <p>This area is empty. Areas can contain sub-areas or routes, <strong>but not both</strong>.</p>
+        <p>Before adding a route, consider if you should first add a sub-area (or several) to this area.</p> 
+        <Link to={`/add/climb-area/${areaId}`} onClick={handleAddSubArea}>Add Sub-Area</Link> · <Link to={`/add/climb-area/${areaId}`}>Add Route</Link> 
+      </>
+    )
+  } else if (subAreaIds.length > 0) {
+    titleText = `Areas in ${areaName}`;
+    subInfo = subAreaIds.map((subAreaId) => (
+      <li key={subAreaId}><Link to={`/areas/${subAreaId}`}>{subAreas[subAreaId].name}</Link></li>
+    ));
+  } else {
+    titleText = `Routes in ${areaName}`;
+    subInfo = routeIds.map((routeId) => {
+      let route = routes[routeId]
+      let type = route.routeType === "Sport" ? "S" : route.routeType === "Trad" ? "T" : "B";
+      let safety = route.safety === "G" ? "" : route.safety;
+      return (
+        <li key={routeId}><Link to={`/routes/${routeId}`}>{route.name}</Link> {`${type} ${route.grade} ${safety}`}</li>
+      )
+    });   
+  }
 
   return (
     <>
-      <h3>{title} in {areaName}</h3>
+      <h3>{ titleText }</h3>
       <ul>
         { subInfo }
       </ul>

@@ -11,6 +11,7 @@ import RouteShowContainer from './routes/route_show/route_show_container';
 const App = () => (
   <div className="app">
     <Modal />
+    
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/areas/:areaId" component={AreaShowContainer} />

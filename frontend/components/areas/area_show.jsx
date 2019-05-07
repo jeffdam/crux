@@ -51,7 +51,7 @@ class AreaShow extends React.Component {
     return (
       <section className="area-show-page main-width main-padding">
         <article className="area-show-sidebar">
-          <AreaShowSidebar subAreas={subAreas} routes={routes} areaName={area.name} routeIds={area.routeIds} subAreaIds={area.subAreaIds} />
+          <AreaShowSidebar subAreas={subAreas} routes={routes} areaName={area.name} routeIds={area.routeIds} subAreaIds={area.subAreaIds} areaId={this.props.match.params.areaId} handleAddSubArea={this.handleAddSubArea}/>
         </article>
 
         <article className="area-show-main-content">

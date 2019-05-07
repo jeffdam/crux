@@ -24,7 +24,9 @@ class AreaShowPhotos extends React.Component {
     let photoUrlArray;
     let toggleButton = "";
 
-    if (photos.length <= 8) {
+    if (photos.length === 0) {
+      return null;
+    } else if (photos.length <= 8) {
       photoUrlArray = photos;
     } else if (expanded) {
       photoUrlArray = photos;

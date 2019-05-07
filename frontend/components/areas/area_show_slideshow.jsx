@@ -11,7 +11,7 @@ class AreaShowSlideshow extends React.Component {
   }
 
   componentDidMount() {
-    this.interval = setInterval(this.changePhoto, 2500);
+    this.interval = setInterval(this.changePhoto, 4000);
   }
 
   componentWillUnmount() {
@@ -23,11 +23,10 @@ class AreaShowSlideshow extends React.Component {
     this.setState({ show: nextPhotoIndex });
   }
 
-
-
   render() {
     const { photos } = this.props;
-
+    if (photos) return null;
+    
     return (
       <div className="slideshow">
         <img  src={photos[this.state.show]} alt=""/>
