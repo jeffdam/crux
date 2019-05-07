@@ -49,19 +49,56 @@ LONG = [
 GETTING_THERE = "See individual climbing areas for specific directions."
 DESCRIPTION = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at risus tincidunt, pellentesque ex eu, facilisis nibh. Cras placerat blandit mi sed lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec condimentum, augue sit amet pellentesque bibendum, turpis nunc commodo velit, sollicitudin aliquam ante libero in lectus. Proin ac mattis purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut quis tempus magna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed ultrices laoreet est quis finibus. Sed tempor lectus nec magna volutpat luctus. Fusce pulvinar vitae diam a gravida. Ut volutpat, risus vel dictum pellentesque, eros augue suscipit justo, congue interdum mauris leo sit amet nisi. Ut non nulla a felis lobortis fringilla. Nulla volutpat laoreet nisl non efficitur. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In sed scelerisque ante. Sed eros ligula, feugiat facilisis dapibus eu, fringilla vitae risus. Phasellus convallis blandit erat, ullamcorper porttitor dolor imperdiet et. Vivamus eu elementum purus. Curabitur varius lacus mauris, vitae varius nisi pretium ut. Phasellus feugiat rhoncus arcu, eget mattis est viverra vel. Vestibulum quis quam libero. Aenean a sapien rutrum, feugiat turpis vitae, egestas leo. Proin semper convallis justo et rutrum. Maecenas rhoncus ornare augue, at bibendum nibh dictum quis."
 
-PHOTOS = [
-  "105996536_large_1494067806.jpg", "106093018_large_1494077812.jpg", "106093030_large_1494077814.jpg", 
-  "106617801_large_1494125801.jpg", "109367927_large_1494348269.jpg", "110416171_large_1494350051.jpg", 
-  "112791386_large_1494315320.jpg", "114806698_large_1533328076.jpg", "114806703_large_1533328144.jpg", 
-  "107996662_large_1494256156.jpg", "110460630_large_1494351107.jpg", "114023455_large_1516318634.jpg", 
-  "116126877_large_1542999159.jpg", "110494750_large_1494351994.jpg", "106229511_large_1494089948.jpg", 
-  "105913729_large_1494059353.jpg", "111397725_large_1494361225.jpg", "111152837_large_1494341467.jpg", 
-  "109773778_large_1494362120.jpg", "107431651_large_1494188704.jpg", "107928253_large_1494251258.jpg", 
-  "111608756_large_1494296866.jpg", "107926734_large_1494251186.jpg", "112508186_large_1494309237.jpg"
+PHOTO_DATA = [
+  {key: "105913729_large_1494059353.jpg", byte_size: 306600, checksum: "4417959eff9c550a050cf1193d1f3feb"},
+  {key: "105996536_large_1494067806.jpg", byte_size: 547100, checksum: "c81220b05330b679c1d2237cf668084a"},
+  {key: "106093018_large_1494077812.jpg", byte_size: 374200, checksum: "20dafaac515293016f3ce411fe425f46"},
+  {key: "106093030_large_1494077814.jpg", byte_size: 369200, checksum: "59cb56d2d6bf482f9b6b2c1635f8263b"},
+  {key: "106229511_large_1494089948.jpg", byte_size: 673400, checksum: "e828138fd4afeb136db47f4bd451e8fb"},
+  {key: "106617801_large_1494125801.jpg", byte_size: 342300, checksum: "bde7f8054d630cca7c0bde8b5e95d78d"},
+  {key: "107431651_large_1494188704.jpg", byte_size: 464800, checksum: "edf1e123ba97694bd2dc9c0c0923cd60"},
+  {key: "107926734_large_1494251186.jpg", byte_size: 667600, checksum: "fa1d644018eb74d48a503c8e8072fa9e"},
+  {key: "107928253_large_1494251258.jpg", byte_size: 811600, checksum: "bef3ec8f0fb6d643b070d54379081594"},
+  {key: "107996662_large_1494256156.jpg", byte_size: 300200, checksum: "df5c6f2eeb2f0bbcdcfbf2e781f76333"},
+  {key: "109367927_large_1494348269.jpg", byte_size: 420500, checksum: "b5a4ddac81f23432a9b2ab465d722f03"},
+  {key: "109773778_large_1494362120.jpg", byte_size: 486200, checksum: "26540b907f88170e3f96320ebb2fc261"},
+  {key: "110416171_large_1494350051.jpg", byte_size: 531500, checksum: "dd64899bf4f24b1a2b48b730a79ee481"},
+  {key: "110460630_large_1494351107.jpg", byte_size: 510400, checksum: "ed1230f15c566e968a7daf94a81bc2ae"},
+  {key: "110494750_large_1494351994.jpg", byte_size: 482200, checksum: "1ed71cb66fa5531714d0c12a0ec98eb1"},
+  {key: "111152837_large_1494341467.jpg", byte_size: 566800, checksum: "68e426f3131875b88d70af25e578c473"},
+  {key: "111397725_large_1494361225.jpg", byte_size: 395500, checksum: "376650d7cd220bce6907e46742d42b25"},
+  {key: "111608756_large_1494296866.jpg", byte_size: 641900, checksum: "a294239591e47f0dec8e5e7d91267a9d"},
+  {key: "112508186_large_1494309237.jpg", byte_size: 320900, checksum: "ee94f9d6311ce91a093a09e5439a6634"},
+  {key: "112791386_large_1494315320.jpg", byte_size: 340100, checksum: "dfb75483e4b9735898e01656f7a2e1d8"},
+  {key: "114806698_large_1533328076.jpg", byte_size: 528200, checksum: "f41a70da2d43fb1e39b1add7dc59ed1c"},
+  {key: "114806703_large_1533328144.jpg", byte_size: 332600, checksum: "2f96fc6fd80589c6e4f39b664c5def68"}
 ]
 
+PHOTOS = []
+
+PHOTO_DATA.each do |photo|
+  params = {
+      filename: photo[:key], 
+      content_type: "image/jpeg", 
+      byte_size: photo[:byte_size], 
+      checksum: photo[:checksum]
+  }
+
+  blob = ActiveStorage::Blob.create_before_direct_upload!(params)
+  blob.update_attributes key:photo[:key]
+  PHOTOS.push(blob)
+end
+
 STATES.each_with_index do |state, idx| 
-  
+  photos = PHOTOS.dup
+  add_photos = []
+  (4).times do
+    z = rand(0...photos.length)
+    photo_to_add = photos[z]
+    add_photos.push(photo_to_add)
+    photos.delete_at(z)
+  end
+
   area = Area.create({
     parent_id: nil,
     author_id: 1,
@@ -69,18 +106,10 @@ STATES.each_with_index do |state, idx|
     description: "Rock climbing in #{state} offers a wide array of climbing on a variety of different rock types. From Palisades diabase to Watchung basalt to the purple conglomerate of Green Pond Mt, the granite of Allamuchy, to the metaquartzite of Delaware Water Gap, there is an enormous amount of rock to be climbed.",
     getting_there: GETTING_THERE,
     latitude: LAT[idx],
-    longitude: LONG[idx]
+    longitude: LONG[idx],
+    photos: add_photos
   })
-
-  photos = PHOTOS.dup
-  rand(4..12).times do
-    z = rand(0...photos.length)
-    add_photo = photos[z]
-    area.photos.attach(io: open("https://s3-us-west-1.amazonaws.com/crux-fsp-dev/#{add_photo}"), filename: add_photo)
-    photos.delete_at(z)
-  end
-
-  p state
+  
 end
     
 

@@ -1,6 +1,6 @@
 @areas.each do |area|
   json.set! area.id do
-    json.extract! area, :id, :parent_id, :name
-    json.sub_areas area.sub_areas, :name, :id
+    json.extract! area, :id, :parent_id, :name, :route_count
+    json.sub_areas area.sub_areas, :name, :id, :route_count
   end
 end

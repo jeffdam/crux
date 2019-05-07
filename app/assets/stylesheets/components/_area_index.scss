@@ -7,6 +7,7 @@
 .area {
   display: inline-block;
   width: 100%;
+  margin-bottom: 10px;
 }
 
 .area-parent {
@@ -15,7 +16,30 @@
   text-decoration-line: none;
 }
 
-.area-child {
+.area-child a{
   text-indent: 10px; 
   font-size: 11pt;
+  // width: 100%;
+}
+
+.area-index-row {
+ @extend .flex-row;
+ align-items: baseline;
+}
+
+.area-index-row a {
+  display: block;
+  white-space:nowrap;
+
+}
+
+.area-index-dotted-border {
+  border-bottom: 1px dashed $color-bottom-border-light-grey;
+  width: 100%;
+  margin: 0px 5px;
+}
+
+.area-index-count {
+  font-size: 9pt;
+  color: $color-text-dark-grey;
 }

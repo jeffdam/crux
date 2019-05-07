@@ -3,16 +3,24 @@ import { Link } from 'react-router-dom';
 
 const AreasIndexItem = ({area}) => {
   const subAreas = area.subAreas.map((subArea,idx) => (
-    <Link key={idx} to={`/areas/${subArea.id}`}>
-      <li className="area-child">{subArea.name}</li>
-    </Link>
+
+
+    <li key={idx} className="area-child area-index-row">
+      <Link key={idx} to={`/areas/${subArea.id}`}>{subArea.name}</Link>
+      <div className="area-index-dotted-border"></div>
+      <div className="area-index-count">{subArea.routeCount}</div>
+    </li>
+    
   ));
 
   return (
     <section className="area" key={area.id}>
-      <Link className="area-parent" to={`/areas/${area.id}`}>
-        {area.name}
-      </Link>
+        <div className="area-index-row">
+          <Link className="area-parent" to={`/areas/${area.id}`}>{area.name}</Link>
+          <div className="area-index-dotted-border"></div>
+        <div className="area-index-count">{area.routeCount}</div>
+        </div>
+      
       <ul>
         {subAreas}
       </ul>

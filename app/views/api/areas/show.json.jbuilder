@@ -9,7 +9,7 @@ json.areas do
 
   @area.sub_areas.each do |sub|
     json.set! sub.id do
-      json.extract! sub, :id, :name
+      json.extract! sub, :id, :name, :route_count
     end
   end
 end
