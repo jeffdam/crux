@@ -25,15 +25,11 @@ class Api::AreasController < ApplicationController
     end
   end
 
-  def update
-    
+  def update  
     @area = Area.find(params[:id])
-    if @area.parent_id
-      @parent_area = Area.find(@area.parent_id)
-    else
-      @parent_area = Area.find(params[:id])
-    end
+    
     if @area.update(area_params)
+      debugger
       render :show
     else
       render json: @area.errors.full_messages, status: 401

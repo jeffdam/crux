@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require 'open-uri'
 
 User.create({username: "admin", email: "admin@crux.com", password:"cruxR0cksadmin"})
 User.create({username: "demo_user", email: "demo@demo.com", password:"cruxR0cks"})
@@ -72,7 +73,7 @@ STATES.each_with_index do |state, idx|
   })
 
   photos = PHOTOS.dup
-  4.times do
+  rand(4..12).times do
     z = rand(0...photos.length)
     add_photo = photos[z]
     area.photos.attach(io: open("https://s3-us-west-1.amazonaws.com/crux-fsp-dev/#{add_photo}"), filename: add_photo)
