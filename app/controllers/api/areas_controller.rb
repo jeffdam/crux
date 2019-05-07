@@ -55,6 +55,7 @@ class Api::AreasController < ApplicationController
       :getting_there,
       :latitude,
       :longitude,
+      :route_count,
       photos: []
     )
   end

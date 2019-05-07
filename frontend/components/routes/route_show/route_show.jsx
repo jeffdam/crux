@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import RouteShowAttributes from './area_show_attributes';
-// import RouteShowSidebar from './area_show_sidebar';
+import RouteShowAttributes from './route_show_attributes';
+import RouteShowSidebar from './route_show_sidebar';
+import RouteShowHeader from './route_show_header';
 
 class RouteShow extends React.Component {
   constructor(props) {
@@ -20,37 +21,31 @@ class RouteShow extends React.Component {
 
   render() {
     const { routes, author, areaPath, currentUser } = this.props;
-    const route = routes[this.props.match.params.routeId];
+    const routeId = this.props.match.params.routeId
+    const route = routes[routeId];
     if (!route || !route.authorId) return null;
-
-    const areaPathLinks = areaPath.map(area => (
-      <li key={area.id}>&nbsp;>&nbsp;<Link to={`/areas/${area.id}`}>{area.name}</Link></li>
-    ))
 
     return (
       <section className="area-show-page main-width main-padding">
-        {/* <article className="area-show-sidebar">
-          <AreaShowSidebar subAreas={subAreas} routes={routes} areaName={area.name} routeIds={area.routeIds} subAreaIds={area.subAreaIds} />
-        </article> */}
+        <article className="area-show-sidebar">
+          <RouteShowSidebar neighborRouteIds={route.neighborRouteIds} routes={routes} areaName={areaPath.slice(-1)[0].name} routeId={routeId} />
+        </article>
 
         <article className="area-show-main-content">
 
-          <ul className="area-show-header-path-link">
-            <li><Link to="/">All Locations</Link></li>
-            {areaPathLinks}
-          </ul>
+          <RouteShowHeader areaPath={areaPath} route={route}/>
 
-          <div className="area-show-header">
-            <h1>{route.name}</h1>
-          </div>
+          
 
-          {/* <AreaShowAttributes area={area} author={author} /> */}
+          <RouteShowAttributes route={route} author={author} />
 
           <div className="area-show-main-info">
             <h2>Description</h2>
             <p>{route.description}</p>
             <h2>Location</h2>
             <p>{route.location}</p>
+            <h2>Protection</h2>
+            <p>{route.protection}</p>
           </div>
         </article>
       </section>

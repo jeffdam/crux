@@ -24,7 +24,7 @@ const AreaShowSidebar = ({ subAreaIds, subAreas, routeIds, routes, areaName, are
     titleText = `Routes in ${areaName}`;
     subInfo = routeIds.map((routeId) => {
       let route = routes[routeId]
-      let type = route.routeType === "Sport" ? "S" : route.routeType === "Trad" ? "T" : "B";
+      let type = route.routeType === "Sport" ? "S" : route.routeType === "Trad" ? "T" : "";
       let safety = route.safety === "G" ? "" : route.safety;
       return (
         <li key={routeId}><Link to={`/routes/${routeId}`}>{route.name}</Link> {`${type} ${route.grade} ${safety}`}</li>

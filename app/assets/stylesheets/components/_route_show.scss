@@ -1,0 +1,21 @@
+.route-show-header {
+  @extend .flex-row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $color-bottom-border-light-grey;
+  margin-bottom: 1rem;
+}
+
+.route-show-sidebar-current {
+  font-weight: 700;
+  color: black;
+}
+
+.route-show-header-left-sub {
+  @extend .flex-row;
+}
+
+.route-show-header-left-sub h2{
+  margin: 0;
+}

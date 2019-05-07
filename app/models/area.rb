@@ -12,6 +12,7 @@
 #  longitude     :float            not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  route_count   :integer
 #
 
 class Area < ApplicationRecord

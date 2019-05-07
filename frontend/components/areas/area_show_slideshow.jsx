@@ -25,7 +25,7 @@ class AreaShowSlideshow extends React.Component {
 
   render() {
     const { photos } = this.props;
-    if (photos) return null;
+    if (photos.length === 0) return null;
     
     return (
       <div className="slideshow">
