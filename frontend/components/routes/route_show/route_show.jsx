@@ -10,6 +10,7 @@ class RouteShow extends React.Component {
   }
 
   componentDidMount() {
+    debugger
     this.props.fetchRoute(this.props.match.params.routeId);
   }
 

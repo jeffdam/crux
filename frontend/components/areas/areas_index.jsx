@@ -13,13 +13,20 @@ class AreasIndex extends React.Component {
     if (!areas[1]) return null;
     
     const parent_areas = areas.map((area, idx) => (
-      <AreasIndexItem key={idx} area={area} />
+        <AreasIndexItem key={idx} area={area} />
     ))
-        
+    
+    let totalRouteCount = 0;
+    areas.forEach(area => {
+      totalRouteCount += area.routeCount;
+    })     
     
     return (
       <div className="area-index-page main-width main-padding ">
-        <h2 className="blue-line">Rock Climbing Guide</h2>
+        <div className="area-index-header blue-line flex-row">
+          <h2 >Rock Climbing Guide</h2>
+          <p>{totalRouteCount.toLocaleString()} Routes Shared by Climbers Like You</p>
+        </div>
         <div className="area-index-list">
           {parent_areas}
         </div>

@@ -48,6 +48,13 @@ class AreaShow extends React.Component {
       : 
       <Link className="area-show-dropdown-content-item" to={`/`}>Suggest Change</Link>;
     
+    // const addToPageContents = {
+    //   if (subAreas.length === 0 && routes.length === 0) {
+
+    //   }
+    // }
+
+
     return (
       <section className="area-show-page main-width main-padding">
         <article className="area-show-sidebar">
