@@ -19,6 +19,10 @@ class Api::RoutesController < ApplicationController
     @route = Route.new(route_params)
     @area_path = areaPath(@route.area_id)
     if @route.save
+      @area_path.each do |area|
+        area.update({route_count: area.route_count + 1})
+      end
+
       render :show
     else
       render json: @route.errors.full_messages, status: 401

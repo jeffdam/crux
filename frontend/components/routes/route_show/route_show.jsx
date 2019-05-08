@@ -10,7 +10,6 @@ class RouteShow extends React.Component {
   }
 
   componentDidMount() {
-    debugger
     this.props.fetchRoute(this.props.match.params.routeId);
   }
 
@@ -27,6 +26,7 @@ class RouteShow extends React.Component {
     if (!route || !route.authorId) return null;
 
     return (
+
       <section className="area-show-page main-width main-padding">
         <article className="area-show-sidebar">
           <RouteShowSidebar neighborRouteIds={route.neighborRouteIds} routes={routes} areaName={areaPath.slice(-1)[0].name} routeId={routeId} />

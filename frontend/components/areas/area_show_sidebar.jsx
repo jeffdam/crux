@@ -10,9 +10,9 @@ const AreaShowSidebar = ({ subAreaIds, subAreas, routeIds, routes, areaName, are
     titleText = "Add an Area or Route";
     subInfo = (
       <>
-        <p>This area is empty. Areas can contain sub-areas or routes, <strong>but not both</strong>.</p>
+        <p>This area is empty. Areas can contain sub-areas or routes, but not both.</p>
         <p>Before adding a route, consider if you should first add a sub-area (or several) to this area.</p> 
-        <Link to={`/add/climb-area/${areaId}`} onClick={handleAddSubArea}>Add Sub-Area</Link> · <Link to={`/add/climb-area/${areaId}`}>Add Route</Link> 
+        <Link to={`/add/climb-area/${areaId}`} onClick={handleAddSubArea}>Add Sub-Area</Link> · <Link to={`/add/climb-route/${areaId}`}>Add Route</Link> 
       </>
     )
   } else if (subAreaIds.length > 0) {

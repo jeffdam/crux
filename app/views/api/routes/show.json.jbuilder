@@ -10,7 +10,11 @@ json.routes do
     end
   end
 end
-json.extract! @area, :author.id, :author.username
+
+json.author do
+  json.id @route.author.id
+  json.username @route.author.username
+end 
 
 
 

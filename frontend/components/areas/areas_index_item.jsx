@@ -14,7 +14,7 @@ const AreasIndexItem = ({area}) => {
   ));
 
   return (
-    <section className="area" key={area.id}>
+    <section className="area-index-area-component" key={area.id}>
         <div className="area-index-row">
           <Link className="area-parent" to={`/areas/${area.id}`}>{area.name}</Link>
           <div className="area-index-dotted-border"></div>
