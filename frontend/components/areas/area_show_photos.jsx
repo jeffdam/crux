@@ -36,9 +36,9 @@ class AreaShowPhotos extends React.Component {
       toggleButton = <button onClick={this.truncateToggle} className="toggle-button">Show {photos.length-8} More Photos</button>;
     }
 
-    const photosList = photoUrlArray.map(photoUrl => {
+    const photosList = photoUrlArray.map((photoUrl, idx) => {
       return (
-        <li className="show-photos-photo">
+        <li key={idx} className="show-photos-photo">
           <img src={photoUrl} alt="test" />
         </li>
       )

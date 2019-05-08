@@ -17,7 +17,7 @@ class Api::RoutesController < ApplicationController
 
   def create
     @route = Route.new(route_params)
- 
+    @area_path = areaPath(@route.area_id)
     if @route.save
       render :show
     else

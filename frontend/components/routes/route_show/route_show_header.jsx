@@ -7,6 +7,8 @@ const RouteShowHeader = ({ route, areaPath}) => {
     <li key={area.id}>&nbsp;>&nbsp;<Link to={`/areas/${area.id}`}>{area.name}</Link></li>
   ))
 
+  const routeSafety = route.safety === "G" ? "" : route.safety;
+
   return (
     <>
       < ul className="area-show-header-path-link" >
@@ -19,7 +21,7 @@ const RouteShowHeader = ({ route, areaPath}) => {
           <div className="route-show-header-left-sub">
             <h2>{route.grade}</h2>
             
-            <h2>{route.safety}</h2>
+            <h2>{routeSafety}</h2>
           </div> 
         </div>
         <div className="area-show-options">

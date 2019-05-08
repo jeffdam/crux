@@ -12,11 +12,6 @@ const mapStateToProps = (state, ownProps) => {
     route: {
       area_id: ownProps.match.params.areaId,
       author_id: state.session.id,
-      name: "",
-      description: "",
-      getting_there: "",
-      latitude: "",
-      longitude: "",
       name: "", 
       route_type: "", 
       grade: "", 

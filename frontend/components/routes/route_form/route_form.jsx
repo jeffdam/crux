@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom'
 class RouteForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.route
-    this.handleFAQModal = this.handleFAQModal.bind(this)
+    this.state = this.props.route;
+    this.handleFAQModal = this.handleFAQModal.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -33,18 +34,13 @@ class RouteForm extends React.Component {
     e.preventDefault();
 
     let submission = Object.assign({}, this.state)
-
+    debugger
     if (!document.getElementById("toprope").checked) {
       submission['toprope'] = false;
     }
-
+    debugger
     this.props.formAction(this.state)
-      .then(({ areaId }) => (
-        this.props.history.push(`/areas/${areaId}`)
-      )).then(() => {
-        this.props.area.areaPath.forEach(area => {
-          this.props.addRouteCount(area)
-        })})
+      .then(({ routeId }) => this.props.history.push(`/routes/${routeId}`))
   } 
 
   render() {
@@ -148,7 +144,7 @@ class RouteForm extends React.Component {
           <h1>New Route in {area.name}</h1>
           <a href="#" onClick={this.handleFAQModal}>FAQ about new areas & routes</a>
         </section>
-        <form className="route-form-main">
+        <form className="route-form-main" onSubmit={this.handleSubmit}>
           
           <div className="form-component">
             <h3>Route Name</h3>
