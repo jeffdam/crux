@@ -42,5 +42,3 @@ export const addRouteCount = ({id, routeCount}) => (
     data: {area:{route_count: (routeCount + 1)}}
   })
 );
-
-window.addRouteCount = addRouteCount;

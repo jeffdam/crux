@@ -58,4 +58,6 @@ class User < ApplicationRecord
   has_many :routes,
     foreign_key: :author_id,
     class_name: :User
+
+  has_many_attached :avatar
 end

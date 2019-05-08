@@ -24,3 +24,4 @@ end
 
 json.extract! @area, :author
 
+

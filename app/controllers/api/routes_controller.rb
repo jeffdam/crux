@@ -11,7 +11,7 @@ class Api::RoutesController < ApplicationController
   end
 
   def show
-    @route = Route.includes(:author,:area, :neighbor_routes).find(params[:id])
+    @route = Route.includes(:author, :area, :neighbor_routes).with_attached_photos.find(params[:id])
     @area_path = areaPath(@route.area_id)
   end
 
@@ -56,7 +56,8 @@ class Api::RoutesController < ApplicationController
       :protection, 
       :description, 
       :location,
-      :toprope
+      :toprope,
+      photos: []
     )
   end
 end

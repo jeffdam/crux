@@ -18,7 +18,7 @@ const AreaShowSidebar = ({ subAreaIds, subAreas, routeIds, routes, areaName, are
   } else if (subAreaIds.length > 0) {
     titleText = `Areas in ${areaName}`;
     subInfo = subAreaIds.map((subAreaId) => (
-      <li key={subAreaId}><Link to={`/areas/${subAreaId}`}>{subAreas[subAreaId].name}</Link></li>
+      <li key={subAreaId} className="flex-row"><Link to={`/areas/${subAreaId}`}>{subAreas[subAreaId].name}</Link><div className="area-count">{subAreas[subAreaId].routeCount}</div></li>
     ));
   } else {
     titleText = `Routes in ${areaName}`;

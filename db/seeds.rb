@@ -89,16 +89,19 @@ PHOTO_DATA.each do |photo|
   PHOTOS.push(blob)
 end
 
-STATES.each_with_index do |state, idx| 
+def generate_photos
   photos = PHOTOS.dup
   add_photos = []
-  (4).times do
+  rand(3..13).times do
     z = rand(0...photos.length)
     photo_to_add = photos[z]
     add_photos.push(photo_to_add)
     photos.delete_at(z)
   end
+  return add_photos
+end
 
+STATES.each_with_index do |state, idx| 
   area = Area.create({
     parent_id: nil,
     author_id: 1,
@@ -107,14 +110,10 @@ STATES.each_with_index do |state, idx|
     getting_there: GETTING_THERE,
     latitude: LAT[idx],
     longitude: LONG[idx],
-    photos: add_photos
+    photos: generate_photos
   })
-  
 end
     
-
-
-
 count = 0
 total_count = 0
 
@@ -127,7 +126,8 @@ total_count = 0
     description: DESCRIPTION,
     getting_there: GETTING_THERE,
     latitude: LAT.sample,
-    longitude: LONG.sample
+    longitude: LONG.sample,
+    photos: generate_photos
     })
     
     count += 1
@@ -147,7 +147,8 @@ count = 0
     description: DESCRIPTION,
     getting_there: GETTING_THERE,
     latitude: LAT.sample,
-    longitude: LONG.sample
+    longitude: LONG.sample,
+    photos: generate_photos
     })
 
     count += 1
@@ -162,7 +163,7 @@ no_sub_area = []
 (startcount..oldcount).each do |i| 
   n = rand(0..3)
   no_sub_area.push(i) if n == 0
-  (rand(0..3)).times do 
+  (n).times do 
     area = Area.create({
     parent_id: i,
     author_id: rand(3..32),
@@ -170,7 +171,8 @@ no_sub_area = []
     description: DESCRIPTION,
     getting_there: GETTING_THERE,
     latitude: LAT.sample,
-    longitude: LONG.sample
+    longitude: LONG.sample,
+    photos: generate_photos
     })
 
     total_count += 1
@@ -193,7 +195,7 @@ BOULDER_GRADE = [
 ]
 
 SAFETY = [
-  "G","G","G","G","G" "PG-13", "R", "X"
+  "G","G","G","G","G", "PG-13", "R", "X"
 ]
 
 ROPE_DESCRIPTION = [
@@ -250,7 +252,8 @@ end
       pitches: pitches_rand, 
       protection: "#{length_rand/rand(8..10)} bolts, 2 bolt anchor.", 
       description: ROPE_DESCRIPTION.sample, 
-      location: ROPE_LOCATION.sample
+      location: ROPE_LOCATION.sample,
+      photos: generate_photos
     })
   end
   no_sub_area.delete_at(rand_n)
@@ -287,7 +290,8 @@ TRAD_PRO = [
       pitches: pitches_rand, 
       protection: TRAD_PRO.sample, 
       description: ROPE_DESCRIPTION.sample, 
-      location: ROPE_LOCATION.sample
+      location: ROPE_LOCATION.sample,
+      photos: generate_photos
     })
   end
   no_sub_area.delete_at(rand_n)
@@ -336,9 +340,26 @@ no_sub_area.each do |area_id|
       pitches: 1, 
       protection: "Boulder pads.", 
       description: BOULDER_DESC.sample, 
-      location: BOULDER_LOC.sample
+      location: BOULDER_LOC.sample,
+      photos: generate_photos
     })
   end
 end
 
+def fetch_count(area)
+  return 0 if (area.routes.length == 0 && area.sub_areas.length == 0)
+  return area.routes.length if area.routes.length > 0
+  counts = area.sub_areas.map do |sub_area|
+    fetch_count(sub_area)
+  end
+  
+  return counts.sum
+end
 
+areas = Area.all
+
+areas.each do |area|
+  new_route_count = fetch_count(area)
+  area_db = Area.find(area.id)
+  area_db.update({route_count: new_route_count})
+end

@@ -36,4 +36,6 @@ class Route < ApplicationRecord
   has_many :neighbor_routes,
     through: :area,
     source: :routes
+
+  has_many_attached :photos
 end
