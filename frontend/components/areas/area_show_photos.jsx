@@ -39,7 +39,7 @@ class AreaShowPhotos extends React.Component {
     const photosList = photoUrlArray.map((photoUrl, idx) => {
       return (
         <li key={idx} className="show-photos-photo">
-          <img src={photoUrl} alt="test" />
+          <img src={window.images.photoTemplate} alt="test" />
         </li>
       )
     })

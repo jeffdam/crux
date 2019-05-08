@@ -11,11 +11,11 @@ class AreaShowSlideshow extends React.Component {
   }
 
   componentDidMount() {
-    this.interval = setInterval(this.changePhoto, 15000);
+    // this.interval = setInterval(this.changePhoto, 15000);
   }
 
   componentWillUnmount() {
-    clearInterval(this.interval);
+    // clearInterval(this.interval);
   }
 
   changePhoto(){
@@ -29,7 +29,7 @@ class AreaShowSlideshow extends React.Component {
     
     return (
       <div className="slideshow">
-        <img  src={photos[this.state.show]} alt=""/>
+        <img src={window.images.photoTemplate} alt=""/>
       </div>
     );
   }
