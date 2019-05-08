@@ -6,19 +6,11 @@
   margin-bottom: 5px;
 }
 
-.area-form-page {
+.form-page {
   max-width: 800px;
   margin: auto;
 }
 
-.area-form-page textarea {
-  min-height: 75px;
-}
-
-.area-form-page input[type=submit] {
-  max-width: 150px;
-  margin-right: 30px; 
-}
 
 .area-form-header {
   @extend .flex-row;
@@ -38,12 +30,17 @@
   margin-bottom: 25px;
 }
 
-.lat-long > * {
-  margin-right: 50px;
-  width: 200px;
-}
+
 
 .form-submission-buttons a {
   font-weight: 700;
 }
 
+.form-submission-buttons input[type=submit] {
+  max-width: 150px;
+  margin-right: 30px; 
+} 
+
+.form-component textarea {
+  min-height: 75px;
+}

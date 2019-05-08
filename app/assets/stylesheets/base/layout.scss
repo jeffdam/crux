@@ -25,7 +25,7 @@ main {
 
 ////////////// INPUTS //////////////
 
-input[type=text], input[type=password], input[type=number], textarea {
+input[type=text], input[type=password], input[type=number], input[type=date], textarea {
   font-size: 11pt;
   padding: 7px 10px;
   box-sizing: border-box;
@@ -36,14 +36,19 @@ input[type=text], input[type=password], input[type=number], textarea {
   color: $color-text-dark-grey;
 }
 
-input[type=text]:focus, input[type=password]:focus, input[type=number]:focus, textarea:focus {
+input[type=text]:focus, input[type=password]:focus, input[type=number]:focus, textarea:focus, input[type=date]:focus {
   outline: none;
   border: 1px solid $color-dark-grey;
 }
 
-input[type=text]::placeholder, input[type=password]::placeholder, input[type=number]::placeholder, textarea::placeholder {
+input[type=text]::placeholder, input[type=password]::placeholder, input[type=number]::placeholder, textarea::placeholder, input[type=date]::placeholder {
   color: $color-text-light-grey;
   font-weight: 300;
+}
+
+input[type=number], input[type=date] {
+  margin-right: 50px;
+  width: 225px;
 }
 
 input[type=submit], button {

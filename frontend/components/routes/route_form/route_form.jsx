@@ -20,10 +20,10 @@ class RouteForm extends React.Component {
 
   update(field) {
     return (e) => {
-      if (field === "ropeGrade" || field === "grade") {
+      if (field === "ropeGrade" || field === "boulderGrade") {
         const ropeGrade = document.getElementById('selectedRopeGrade') ? document.getElementById('selectedRopeGrade').value : "";
         const boulderGrade = document.getElementById('selectedBoulderGrade') ? document.getElementById('selectedBoulderGrade').value : "";
-        return this.setState({ ['grade']: ropeGrade + e.target.value + boulderGrade});
+        return this.setState({ ['grade']: ropeGrade + " " + e.target.value + " " + boulderGrade});
       } else {
         return this.setState({ [field]: e.target.value });
       }
@@ -34,12 +34,12 @@ class RouteForm extends React.Component {
     e.preventDefault();
 
     let submission = Object.assign({}, this.state)
-    debugger
+    
     if (!document.getElementById("toprope").checked) {
       submission['toprope'] = false;
     }
-    debugger
-    this.props.formAction(this.state)
+    
+    this.props.formAction(submission)
       .then(({ routeId }) => this.props.history.push(`/routes/${routeId}`))
   } 
 
@@ -138,8 +138,14 @@ class RouteForm extends React.Component {
       )
     })
 
+    const errors = this.props.errors.map((error, idx) => {
+      return (
+        <li key={idx}>{error}</li>
+      )
+    })
+
     return (
-      <div className="route-form-page">
+      <div className="form-page main-padding">
         <section className="route-form-header">
           <h1>New Route in {area.name}</h1>
           <a href="#" onClick={this.handleFAQModal}>FAQ about new areas & routes</a>
@@ -151,72 +157,89 @@ class RouteForm extends React.Component {
             <input type="text" onChange={this.update('name')} value={route.name}/>
           </div>
           
-          <div className="form-component">
-            <h3>First Ascensionist</h3>
-            <input type="text" onChange={this.update('first_ascensionist')} value={route.first_ascensionist}/>
+          <div className="flex-row">
+            <div className="form-component">
+              <h3>First Ascensionist</h3>
+              <input type="text" onChange={this.update('first_ascensionist')} value={route.first_ascensionist}/>
+            </div>
+
+            <div className="form-component">
+              <h3>First Ascent Date</h3>
+              <input type="date" onChange={this.update('first_ascent_date')} value={route.first_ascent_date}/>
+            </div>
           </div>
 
-          <div className="form-component">
-            <h3>First Ascent Date</h3>
-            <input type="date" onChange={this.update('first_ascent_date')} value={route.first_ascent_date}/>
+          <div className="flex-row">
+            <div className="form-component">
+              <h3>Length in Feet</h3>
+              <input 
+                type="number" 
+                onChange={this.update('length')} 
+                value={route.length} 
+                placeholder="Approximate is fine."
+                min="1"
+              />
+            </div>
+
+            <div className="form-component">
+              <h3>Pitches</h3>
+              <input 
+                type="number" 
+                onChange={this.update('pitches')} 
+                value={route.pitches} 
+                placeholder="As it's most commonly done."
+                min="1"
+                max="100"
+              />
+            </div>
           </div>
 
-          <div className="form-component">
-            <h3>Length in Feet</h3>
-            <input 
-              type="number" 
-              onChange={this.update('length')} 
-              value={route.length} 
-              placeholder="Approximate is fine."
-              min="1"
-            />
-          </div>
+          <div className="flex-row">
 
-          <div className="form-component">
-            <h3>Pitches</h3>
-            <input 
-              type="number" 
-              onChange={this.update('pitches')} 
-              value={route.pitches} 
-              placeholder="As it's most commonly done."
-              min="1"
-              max="100"
-            />
-          </div>
+            <div className="form-component">
+              <h3>Route Type</h3>
+              <div className="flex-col">
+                {typeInput}
+              </div>
+              <input 
+                type="checkbox" 
+                id="toprope" 
+                value='true'
+                onChange={this.update('toprope')} 
+              />Toprope - you can set up a TR without leading the route.
+            </div>
+            
+            <div>
+              <div> 
+                <h3>Grade</h3>
+                <div className="flex-row">
+                  <div className="form-component">
+                    <h4>Rope Grade</h4>
+                    <select defaultValue={ropeGradeDefaultVal} onChange={this.update("ropeGrade")}>
+                      <option value="">--</option>
+                      {ropeGradeInput}
+                    </select>
+                  </div>
 
-          <div className="form-component">
-            <h3>Route Type</h3>
-            {typeInput}
-            <input 
-              type="checkbox" 
-              id="toprope" 
-              value='true'
-              onChange={this.update('toprope')} 
-            />Toprope - you can set up a TR without leading the route.
-          </div>
-          
-          <div className="form-component">
-            <h3>Rope Grade</h3>
-            <select defaultValue={ropeGradeDefaultVal} onChange={this.update("ropeGrade")}>
-              <option value="">--</option>
-              {ropeGradeInput}
-            </select>
-          </div>
+                  <div className="form-component">
+                    <h4>Boulder Grade</h4>
+                    <select defaultValue={boulderGradeDefaultVal} onChange={this.update("boulderGrade")}>
+                      <option value="">--</option>
+                      {boulderGradeInput}
+                    </select>
+                  </div>
+                </div>
+              </div>
 
-          <div className="form-component">
-            <h3>Boulder Grade</h3>
-            <select defaultValue={boulderGradeDefaultVal} onChange={this.update("boulderGrade")}>
-              <option value="">--</option>
-              {boulderGradeInput}
-            </select>
-          </div>
 
-          <div className="form-component">
-            <h3>Safety</h3>
-            <select defaultValue={route.safety} onChange={this.update("safety")}>
-              <option disabled value="">-- Select one --</option>
-              {safetyOptionInput}
-            </select>
+              <div className="form-component">
+                <h3>Safety</h3>
+                <select defaultValue={route.safety} onChange={this.update("safety")}>
+                  <option disabled value="">-- Select one --</option>
+                  {safetyOptionInput}
+                </select>
+              </div>
+            </div>
           </div>
           
           <div className="form-component">
@@ -258,6 +281,8 @@ class RouteForm extends React.Component {
           </div>
 
         </form>
+
+        <ul>{errors}</ul>
       </div>
     )
   }

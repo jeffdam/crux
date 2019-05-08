@@ -82,7 +82,7 @@ class AreaForm extends React.Component {
 
     return (
 
-      <section className="area-form-page main-padding">
+      <section className="form-page main-padding">
         <div className="area-form-header">
           {formTitle}
           {createFAQ}

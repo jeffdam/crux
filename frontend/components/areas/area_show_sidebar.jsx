@@ -25,9 +25,10 @@ const AreaShowSidebar = ({ subAreaIds, subAreas, routeIds, routes, areaName, are
     subInfo = routeIds.map((routeId) => {
       let route = routes[routeId]
       let type = route.routeType === "Sport" ? "S" : route.routeType === "Trad" ? "T" : "";
+      let typeWithToprope = route.toprope === true ? `${type},TR` : type;
       let safety = route.safety === "G" ? "" : route.safety;
       return (
-        <li key={routeId}><Link to={`/routes/${routeId}`}>{route.name}</Link> {`${type} ${route.grade} ${safety}`}</li>
+        <li key={routeId}><Link to={`/routes/${routeId}`}>{route.name}</Link> {`${typeWithToprope} ${route.grade} ${safety}`}</li>
       )
     });   
   }

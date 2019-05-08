@@ -7,15 +7,16 @@ const RouteShowSidebar = ({ neighborRouteIds, routes, areaName, routeId }) => {
   const subInfo = neighborRouteIds.map((neighborRouteId) => {
     let route = routes[neighborRouteId];
     let type = route.routeType === "Sport" ? "S" : route.routeType === "Trad" ? "T" : "";
+    let typeWithToprope = route.toprope === true ? `${type},TR` : type;
     let safety = route.safety === "G" ? "" : route.safety;
 
     if (neighborRouteId === parseInt(routeId)) {
       return (
-        <li key={neighborRouteId} className="flex-row"><div className="route-show-sidebar-current">{route.name}</div>&nbsp;{`${type} ${route.grade} ${safety}`}</li>
+        <li key={neighborRouteId} className="flex-row"><div className="route-show-sidebar-current">{route.name}</div>&nbsp;{`${typeWithToprope} ${route.grade} ${safety}`}</li>
       )
     } else {
       return (
-        <li key={neighborRouteId}><Link to={`/routes/${neighborRouteId}`}>{route.name}</Link> {`${type} ${route.grade} ${safety}`}</li>
+        <li key={neighborRouteId}><Link to={`/routes/${neighborRouteId}`}>{route.name}</Link> {`${typeWithToprope} ${route.grade} ${safety}`}</li>
       )
     } 
   })

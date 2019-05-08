@@ -14,7 +14,17 @@ const RouteShowAttributes = (props) => {
       `${month} ${convertedDate.getDate()}, ${convertedDate.getFullYear()}`
     );
   };
-
+    
+  const firstAscent = () => {
+    if (!(route.firstAscensionist) && !(route.firstAscentDate)) {
+      return "Unknown";
+    } else if (!(route.firstAscentDate)) {
+      return route.firstAscensionist;
+    } else {
+      return `${route.firstAscensionist} on ${convertDate(route.firstAscentDate)}`
+    }
+  }
+  
   const pitches = route.routeType === "Boulder" ? "" : `, ${ route.pitches } pitches`;
   
   return (
@@ -25,7 +35,7 @@ const RouteShowAttributes = (props) => {
       </ul>
       <ul className="area-show-attribute">
         <li className="area-show-attribute-left">First Ascent:</li>
-        <li>{`${route.firstAscensionist} on ${convertDate(route.firstAscentDate)}`}</li>
+        <li>{firstAscent()}</li>
       </ul>
       <ul className="area-show-attribute">
         <li className="area-show-attribute-left">Page Views:</li>

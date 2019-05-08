@@ -6,7 +6,7 @@ json.routes do
   end
   @route.neighbor_routes.each do |neighbor|
     json.set! neighbor.id do
-      json.extract! neighbor, :id, :name, :grade, :route_type, :safety
+      json.extract! neighbor, :id, :name, :grade, :route_type, :safety, :toprope
     end
   end
 end
