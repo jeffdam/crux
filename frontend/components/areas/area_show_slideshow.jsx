@@ -11,7 +11,7 @@ class AreaShowSlideshow extends React.Component {
   }
 
   componentDidMount() {
-    this.interval = setInterval(this.changePhoto, 5000);
+    this.interval = setInterval(this.changePhoto, 15000);
   }
 
   componentWillUnmount() {

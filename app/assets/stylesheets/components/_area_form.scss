@@ -12,15 +12,15 @@
 }
 
 
-.area-form-header {
+.form-header {
   @extend .flex-row;
-  align-items: flex-end;
+  align-items: baseline;
   margin-bottom: .5rem;
   padding-bottom: 20px;
   border-bottom: 1px solid $color-bottom-border-light-grey;
 }
 
-.area-form-header h1 {
+.form-header h1 {
   margin-right: 30px;
   margin-bottom: 0;
 }
@@ -43,4 +43,25 @@
 
 .form-component textarea {
   min-height: 75px;
+}
+
+.route-form-grade .form-component {
+  margin-right: 10px;
+}
+
+.route-form-route-grade-safety > * {
+  margin-right: 50px;
+}
+
+.route-form-first-ascent > * {
+  margin-right: 50px;
+}
+
+.route-form-first-ascent input[type=text] {
+  min-width: 200px;
+  width: 35vw;
+}
+
+.route-form-route-type {
+  margin-bottom: .5rem;
 }

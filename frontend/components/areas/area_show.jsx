@@ -9,6 +9,7 @@ class AreaShow extends React.Component {
   constructor(props) {
     super(props);
     this.handleAddSubArea = this.handleAddSubArea.bind(this);
+    this.handleAddRoute = this.handleAddRoute.bind(this);
   }
 
   componentDidMount() {
@@ -34,6 +35,15 @@ class AreaShow extends React.Component {
     }
   }
 
+  handleAddRoute(e) {
+    if (this.props.currentUser) {
+      this.props.history.push(`/add/climb-route/${this.props.match.params.areaId}`);
+    } else {
+      e.preventDefault();
+      this.props.openModal({ action: "login", pathOnSuccess: `/add/climb-route/${this.props.match.params.areaId}`});
+    }
+  }
+
   render(){
     const { area, author, subAreas, routes, parents, currentUser } = this.props;
 
@@ -48,17 +58,49 @@ class AreaShow extends React.Component {
       : 
       <Link className="area-show-dropdown-content-item" to={`/`}>Suggest Change</Link>;
     
-    // const addToPageContents = {
-    //   if (subAreas.length === 0 && routes.length === 0) {
+    const addToPageContents = (area.subAreaIds.length === 0 && area.routeIds.length === 0) ? 
+        (
+          <>
+            <Link
+              className="area-show-dropdown-content-item"
+              to={`/add/climb-area/${area.id}`}
+              onClick={this.handleAddSubArea}
+            >Add Sub-Area</Link>
+            <Link
+              className="area-show-dropdown-content-item"
+              to={`/add/climb-route/${area.id}`}
+              onClick={this.handleAddRoute}
+            >Add Route</Link>
+          </>
+      ) : area.subAreaIds.length > 0 ? (
+          <Link
+            className="area-show-dropdown-content-item"
+            to={`/add/climb-area/${area.id}`}
+            onClick={this.handleAddSubArea}
+          >Add Sub-Area</Link>
+        ) : (
+          <Link
+            className="area-show-dropdown-content-item"
+            to={`/add/climb-route/${area.id}`}
+            onClick={this.handleAddRoute}
+          >Add Route</Link>
+        )
 
-    //   }
-    // }
 
 
     return (
       <section className="area-show-page main-width main-padding">
         <article className="area-show-sidebar">
-          <AreaShowSidebar subAreas={subAreas} routes={routes} areaName={area.name} routeIds={area.routeIds} subAreaIds={area.subAreaIds} areaId={this.props.match.params.areaId} handleAddSubArea={this.handleAddSubArea}/>
+          <AreaShowSidebar 
+            subAreas={subAreas} 
+            routes={routes} 
+            areaName={area.name} 
+            routeIds={area.routeIds} 
+            subAreaIds={area.subAreaIds} 
+            areaId={this.props.match.params.areaId} 
+            handleAddSubArea={this.handleAddSubArea}
+            handleAddRoute={this.handleAddRoute}
+        />
         </article>
 
         <article className="area-show-main-content">
@@ -78,7 +120,7 @@ class AreaShow extends React.Component {
                   <img height="6" src={window.images.downArrow} alt="Down Arrow"></img>
                 </div>
                 <div id="area-show-dropdown-content-edit" className="area-show-dropdown-content">
-                  <div className="flex-col">
+                  <div className="flex-col show-dropdown-items">
                     {improvePageLink}
                   </div>
                 </div>
@@ -90,8 +132,8 @@ class AreaShow extends React.Component {
                   <img height="6" src={window.images.downArrow} alt="Down Arrow"></img>
                 </div>
                 <div id="area-show-dropdown-content-add" className="area-show-dropdown-content">
-                  <div className="flex-col">
-                    <Link className="area-show-dropdown-content-item" to={`/add/climb-area/${area.id}`} onClick={this.handleAddSubArea}>Add Sub-Area</Link>
+                  <div className="flex-col show-dropdown-items">
+                    { addToPageContents }
                   </div>
                 </div>
               </div>

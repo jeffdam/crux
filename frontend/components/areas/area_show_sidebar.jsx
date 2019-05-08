@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const AreaShowSidebar = ({ subAreaIds, subAreas, routeIds, routes, areaName, areaId, handleAddSubArea}) => {
+const AreaShowSidebar = ({ subAreaIds, subAreas, routeIds, routes, areaName, areaId, handleAddSubArea, handleAddRoute}) => {
   
   let titleText;
   let subInfo;
@@ -12,13 +12,15 @@ const AreaShowSidebar = ({ subAreaIds, subAreas, routeIds, routes, areaName, are
       <>
         <p>This area is empty. Areas can contain sub-areas or routes, but not both.</p>
         <p>Before adding a route, consider if you should first add a sub-area (or several) to this area.</p> 
-        <Link to={`/add/climb-area/${areaId}`} onClick={handleAddSubArea}>Add Sub-Area</Link> · <Link to={`/add/climb-route/${areaId}`}>Add Route</Link> 
+        <Link to={`/add/climb-area/${areaId}`} onClick={handleAddSubArea}>Add Sub-Area</Link> · <Link to={`/add/climb-route/${areaId}`} onClick={handleAddRoute}>Add Route</Link> 
       </>
     )
   } else if (subAreaIds.length > 0) {
     titleText = `Areas in ${areaName}`;
     subInfo = subAreaIds.map((subAreaId) => (
-      <li key={subAreaId} className="flex-row"><Link to={`/areas/${subAreaId}`}>{subAreas[subAreaId].name}</Link><div className="area-count">{subAreas[subAreaId].routeCount}</div></li>
+      <li key={subAreaId} className="flex-row">
+      <Link to={`/areas/${subAreaId}`}>{subAreas[subAreaId].name}</Link>
+      <div className="area-count">{subAreas[subAreaId].routeCount}</div></li>
     ));
   } else {
     titleText = `Routes in ${areaName}`;

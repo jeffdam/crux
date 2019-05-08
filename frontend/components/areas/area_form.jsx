@@ -83,14 +83,14 @@ class AreaForm extends React.Component {
     return (
 
       <section className="form-page main-padding">
-        <div className="area-form-header">
+        <div className="form-header">
           {formTitle}
           {createFAQ}
         </div>
         <form onSubmit={this.handleSubmit}>
           
           <div className="form-component">
-            <h3>Title</h3><div className="errors">{nameErr}</div>
+            <h3>Area Name</h3><div className="errors">{nameErr}</div>
             <input 
               type="text" 
               onChange={this.update('name')} 
