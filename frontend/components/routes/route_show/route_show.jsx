@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import RouteShowAttributes from './route_show_attributes';
 import RouteShowSidebar from './route_show_sidebar';
 import RouteShowHeader from './route_show_header';
+import RouteShowInfo from './route_show_info';
+import AreaShowPhotos from '../../areas/area_show_photos';
+import AreaShowSlideshow from '../../areas/area_show_slideshow';
 
 class RouteShow extends React.Component {
   constructor(props) {
@@ -28,26 +31,15 @@ class RouteShow extends React.Component {
     return (
 
       <section className="area-show-page main-width main-padding">
-        <article className="area-show-sidebar">
-          <RouteShowSidebar neighborRouteIds={route.neighborRouteIds} routes={routes} areaName={areaPath.slice(-1)[0].name} routeId={routeId} />
-        </article>
-
+        <RouteShowSidebar neighborRouteIds={route.neighborRouteIds} routes={routes} areaName={areaPath.slice(-1)[0].name} routeId={routeId} />
         <article className="area-show-main-content">
-
           <RouteShowHeader areaPath={areaPath} route={route}/>
-
-          
-
-          <RouteShowAttributes route={route} author={author} />
-
-          <div className="area-show-main-info">
-            <h2>Description</h2>
-            <p>{route.description}</p>
-            <h2>Location</h2>
-            <p>{route.location}</p>
-            <h2>Protection</h2>
-            <p>{route.protection}</p>
+          <div className="attr-slides flex-row">
+            <RouteShowAttributes route={route} author={author} />
+            <AreaShowSlideshow photos={route.photoUrls} />
           </div>
+          <RouteShowInfo route={route}/>
+          <AreaShowPhotos photos={route.photoUrls}/>
         </article>
       </section>
     )

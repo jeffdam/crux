@@ -20,12 +20,22 @@ class RouteForm extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    // if (prevProps.match.params.areaId !== this.props.match.params.areaId) {
-    //   this.props.fetchArea(this.props.match.params.areaId);
-    // }
-    // if ((this.props.match.path === "/areas/:areaId/edit") && (this.props.area.author_id != this.props.currentUser)) {
-    //   this.props.history.push(`/areas/${this.props.match.params.areaId}`);
-    // }
+    if (this.props.match.path === "/add/climb-route/:areaId") {
+      if (prevProps.match.params.areaId !== this.props.match.params.areaId) {
+        this.props.fetchArea(this.props.match.params.areaId);
+      }
+    } else if (this.props.match.path === "/routes/:routeId/edit") {
+      if (prevProps.match.params.routeId !== this.props.match.params.routeId) {
+        this.props.fetchRoute(this.props.match.params.routeId);
+      }
+      // if ((this.props.match.path === "/routes/:routeId/edit") && (this.props.route.author_id != this.props.currentUser)) {
+      //   this.props.history.push(`/routes/${this.props.match.params.routeId}`);
+      // }
+    }
+    
+    
+    
+
 
     if (!this.state) this.setState(this.props.route);
     
@@ -51,18 +61,18 @@ class RouteForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    let submission = Object.assign({}, this.state)
+    let submission = Object.assign({}, this.state);
     
     if (!document.getElementById("toprope").checked) {
-      submission['toprope'] = false;
+      submission.toprope = false;
     }
     
     this.props.formAction(submission)
-      .then(({ routeId }) => this.props.history.push(`/routes/${routeId}`))
+      .then(({ routeId }) => this.props.history.push(`/routes/${routeId}`));
   } 
 
   render() {
-    const { area, errors } = this.props
+    const { area, errors } = this.props;
     const route = this.state;
     
     if (!area) return null;
@@ -91,13 +101,15 @@ class RouteForm extends React.Component {
     })
 
     const ropeGrades = [
-      "5.0", "5.1", "5.2", "5.3", "5.4", "5.5", "5.6", "5.7-", "5.7", "5.7+", "5.8-", "5.8+",
-      "5.9-", "5.9+", "5.10-", "5.10a", "5.10a/b", "5.10b", "5.10b/c", "5.10c", "5.10c/d", "5.10d",
-      "5.10+", "5.11-", "5.11a", "5.11a/b", "5.11b", "5.11b/c", "5.11c", "5.11c/d", "5.11d", "5.11+",
-      "5.12-", "5.12a", "5.12a/b", "5.12b", "5.12b/c", "5.12c", "5.12c/d", "5.12d", "5.12+", "5.13-",
-      "5.13a", "5.13a/b", "5.13b", "5.13b/c", "5.13c", "5.13c/d", "5.13d", "5.13+", "5.14-", "5.14a",
-      "5.14a/b", "5.14b", "5.14b/c", "5.14c", "5.14c/d", "5.14d", "5.14+", "5.15-", "5.15a", "5.15a/b",
-      "5.15b", "5.15b/c", "5.15c", "5.15c/d", "5.15d", "5.15+", "5.16"
+      "5.0", "5.1", "5.2", "5.3", "5.4", "5.5", "5.6", 
+      "5.7-", "5.7", "5.7+", "5.8-", "5.8", "5.8+", "5.9-", "5.9", "5.9+", 
+      "5.10-", "5.10a", "5.10a/b", "5.10b", "5.10b/c", "5.10c", "5.10c/d", "5.10d", "5.10+", 
+      "5.11-", "5.11a", "5.11a/b", "5.11b", "5.11b/c", "5.11c", "5.11c/d", "5.11d", "5.11+",
+      "5.12-", "5.12a", "5.12a/b", "5.12b", "5.12b/c", "5.12c", "5.12c/d", "5.12d", "5.12+", 
+      "5.13-", "5.13a", "5.13a/b", "5.13b", "5.13b/c", "5.13c", "5.13c/d", "5.13d", "5.13+", 
+      "5.14-", "5.14a", "5.14a/b", "5.14b", "5.14b/c", "5.14c", "5.14c/d", "5.14d", "5.14+", 
+      "5.15-", "5.15a", "5.15a/b", "5.15b", "5.15b/c", "5.15c", "5.15c/d", "5.15d", "5.15+", 
+      "5.16"
     ]
 
     // const ropeGradeDefaultVal = ropeGrades.forEach(ropeGrade => {
@@ -107,6 +119,7 @@ class RouteForm extends React.Component {
     let ropeGradeDefaultVal;
     
     const ropeGradeInput = ropeGrades.map(ropeGrade => {
+      
       if (route.grade.includes(ropeGrade)) {
         ropeGradeDefaultVal = ropeGrade
       }
@@ -120,6 +133,8 @@ class RouteForm extends React.Component {
       )
     })
 
+    
+
     const boulderGrades = [
       "VB", "V0-", "V0", "V0+", "V1-", "V1", "V1+", "V2-", "V2", "V2+", "V3-", "V3", "V3+", "V4-", "V4",
       "V4+", "V5-", "V5", "V5+", "V6-", "V6", "V6+", "V7-", "V7", "V7+", "V8-", "V8", "V8+", "V9-", "V9",
@@ -127,11 +142,11 @@ class RouteForm extends React.Component {
       "V14-", "V14", "V14+", "V15-", "V15", "V15+", "V16-", "V16", "V16+", "V17-", "V17", "V17+",
     ]
 
-    const boulderGradeDefaultVal = boulderGrades.forEach(boulderGrade => {
-      if (route.grade.includes(boulderGrade)) return boulderGrade;
-    })
-
+    let boulderGradeDefaultVal; 
     const boulderGradeInput = boulderGrades.map(boulderGrade => {
+      if (route.grade.includes(boulderGrade)) {
+        boulderGradeDefaultVal = boulderGrade
+      }
       const boulderIdVal = (route.grade.includes(boulderGrade)) ? "selectedBoulderGrade" : "";
       return (
         <option
@@ -157,6 +172,14 @@ class RouteForm extends React.Component {
         >{safetyOption.label}</option>
       )
     })
+
+    const topropeChecked = route.toprope ? "checked" : "";
+
+    const cancelLink = (this.props.match.params.areaId) ? (
+      `/areas/${this.props.match.params.areaId}`
+      ) : (
+      `/routes/${this.props.match.params.routeId}`
+      );
 
     let nameErr = "";
     let routeErr = "";
@@ -260,6 +283,7 @@ class RouteForm extends React.Component {
                 id="toprope" 
                 value='true'
                 onChange={this.update('toprope')} 
+                checked={topropeChecked}
               />Top Rope - you can set up a TR without leading the route.
             </div>
             
@@ -331,7 +355,7 @@ class RouteForm extends React.Component {
           
           <div className="flex-row form-submission-buttons">
             <input type="submit" value="Save Route" />
-            <Link to={`/areas/${this.props.match.params.areaId}`}>Cancel</Link>
+            <Link to={cancelLink}>Cancel</Link>
           </div>
 
         </form>

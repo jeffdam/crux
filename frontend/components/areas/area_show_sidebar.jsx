@@ -36,12 +36,12 @@ const AreaShowSidebar = ({ subAreaIds, subAreas, routeIds, routes, areaName, are
   }
 
   return (
-    <>
+    <article className="area-show-sidebar">
       <h3>{ titleText }</h3>
       <ul>
         { subInfo }
       </ul>
-    </>
+    </article>
   )
 }
 

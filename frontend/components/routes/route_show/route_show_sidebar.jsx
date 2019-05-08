@@ -15,19 +15,19 @@ const RouteShowSidebar = ({ neighborRouteIds, routes, areaName, routeId }) => {
         <li key={neighborRouteId} className="flex-row"><div className="route-show-sidebar-current">{route.name}</div>&nbsp;{`${typeWithToprope} ${route.grade} ${safety}`}</li>
       )
     } else {
-      return (
+      return ( 
         <li key={neighborRouteId}><Link to={`/routes/${neighborRouteId}`}>{route.name}</Link> {`${typeWithToprope} ${route.grade} ${safety}`}</li>
       )
     } 
   })
 
   return (
-    <>
+    <article className="area-show-sidebar">
       <h3>{titleText}</h3>
       <ul>
         {subInfo}
       </ul>
-    </>
+    </article>
   )
 }
 

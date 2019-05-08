@@ -11,6 +11,7 @@ const mapStateToProps = (state, ownProps) => {
 
   if (route) {
     routeData = {
+      id: route.id,
       area_id: route.areaId,
       author_id: route.authorId,
       name: route.name,
@@ -33,6 +34,7 @@ const mapStateToProps = (state, ownProps) => {
     area: area,
     route: routeData,
     errors: state.errors.route,
+    currentUser: state.session.id,
     formType: "update"
   });
 };
