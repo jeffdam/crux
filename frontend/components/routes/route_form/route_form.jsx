@@ -10,10 +10,25 @@ class RouteForm extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchArea(this.props.match.params.areaId)
+    
     if (this.props.match.path === "/add/climb-route/:areaId") {
+      this.props.fetchArea(this.props.match.params.areaId);
       this.props.openModalFAQ();
+    } else if (this.props.match.path === "/routes/:routeId/edit") {
+      this.props.fetchRoute(this.props.match.params.routeId);
     }
+  }
+
+  componentDidUpdate(prevProps) {
+    // if (prevProps.match.params.areaId !== this.props.match.params.areaId) {
+    //   this.props.fetchArea(this.props.match.params.areaId);
+    // }
+    // if ((this.props.match.path === "/areas/:areaId/edit") && (this.props.area.author_id != this.props.currentUser)) {
+    //   this.props.history.push(`/areas/${this.props.match.params.areaId}`);
+    // }
+
+    if (!this.state) this.setState(this.props.route);
+    
   }
 
   handleFAQModal(e) {
@@ -49,8 +64,10 @@ class RouteForm extends React.Component {
   render() {
     const { area, errors } = this.props
     const route = this.state;
+    
     if (!area) return null;
-
+    if (!route) return null;
+    
     const routeTypeOptions = [
       { type: "Sport", label: "Sport - most people lead with just quickdraws."},
       { type: "Trad", label: "Trad - most people use some trad gear. There may also be bolts."},

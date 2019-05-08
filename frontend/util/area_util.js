@@ -34,11 +34,3 @@ export const deleteArea = id => (
     url: `/api/areas/${id}`,
   })
 );
-
-export const addRouteCount = ({id, routeCount}) => (
-  $.ajax({
-    method: "PATCH",
-    url: `/api/areas/${id}`,
-    data: {area:{route_count: (routeCount + 1)}}
-  })
-);

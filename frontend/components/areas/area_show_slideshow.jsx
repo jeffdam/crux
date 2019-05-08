@@ -35,4 +35,4 @@ class AreaShowSlideshow extends React.Component {
   }
 }
 
-export default AreaShowSlideshow;
+export default AreaShowSlideshow; 

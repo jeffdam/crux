@@ -4,7 +4,6 @@ import RouteForm from './route_form';
 import { openModal } from '../../../actions/modal_actions';
 import { fetchArea } from '../../../actions/area_action';
 import { createRoute } from '../../../actions/route_action';
-import { addRouteCount } from '../../../util/area_util';
 
 const mapStateToProps = (state, ownProps) => {
   return ({
@@ -34,8 +33,7 @@ const mapDispatchToProps = dispatch => {
   return ({
     fetchArea: id => dispatch(fetchArea(id)),
     formAction: route => dispatch(createRoute(route)),
-    openModalFAQ: () => dispatch(openModal("areaCreateFAQ")),
-    addRouteCount: area => addRouteCount(area)
+    openModalFAQ: () => dispatch(openModal("areaCreateFAQ"))
   });
 };
 

@@ -1,4 +1,5 @@
 import { RECEIVE_AREAS, RECEIVE_AREA, REMOVE_AREA } from "../actions/area_action";
+import { RECEIVE_ROUTE } from "../actions/route_action";
 import { merge } from "lodash";
 
 const areaReducer = (oldState = {}, action) => {
@@ -13,6 +14,9 @@ const areaReducer = (oldState = {}, action) => {
     case REMOVE_AREA:
       newState = merge({}, oldState);
       delete newState[action.area.id];
+      return newState;
+    case RECEIVE_ROUTE:
+      newState = merge({}, oldState, action.area);
       return newState;
     default:
       return oldState;

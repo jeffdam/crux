@@ -34,6 +34,16 @@ const AreaProtected = ({ component: Component, path, loggedIn, exact }) => (
   )} />
 );
 
+const RouteProtected = ({ component: Component, path, loggedIn, exact }) => (
+  <Route path={path} exact={exact} render={(props) => (
+    loggedIn ? (
+      <Component {...props} />
+    ) : (
+        <Redirect to={`/routes/${props.match.params.routeId}`} /> 
+      )
+  )} />
+);
+
 // access the Redux state to check if the user is logged in
 const mapStateToProps = state => {
   return { 
@@ -45,3 +55,4 @@ const mapStateToProps = state => {
 export const AuthRoute = withRouter(connect(mapStateToProps)(Auth));
 export const ProtectedRoute = withRouter(connect(mapStateToProps)(Protected));
 export const AreaRoute = withRouter(connect(mapStateToProps)(AreaProtected));
+export const RouteRoute = withRouter(connect(mapStateToProps)(RouteProtected));

@@ -16,5 +16,9 @@ json.author do
   json.username @route.author.username
 end 
 
-
+json.area do
+  json.set! @route.area.id do
+    json.extract! @route.area, :id, :name
+  end
+end
 

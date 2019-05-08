@@ -14,7 +14,8 @@ const receiveRoute = payload => ({
   type: RECEIVE_ROUTE,
   routeId: payload.routeId,
   routes: payload.routes,
-  author: payload.author
+  author: payload.author,
+  area: payload.area
 });
 
 const removeRoute = route => ({

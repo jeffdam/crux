@@ -14,6 +14,13 @@ const AreaAttributes = (props) => {
       `${month} ${date.getDate()}, ${date.getFullYear()}`
     );
   };
+
+  const sharedBy = (area.parentId) ? (
+    <ul className="area-show-attribute">
+      <li className="area-show-attribute-left">Shared By:</li>
+      <li>{author.username} on {sharedOn(area)}</li>
+    </ul>
+  ) : "";
   
   return (
     <div className="area-show-attributes">
@@ -29,10 +36,7 @@ const AreaAttributes = (props) => {
         <li className="area-show-attribute-left">Page Views:</li>
         <li>{pageViewsTotal.toLocaleString('en')} total · {pageViewsMonth.toLocaleString('en')}/month</li>
       </ul>
-      <ul className="area-show-attribute">
-        <li className="area-show-attribute-left">Shared By:</li>
-        <li>{author.username} on {sharedOn(area)}</li>
-      </ul>
+      { sharedBy }
     </div>
   )
 }
