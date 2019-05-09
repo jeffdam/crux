@@ -15,6 +15,7 @@ const mapStateToProps = (state, ownProps) => {
       getting_there: "",
       latitude: "",
       longitude: "",
+      photos: []
     },
     errors: state.errors.area,
     formType: "Create Area"

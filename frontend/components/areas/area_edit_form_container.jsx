@@ -13,12 +13,14 @@ const mapStateToProps = (state, ownProps) => {
   } else {
     areaData = {
       id: area.id,
+      parent_id: area.parent_id,
       author_id: area.authorId,
       name: area.name,
       description: area.description,
       getting_there: area.gettingThere,
       latitude: area.latitude,
       longitude: area.longitude,
+      photos: []
     };
   }
   

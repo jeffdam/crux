@@ -75,6 +75,10 @@ class RouteForm extends React.Component {
     for (let i = 0; i < this.state.photos.length; i++) {
       formData.append('route[photos][]', this.state.photos[i]);
     }
+   
+    if (this.props.match.path === "/routes/:routeId/edit") {
+      formData.append('route[id]', this.state.id);
+    }
     
     if (document.getElementById("toprope").checked) {
       formData.append(`route[toprope]`, true);
@@ -82,9 +86,6 @@ class RouteForm extends React.Component {
       formData.append(`route[toprope]`, false);
     }
 
-    if (this.props.match.path === "/routes/:routeId/edit") {
-      formData.append('route[id]', this.state.id);
-    }
     
     this.props.formAction(formData)
       .then(({ routeId }) => this.props.history.push(`/routes/${routeId}`));

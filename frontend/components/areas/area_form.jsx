@@ -41,7 +41,26 @@ class AreaForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.formAction(this.state)
+
+    const formData = new FormData();
+    
+    formData.append('area[name]', this.state.name);
+    formData.append('area[parent_id]', this.state.parent_id);
+    formData.append('area[author_id]', this.state.author_id);
+    formData.append('area[description]', this.state.description);
+    formData.append('area[getting_there]', this.state.getting_there);
+    formData.append('area[latitude]', this.state.latitude);
+    formData.append('area[longitude]', this.state.longitude);
+
+    for (let i = 0; i < this.state.photos.length; i++) {
+      formData.append('area[photos][]', this.state.photos[i]);
+    }
+
+    if (this.props.match.path === "/areas/:areaId/edit") {
+      formData.append('area[id]', this.state.id);
+    }
+
+    this.props.formAction(formData)
       .then(({areaId}) => (
         this.props.history.push(`/areas/${areaId}`)
       ));
@@ -77,18 +96,16 @@ class AreaForm extends React.Component {
       }
     });
 
-    const formTitle = this.props.formType === "Create Area" ? (<h1>New Area in {this.props.parent.name}</h1>) : <h1>Edit {this.props.area.name} Area</h1>
+    const formTitle = this.props.formType === "Create Area" ? (<h1>New Area in {this.props.parent.name}</h1>) : <h1>Edit {this.props.area.name} Area</h1>;
     const createFAQ = this.props.formType === "Create Area" ? <a href="#" onClick={this.handleFAQModal}>FAQ about new areas & routes</a> : "" 
 
-    return (
-
+  return (
       <section className="form-page main-padding">
         <div className="form-header">
           {formTitle}
           {createFAQ}
         </div>
-        <form onSubmit={this.handleSubmit}>
-          
+        <form onSubmit={this.handleSubmit}>   
           <div className="form-component">
             <h3>Area Name</h3><div className="errors">{nameErr}</div>
             <input 
@@ -99,7 +116,6 @@ class AreaForm extends React.Component {
             />
             <p className="form-char-limit">{100 - this.state.name.length} characters</p>            
           </div>
-
           <div className="form-component">
             <h3>Description</h3><div className="errors">{descErr}</div>
             <textarea 
@@ -151,8 +167,33 @@ class AreaForm extends React.Component {
               />
             </div>
           </div>
+
+
+          <div className="form-component upload-photos">
+            <div className="flex-row baseline">
+              <h3>Upload Photos</h3>&nbsp;&nbsp;Optional
+            </div>
+
+            <div>
+              <h4>Guidelines</h4>
+              <ul>
+                <li>Avoid duplicating existing photos and too many "butt-shots".</li>
+                <li>Photos should be least 600 x 600 pixels.</li>
+                <li>Accepted image formats: .jpg, .png.</li>
+              </ul>
+            </div>
+
+            <input
+              type="file"
+              onChange={e => this.setState({ photos: e.target.files })}
+              multiple
+              accept=".jpg,.png"
+            />
+
+          </div>
+
           <div className="flex-row form-submission-buttons">
-            <input type="submit" value="Save Area"/>
+            <input type="submit" value="Save Area" />
             <Link to={`/areas/${this.props.match.params.areaId}`}>Cancel</Link>
           </div>
 
