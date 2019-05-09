@@ -30,6 +30,7 @@ class Api::RoutesController < ApplicationController
   end
 
   def update    
+    
     @route = Route.find(params[:id])
     @area_path = areaPath(@route.area_id)
     if @route.update(route_params)

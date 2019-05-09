@@ -7,9 +7,9 @@ import { updateRoute } from '../../actions/route_action';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
-  const id = ownProps.match.params.areaId ? ownProps.match.params.areaId : ownProps.match.params.routeId;
-  const actionType = ownProps.match.params.areaId ? "area" : "route";
-  debugger
+  const id = ownProps.id;
+  const actionType = ownProps.history.location.pathname.includes("areas") ? "area" : "route";
+
   return ({
     id: id,
     actionType: actionType

@@ -23,7 +23,7 @@ class AreaShowPhotos extends React.Component {
 
   render() {
     const { expanded } = this.state;
-    const { photos } = this.props;
+    const { photos, handleAddPhotosModal } = this.props;
     
     let photoUrlArray;
     let toggleButton = "";
@@ -61,7 +61,7 @@ class AreaShowPhotos extends React.Component {
             </div>
             <div id="area-show-dropdown-content-addPhoto" className="area-show-dropdown-content">
               <div className="flex-col">
-                <a href="#">Add New Photo</a>
+                <a href="#" onClick={handleAddPhotosModal}>Add Photos</a>
               </div>
             </div>
           </div>

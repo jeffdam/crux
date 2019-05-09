@@ -20,22 +20,23 @@ class UploadPhotosForm extends React.Component {
 
 
     for (let i = 0; i < this.state.photos.length; i++) {
-      formData.append(`${actionType}[id]`, this.state.photos[i]);
+      formData.append(`${actionType}[photos][]`, this.state.photos[i]);
     }
     
     if (actionType === 'area') {
       this.props.updateArea(formData)
+        .then(this.props.closeModal())
         .then(({ areaId }) => (
           this.props.history.push(`/areas/${areaId}`)));
     } else {
       this.props.updateRoute(formData)
+        .then(this.props.closeModal())
         .then(({ routeId }) => (
           this.props.history.push(`/routes/${routeId}`)));
     }
   } 
 
   render() {
-
     return (
       <form onSubmit={this.handleSubmit}>
         <h3>Upload Photos</h3>

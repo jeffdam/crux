@@ -10,6 +10,7 @@ class AreaShow extends React.Component {
     super(props);
     this.handleAddSubArea = this.handleAddSubArea.bind(this);
     this.handleAddRoute = this.handleAddRoute.bind(this);
+    this.handleAddPhotosModal = this.handleAddPhotosModal.bind(this);
   }
 
   componentDidMount() {
@@ -24,6 +25,11 @@ class AreaShow extends React.Component {
 
   handleDropdown(type) {
     document.getElementById(`area-show-dropdown-content-${type}`).classList.toggle("dropdown-content-show");
+  }
+
+  handleAddPhotosModal(e) {
+    e.preventDefault();
+    this.props.openModal({ action: "addPhotos", id: this.props.match.params.areaId });
   }
 
   handleAddSubArea(e) {
@@ -134,6 +140,7 @@ class AreaShow extends React.Component {
                 <div id="area-show-dropdown-content-add" className="area-show-dropdown-content">
                   <div className="flex-col show-dropdown-items">
                     { addToPageContents }
+                    <a href="#" onClick={this.handleAddPhotosModal}>Add Photos</a>
                   </div>
                 </div>
               </div>
@@ -148,7 +155,7 @@ class AreaShow extends React.Component {
             <p>{area.description}</p>
             <h2>Getting There</h2>
             <p>{area.gettingThere}</p>
-            <AreaShowPhotos photos={area.photoUrls} handleDropdown={() => this.handleDropdown('addPhoto')}/>
+            <AreaShowPhotos photos={area.photoUrls} handleAddPhotosModal={this.handleAddPhotosModal}/>
           </div>
         </article>
       </section>

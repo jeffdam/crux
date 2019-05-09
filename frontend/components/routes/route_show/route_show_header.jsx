@@ -51,7 +51,7 @@ const RouteShowHeader = ({ route, areaPath, currentUser, handleDropdown, handleA
             </div>
             <div id="area-show-dropdown-content-add" className="area-show-dropdown-content">
               <div className="flex-col">
-                <a href="#" onClick={handleAddPhotosModal}>Add Photo</a>
+                <a href="#" onClick={handleAddPhotosModal}>Add Photos</a>
               </div>
             </div>
           </div>

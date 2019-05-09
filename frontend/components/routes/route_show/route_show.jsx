@@ -6,7 +6,6 @@ import RouteShowHeader from './route_show_header';
 import RouteShowInfo from './route_show_info';
 import AreaShowPhotos from '../../areas/area_show_photos';
 import AreaShowSlideshow from '../../areas/area_show_slideshow';
-import { openModal } from '../../../actions/modal_actions';
 
 class RouteShow extends React.Component {
   constructor(props) {
@@ -30,7 +29,7 @@ class RouteShow extends React.Component {
 
   handleAddPhotosModal(e) {
     e.preventDefault();
-    this.props.openModal('addPhotos');
+    this.props.openModal({action: "addPhotos", id: this.props.match.params.routeId});
   }
 
   render() {
@@ -50,7 +49,7 @@ class RouteShow extends React.Component {
             <AreaShowSlideshow photos={route.photoUrls} />
           </div>
           <RouteShowInfo route={route}/>
-          <AreaShowPhotos photos={route.photoUrls}/>
+          <AreaShowPhotos photos={route.photoUrls} handleAddPhotosModal={this.handleAddPhotosModal}/>
         </article>
       </section>
     )

@@ -22,7 +22,7 @@ function Modal({ modal, closeModal }) {
       component = <AreaCreateFAQ />;
       break;
     case 'addPhotos':
-      component = <UploadPhotosFormContainer />;
+      component = <UploadPhotosFormContainer id={modal.id} />;
       break;
     default:
       return null;
