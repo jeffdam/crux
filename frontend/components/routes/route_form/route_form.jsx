@@ -20,6 +20,7 @@ class RouteForm extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+
     if (this.props.match.path === "/add/climb-route/:areaId") {
       if (prevProps.match.params.areaId !== this.props.match.params.areaId) {
         this.props.fetchArea(this.props.match.params.areaId);
@@ -47,6 +48,12 @@ class RouteForm extends React.Component {
         const ropeGrade = document.getElementById('selectedRopeGrade') ? document.getElementById('selectedRopeGrade').value : "";
         const boulderGrade = document.getElementById('selectedBoulderGrade') ? document.getElementById('selectedBoulderGrade').value : "";
         return this.setState({ ['grade']: ropeGrade + " " + e.target.value + " " + boulderGrade});
+      } else if (field === "toprope") {
+        if (document.getElementById("toprope").checked) {
+          this.setState({ [field]: true });
+        } else {
+          this.setState({ [field]: false });
+        }
       } else {
         return this.setState({ [field]: e.target.value });
       }
@@ -137,10 +144,8 @@ class RouteForm extends React.Component {
       if (route.grade.includes(ropeGrade)) {
         ropeGradeDefaultVal = ropeGrade
       }
-      const ropeIdVal = (route.grade.includes(ropeGrade)) ? "selectedRopeGrade" : "";
       return (
         <option 
-          id={ropeIdVal}
           key={ropeGrade}
           value={ropeGrade}
         >{ropeGrade}</option>
@@ -159,10 +164,8 @@ class RouteForm extends React.Component {
       if (route.grade.includes(boulderGrade)) {
         boulderGradeDefaultVal = boulderGrade
       }
-      const boulderIdVal = (route.grade.includes(boulderGrade)) ? "selectedBoulderGrade" : "";
       return (
         <option
-          id={boulderIdVal}
           key={boulderGrade}
           value={boulderGrade}
         >{boulderGrade}</option>
@@ -184,8 +187,6 @@ class RouteForm extends React.Component {
         >{safetyOption.label}</option>
       )
     })
-    
-    const topropeChecked = route.toprope ? true : false;
 
     const cancelLink = (this.props.match.params.areaId) ? (
       `/areas/${this.props.match.params.areaId}`
@@ -245,7 +246,7 @@ class RouteForm extends React.Component {
           </div>
           
           <div className="flex-row route-form-first-ascent">
-            <div className="form-component">
+            <div className="form-component route-form-first-ascensionist">
               <div className="flex-row baseline">
                 <h3>First Ascensionist</h3>&nbsp;&nbsp;Optional
               </div>
@@ -298,9 +299,9 @@ class RouteForm extends React.Component {
                 <input 
                   type="checkbox" 
                   id="toprope" 
-                  value='true'
+                  value={true}
                   onChange={this.update('toprope')} 
-                  checked={topropeChecked}
+                  checked={this.state.toprope}
                 />Top Rope - you can set up a TR without leading the route.
               </label>
             </div>

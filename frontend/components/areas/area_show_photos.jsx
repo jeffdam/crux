@@ -50,12 +50,12 @@ class AreaShowPhotos extends React.Component {
           
           <h2>Photos</h2>
 
-          <div className="dropdown">
-            <div className="flex-row">
+          <div className="dropdown area-show-options">
+            <div onClick={this.props.handleDropdown} className="flex-row">
               <a className="area-show-dropdown-button">Add New Photo</a>&nbsp;
                 <img height="6" src={window.images.downArrow} alt="Down Arrow"></img>
             </div>
-            <div id="area-show-dropdown-content-edit" className="area-show-dropdown-content">
+            <div id="area-show-dropdown-content-addPhoto" className="area-show-dropdown-content">
               <div className="flex-col">
                 <a href="#">Add New Photo</a>
               </div>
@@ -70,6 +70,18 @@ class AreaShowPhotos extends React.Component {
         {toggleButton}
       </>
     );
+  }
+}
+
+window.onclick = (event) => {
+  if (!event.target.classList.contains('area-show-dropdown-button')) {
+    const dropdowns = document.getElementsByClassName("area-show-dropdown-content");
+    for (let i = 0; i < dropdowns.length; i++) {
+      let openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('dropdown-content-show')) {
+        openDropdown.classList.remove('dropdown-content-show');
+      }
+    }
   }
 }
 

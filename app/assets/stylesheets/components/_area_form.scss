@@ -53,13 +53,20 @@
   margin-right: 50px;
 }
 
-.route-form-first-ascent > * {
+
+.route-form-first-ascensionist {
+  width: 100%;
+}
+
+.route-form-first-ascent .route-form-first-ascensionist {
   margin-right: 50px;
+}
+.route-form-first-ascent input[type=date] {
+  margin-right: 0px;
 }
 
 .route-form-first-ascent input[type=text] {
   min-width: 200px;
-  width: 35vw;
 }
 
 .route-form-route-type {

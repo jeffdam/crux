@@ -129,24 +129,22 @@ li .area-show-header-path-link:hover {
 .show-photos {
   display: flex;
   flex-flow: row wrap;
-  // align-content: space-between;
-  margin: auto;
 }
 
 .show-photos-photo {
   width: 200px;
   height: 150px;
-  display: flex;
-  margin: 10px 18px;
-  align-content: center;
-  justify-content: center;
+  margin: 10px auto 10px 0px;
   background: $color-light-grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .show-photos-photo img {
   max-width: 200px;
   max-height: 150px;
-  border: 1px solid black
+  border: 1px solid black;
 }
 
 

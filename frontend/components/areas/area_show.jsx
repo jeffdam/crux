@@ -57,7 +57,7 @@ class AreaShow extends React.Component {
       <Link className="area-show-dropdown-content-item" to={`/areas/${area.id}/edit`}>Edit Area</Link> 
       : 
       <Link className="area-show-dropdown-content-item" to={`/`}>Suggest Change</Link>;
-    
+    debugger
     const addToPageContents = (area.subAreaIds.length === 0 && area.routeIds.length === 0) ? 
         (
           <>
@@ -87,7 +87,7 @@ class AreaShow extends React.Component {
         )
 
 
-
+        
     return (
       <section className="area-show-page main-width main-padding">
         
@@ -148,7 +148,7 @@ class AreaShow extends React.Component {
             <p>{area.description}</p>
             <h2>Getting There</h2>
             <p>{area.gettingThere}</p>
-            <AreaShowPhotos photos={area.photoUrls}/>
+            <AreaShowPhotos photos={area.photoUrls} handleDropdown={() => this.handleDropdown('addPhoto')}/>
           </div>
         </article>
       </section>

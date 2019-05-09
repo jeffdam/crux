@@ -8,7 +8,8 @@ import AreaCreateFormContainer from './areas/area_create_form_container';
 import AreaEditFormContainer from './areas/area_edit_form_container';
 import RouteShowContainer from './routes/route_show/route_show_container';
 import RouteCreateFormContainer from './routes/route_form/route_create_form_container';
-import RouteEditFormContainer from './routes/route_form/route_edit_form_container'
+import RouteEditFormContainer from './routes/route_form/route_edit_form_container';
+import RouteFinderContainer from './routes/route_finder/route_finder_container';
 
 const App = () => (
   <div className="app">
@@ -22,6 +23,7 @@ const App = () => (
       <RouteRoute exact path="/routes/:routeId/edit" component={RouteEditFormContainer} />
       <AreaRoute exact path="/add/climb-area/:areaId" component={AreaCreateFormContainer}/>
       <AreaRoute exact path="/add/climb-route/:areaId" component={RouteCreateFormContainer}/>
+      <AreaRoute exact path="/route-finder" component={RouteFinderContainer}/>
       <Redirect to="/"/>
     </Switch>
   </div>
