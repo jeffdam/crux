@@ -69,11 +69,12 @@ const RouteFinderResults = ({ areas, routes, searchParams }) => {
     pitchSearch(route)
   );
 
-  const routesList = filteredResults.map(route => {
+  const routesList = filteredResults.map((route, idx) => {
     const area = areas[route.areaId];
     const tr = route.toprope ? ", TR" : "";
+    const grey = idx % 2 === 0 ? "grey" : "";
     return (
-      <ul key={route.id} className="route-finder-info flex-row">
+      <ul key={route.id} className={`route-finder-info flex-row ${grey}`}>
         <li className="route-finder-info-name"><Link to={`/routes/${route.id}`}>{route.name}</Link></li>
         <li className="route-finder-info-name"><Link to={`/areas/${area.id}`}>{area.name}</Link></li>
         <li className="route-finder-info-attr">{route.grade}{` ${route.safety}`}</li>
@@ -91,7 +92,7 @@ const RouteFinderResults = ({ areas, routes, searchParams }) => {
     return (
       <div className="main-padding">
         <h1>Search Results</h1>
-        <ul key="route-finder-table-header" className="route-finder-info flex-row">
+        <ul key="route-finder-table-header" className="route-finder-info flex-row flex-end">
           <li className="route-finder-info-name"><h4>Route Name</h4></li>
           <li className="route-finder-info-name"><h4>Route Area</h4></li>
           <li className="route-finder-info-attr"><h4>Route Grade/Safety</h4></li>

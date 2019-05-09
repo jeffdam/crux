@@ -1,5 +1,6 @@
 .route-finder-info {
   justify-content: space-evenly;
+  padding: 5px 0px;
 }
 
 .route-finder-info-attr {
@@ -8,4 +9,8 @@
 
 .route-finder-info-name {
   width: 200px;
+}
+
+.grey {
+  background: $color-light-grey;
 }

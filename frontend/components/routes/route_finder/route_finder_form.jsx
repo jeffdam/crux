@@ -93,20 +93,23 @@ class RouteFinderForm extends React.Component {
 
 
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>Trad
-        <input id="t" onChange={this.update('t')} type="checkbox" value='true'/>
-        </label>
-        <label>Sport
-        <input id="s" onChange={this.update('s')} type="checkbox" value='true'/>
-        </label>
-        <label>Boulder
-        <input id="b" onChange={this.update('b')} type="checkbox" value='true'/>
-        </label>
-        <label>Top Rope
-        <input id="tr" onChange={this.update('tr')} type="checkbox" value='true'/>
-        </label>
-        <label>Rope Grade
+      <form onSubmit={this.handleSubmit} className="route-finder-form flex-col">
+        <h4>Type</h4>
+        <div className="flex-row">
+          <label>Trad
+          <input id="t" onChange={this.update('t')} type="checkbox" value='true'/>
+          </label>
+          <label>Sport
+          <input id="s" onChange={this.update('s')} type="checkbox" value='true'/>
+          </label>
+          <label>Boulder
+          <input id="b" onChange={this.update('b')} type="checkbox" value='true'/>
+          </label>
+          <label>Top Rope
+          <input id="tr" onChange={this.update('tr')} type="checkbox" value='true'/>
+          </label>
+        </div>
+        <label><h4>Rope Grade</h4>
           <label>Min:
             <select onChange={this.update("r_grade_min")}>
               <option value="5.0">--</option>
@@ -122,7 +125,7 @@ class RouteFinderForm extends React.Component {
           </label>
         </label>
 
-        <label>
+        <label><h4>Pitches</h4>
           <select onChange={this.update("pitches")}>
             <option value="1">--</option>
             <option value="1">At least 1 pitch</option>
