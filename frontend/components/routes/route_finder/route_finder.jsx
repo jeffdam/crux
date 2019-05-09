@@ -17,7 +17,8 @@ class RouteFinder extends React.Component {
     const searchParams = queryString.parse(this.props.location.search);
     
     const filteredResults = routes
-      .filter(route => [searchParams.is_t, searchParams.is_s, searchParams.is_b].includes(route.routeType));
+      .filter(route => [searchParams.is_t, searchParams.is_s, searchParams.is_b].includes(route.routeType))
+      .filter(route => route.toprope === searchParams.is_tr);
 
     const routesList = filteredResults.map(route => {
       const area = areas[route.areaId];

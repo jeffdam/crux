@@ -127,7 +127,7 @@ total_count = 0
     getting_there: GETTING_THERE,
     latitude: LAT.sample,
     longitude: LONG.sample,
-    # photos: generate_photos
+    photos: generate_photos
     })
     
     count += 1
@@ -148,7 +148,7 @@ count = 0
     getting_there: GETTING_THERE,
     latitude: LAT.sample,
     longitude: LONG.sample,
-    # photos: generate_photos
+    photos: generate_photos
     })
 
     count += 1
@@ -172,7 +172,7 @@ no_sub_area = []
     getting_there: GETTING_THERE,
     latitude: LAT.sample,
     longitude: LONG.sample,
-    # photos: generate_photos
+    photos: generate_photos
     })
 
     total_count += 1
@@ -253,7 +253,7 @@ end
       protection: "#{length_rand/rand(8..10)} bolts, 2 bolt anchor.", 
       description: ROPE_DESCRIPTION.sample, 
       location: ROPE_LOCATION.sample,
-      # photos: generate_photos
+      photos: generate_photos
     })
   end
   no_sub_area.delete_at(rand_n)
@@ -291,7 +291,7 @@ TRAD_PRO = [
       protection: TRAD_PRO.sample, 
       description: ROPE_DESCRIPTION.sample, 
       location: ROPE_LOCATION.sample,
-      # photos: generate_photos
+      photos: generate_photos
     })
   end
   no_sub_area.delete_at(rand_n)
@@ -341,7 +341,7 @@ no_sub_area.each do |area_id|
       protection: "Boulder pads.", 
       description: BOULDER_DESC.sample, 
       location: BOULDER_LOC.sample,
-      # photos: generate_photos
+      photos: generate_photos
     })
   end
 end
