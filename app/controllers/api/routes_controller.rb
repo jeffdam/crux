@@ -7,9 +7,7 @@ class Api::RoutesController < ApplicationController
   end
 
   def index
-    @routes = Route.all
-    @area_paths = Hash.new()
-    @routes.each {|route| @area_paths[route.id] = areaPath(route.area_id)}
+    @routes = Route.includes(:area).all
   end
 
   def show

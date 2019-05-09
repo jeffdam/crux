@@ -1,10 +1,15 @@
-@routes.each do |route|
-  json.set! route.id do 
-    json.extract! route, :id, :name, :grade, :safety, :route_type, :pitches, :toprope
-    json.area_path do
-      json.array! @area_paths[route.id] do |area|
-        json.extract! area, :name, :id
-      end
+json.routes do 
+  @routes.each do |route|
+    json.set! route.id do 
+      json.extract! route, :id, :name, :grade, :safety, :route_type, :pitches, :toprope, :area_id
     end
   end
 end
+json.areas do 
+  @routes.each do |route|
+    json.set! route.area.id do 
+      json.extract! route.area, :id, :name
+    end
+  end
+end
+

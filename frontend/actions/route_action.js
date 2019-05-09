@@ -5,9 +5,10 @@ export const RECEIVE_ROUTE = "RECEIVE_ROUTE";
 export const REMOVE_ROUTE = "REMOVE_ROUTE";
 export const RECEIVE_ROUTE_ERRORS = "RECEIVE_ROUTE_ERRORS";
 
-const receiveRoutes = routes => ({
+const receiveRoutes = payload => ({
   type: RECEIVE_ROUTES,
-  routes
+  routes: payload.routes,
+  areas: payload.areas
 });
 
 const receiveRoute = payload => ({

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import queryString from 'query-string';
+import RouteFinderForm from './route_finder_form';
 
 class RouteFinder extends React.Component {
   
@@ -8,24 +10,21 @@ class RouteFinder extends React.Component {
   }
 
   render() {
-    const { routes } = this.props;
+    const { routes, areas } = this.props;
 
-    if (routes === []) return null;
+    if (routes === {}) return null;
 
+    const searchParams = queryString.parse(this.props.location.search);
+    
+    const filteredResults = routes
+      .filter(route => [searchParams.is_t, searchParams.is_s, searchParams.is_b].includes(route.routeType));
 
-    const routesList = routes.map(route => {
-      const areaPathLinks = route.areaPath.map(area => (
-        <li key={area.id}>&nbsp;>&nbsp;<Link to={`/areas/${area.id}`}>{area.name}</Link></li>
-      ));
-
+    const routesList = filteredResults.map(route => {
+      const area = areas[route.areaId];
       return (
-        <ul className="flex-row">
+        <ul key={route.id} className="route-finder-info flex-row">
           <li><Link to={`/routes/${route.id}`}>{route.name}</Link></li>
-          <li>
-            <ul className="flex-row">
-              {areaPathLinks}
-            </ul>
-          </li>
+          <li><Link to={`/areas/${area.id}`}>{area.name}</Link></li>
           <li>{route.grade}{` ${route.safety}`}</li>
           <li>{route.routeType}</li>
           <li>{route.pitches}</li>
@@ -37,6 +36,7 @@ class RouteFinder extends React.Component {
     return (
       <section>
         <h1>Climbing Route Finder</h1>
+        <RouteFinderForm />
         <div>
           {routesList}
         </div>
