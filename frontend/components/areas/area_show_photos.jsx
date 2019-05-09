@@ -17,6 +17,10 @@ class AreaShowPhotos extends React.Component {
     }
   }
 
+  handleDropdown(type) {
+    document.getElementById(`area-show-dropdown-content-${type}`).classList.toggle("dropdown-content-show");
+  }
+
   render() {
     const { expanded } = this.state;
     const { photos } = this.props;
@@ -51,7 +55,7 @@ class AreaShowPhotos extends React.Component {
           <h2>Photos</h2>
 
           <div className="dropdown area-show-options">
-            <div onClick={this.props.handleDropdown} className="flex-row">
+            <div onClick={() => this.handleDropdown('addPhoto')} className="flex-row">
               <a className="area-show-dropdown-button">Add New Photo</a>&nbsp;
                 <img height="6" src={window.images.downArrow} alt="Down Arrow"></img>
             </div>

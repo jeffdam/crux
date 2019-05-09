@@ -3,7 +3,10 @@ import React from 'react';
 const SessionButtons = ({ currentUser, logout, openModal }) => {
 
   const logoutButton = () => (
-    <button className="session-button" onClick={logout}>Log Out</button>
+    <div className="username-logout-button">
+      <h4 className="username">Welcome, {currentUser.username}</h4>
+      <button className="session-button" onClick={logout}>Log Out</button>
+    </div>
   )
 
   const sessionButtons = () => (

@@ -57,7 +57,7 @@ class AreaShow extends React.Component {
       <Link className="area-show-dropdown-content-item" to={`/areas/${area.id}/edit`}>Edit Area</Link> 
       : 
       <Link className="area-show-dropdown-content-item" to={`/`}>Suggest Change</Link>;
-    debugger
+    
     const addToPageContents = (area.subAreaIds.length === 0 && area.routeIds.length === 0) ? 
         (
           <>

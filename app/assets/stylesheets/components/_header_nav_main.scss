@@ -43,3 +43,14 @@
 .session-button:hover {
   background: #254c70
 }
+
+.username-logout-button {
+  @extend .flex-row;
+  justify-content: center;
+  align-items: center;
+}
+
+.username {
+  color: white;
+  margin: 0 20px 0 0;
+}

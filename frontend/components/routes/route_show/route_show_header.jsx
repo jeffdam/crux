@@ -1,13 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const RouteShowHeader = ({ route, areaPath}) => {
+const RouteShowHeader = ({ route, areaPath, currentUser, handleDropdown, handleAddPhotosModal}) => {
   
   const areaPathLinks = areaPath.map(area => (
     <li key={area.id}>&nbsp;>&nbsp;<Link to={`/areas/${area.id}`}>{area.name}</Link></li>
   ))
 
   const routeSafety = route.safety === "G" ? "" : route.safety;
+
+  const improvePageLink = currentUser === route.authorId ? (
+    <div className="dropdown">
+      <div onClick={() => handleDropdown('edit')} className="flex-row">
+        <a className="area-show-dropdown-button">Improve This Page</a>&nbsp;
+        <img height="6" src={window.images.downArrow} alt="Down Arrow"></img>
+      </div>
+      <div id="area-show-dropdown-content-edit" className="area-show-dropdown-content">
+        <div className="flex-col">
+          <Link className="area-show-dropdown-content-item" to={`/areas/${route.id}/edit`}>Edit Route</Link>
+        </div>
+      </div>
+    </div>
+  ) : "";
+
+
 
   return (
     <>
@@ -26,26 +42,16 @@ const RouteShowHeader = ({ route, areaPath}) => {
         </div>
         <div className="area-show-options">
 
-          <div className="dropdown">
-            <div onClick={() => this.handleDropdown('edit')} className="flex-row">
-              <a className="area-show-dropdown-button">Improve This Page</a>&nbsp;
-                  <img height="6" src={window.images.downArrow} alt="Down Arrow"></img>
-            </div>
-            <div id="area-show-dropdown-content-edit" className="area-show-dropdown-content">
-              <div className="flex-col">
-                <a href="#">Suggestion</a>
-              </div>
-            </div>
-          </div>
+          { improvePageLink }
 
           <div className="dropdown">
-            <div onClick={() => this.handleDropdown('add')} className="flex-row">
+            <div onClick={() => handleDropdown('add')} className="flex-row">
               <a className="area-show-dropdown-button">Add to Page</a>&nbsp;
                   <img height="6" src={window.images.downArrow} alt="Down Arrow"></img>
             </div>
             <div id="area-show-dropdown-content-add" className="area-show-dropdown-content">
               <div className="flex-col">
-                <a href="#">Add Photo</a>
+                <a href="#" onClick={handleAddPhotosModal}>Add Photo</a>
               </div>
             </div>
           </div>
@@ -55,5 +61,17 @@ const RouteShowHeader = ({ route, areaPath}) => {
     </>
   );
 };
+
+window.onclick = (event) => {
+  if (!event.target.classList.contains('area-show-dropdown-button')) {
+    const dropdowns = document.getElementsByClassName("area-show-dropdown-content");
+    for (let i = 0; i < dropdowns.length; i++) {
+      let openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('dropdown-content-show')) {
+        openDropdown.classList.remove('dropdown-content-show');
+      }
+    }
+  }
+}
 
 export default RouteShowHeader;

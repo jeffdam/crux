@@ -6,10 +6,12 @@ import RouteShowHeader from './route_show_header';
 import RouteShowInfo from './route_show_info';
 import AreaShowPhotos from '../../areas/area_show_photos';
 import AreaShowSlideshow from '../../areas/area_show_slideshow';
+import { openModal } from '../../../actions/modal_actions';
 
 class RouteShow extends React.Component {
   constructor(props) {
     super(props);
+    this.handleAddPhotosModal = this.handleAddPhotosModal.bind(this);
   }
 
   componentDidMount() {
@@ -20,6 +22,15 @@ class RouteShow extends React.Component {
     if (prevProps.match.params.routeId !== this.props.match.params.routeId) {
       this.props.fetchRoute(this.props.match.params.routeId);
     }
+  }
+
+  handleDropdown(type) {
+    document.getElementById(`area-show-dropdown-content-${type}`).classList.toggle("dropdown-content-show");
+  }
+
+  handleAddPhotosModal(e) {
+    e.preventDefault();
+    this.props.openModal('addPhotos');
   }
 
   render() {
@@ -33,7 +44,7 @@ class RouteShow extends React.Component {
       <section className="area-show-page main-width main-padding">
         <RouteShowSidebar neighborRouteIds={route.neighborRouteIds} routes={routes} areaName={areaPath.slice(-1)[0].name} routeId={routeId} />
         <article className="area-show-main-content">
-          <RouteShowHeader areaPath={areaPath} route={route}/>
+          <RouteShowHeader areaPath={areaPath} route={route} handleDropdown={(type) => this.handleDropdown(type)} handleAddPhotosModal={this.handleAddPhotosModal} />
           <div className="attr-slides flex-row">
             <RouteShowAttributes route={route} author={author} />
             <AreaShowSlideshow photos={route.photoUrls} />

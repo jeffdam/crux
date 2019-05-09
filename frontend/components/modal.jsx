@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import LoginFormContainer from '../components/session_form/login_form_container';
 import SignupFormContainer from '../components/session_form/signup_form_container';
 import AreaCreateFAQ from '../components/areas/area_create_faq';
+import UploadPhotosFormContainer from '../components/shared/upload_photos_form_container';
 
 function Modal({ modal, closeModal }) {
   if (!modal.action) {
@@ -19,6 +20,9 @@ function Modal({ modal, closeModal }) {
       break;
     case 'areaCreateFAQ':
       component = <AreaCreateFAQ />;
+      break;
+    case 'addPhotos':
+      component = <UploadPhotosFormContainer />;
       break;
     default:
       return null;
