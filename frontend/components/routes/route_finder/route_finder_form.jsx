@@ -9,11 +9,11 @@ class RouteFinderForm extends React.Component {
       is_b: "",
       is_t: "",
       is_s: "",
-      is_tr: true,
+      is_tr: false,
       r_grade_min: "5.0",
       r_grade_max: "5.16",
-      b_grade_min: "VB",
-      b_grade_max: "V17+",
+      b_grade_min: "",
+      b_grade_max: "",
       pitches: 1,
       sort_by: "name"
     };
@@ -23,7 +23,7 @@ class RouteFinderForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     // this.props.history.push(`/route-finder?location=${location}&is_b=${is_b}&is_t=${is_t}&is_s=${is_s}&is_tr=${is_tr}&b_grade_min=${b_grade_min}&b_grade_max=${b_grade_max}&pitches=${pitches}&sort_by=${sort_by}`);
-    this.props.history.push(`/route-finder?is_b=${this.state.is_b}&is_t=${this.state.is_t}&is_s=${this.state.is_s}&is_tr=${this.state.is_tr}&r_grade_min=${this.state.r_grade_min}&r_grade_max=${this.state.r_grade_max}`);
+    this.props.history.push(`/route-finder?is_b=${this.state.is_b}&is_t=${this.state.is_t}&is_s=${this.state.is_s}&is_tr=${this.state.is_tr}&r_grade_min=${this.state.r_grade_min}&r_grade_max=${this.state.r_grade_max}&pitches=${this.state.pitches}`);
   }
 
   update(field) {
@@ -109,25 +109,30 @@ class RouteFinderForm extends React.Component {
         <label>Rope Grade
           <label>Min:
             <select onChange={this.update("r_grade_min")}>
-              <option value="">--</option>
+              <option value="5.0">--</option>
               {ropeGradeMinInput}
             </select>
           </label>
           <label>Max:
             <select onChange={this.update("r_grade_max")}>
-              <option value="">--</option>
+              <option value="5.16">--</option>
               {ropeGradeMaxInput}
             </select>
 
           </label>
         </label>
 
-        {/* <label>
+        <label>
           <select onChange={this.update("pitches")}>
             <option value="1">--</option>
-            <
+            <option value="1">At least 1 pitch</option>
+            <option value="2">At least 2 pitches</option>
+            <option value="3">At least 3 pitches</option>
+            <option value="4">At least 4 pitches</option>
+            <option value="5">At least 5 pitches</option>
+            <option value="6">At least 6 pitches</option>
           </select>
-        </label> */}
+        </label>
         <input type="submit" value="Find Routes"/>
       </form>
     )
