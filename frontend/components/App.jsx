@@ -17,13 +17,13 @@ const App = () => (
     
     <Switch>
       <Route exact path="/" component={Home} />
+      <Route exact path="/route-finder" component={RouteFinderContainer}/>
       <Route exact path="/areas/:areaId" component={AreaShowContainer} />
       <Route exact path="/routes/:routeId" component={RouteShowContainer} />
       <AreaRoute exact path="/areas/:areaId/edit" component={AreaEditFormContainer} />
       <RouteRoute exact path="/routes/:routeId/edit" component={RouteEditFormContainer} />
       <AreaRoute exact path="/add/climb-area/:areaId" component={AreaCreateFormContainer}/>
       <AreaRoute exact path="/add/climb-route/:areaId" component={RouteCreateFormContainer}/>
-      <AreaRoute exact path="/route-finder" component={RouteFinderContainer}/>
       <Redirect to="/"/>
     </Switch>
   </div>
