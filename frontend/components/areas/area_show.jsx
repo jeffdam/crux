@@ -59,10 +59,20 @@ class AreaShow extends React.Component {
       <li key={parent.id}>&nbsp;>&nbsp;<Link  to={`/areas/${parent.id}`}>{parent.name}</Link></li>
     ))
     
-    const improvePageLink = this.props.currentUser === area.authorId ? 
-      <Link className="area-show-dropdown-content-item" to={`/areas/${area.id}/edit`}>Edit Area</Link> 
-      : 
-      <Link className="area-show-dropdown-content-item" to={`/`}>Suggest Change</Link>;
+    const improvePageLink = this.props.currentUser === area.authorId ? (
+      <div className="dropdown">
+        <div onClick={() => this.handleDropdown('edit')} className="flex-row">
+          <a className="area-show-dropdown-button">Improve This Page</a>&nbsp;
+                  <img height="6" src={window.images.downArrow} alt="Down Arrow"></img>
+        </div>
+        <div id="area-show-dropdown-content-edit" className="area-show-dropdown-content">
+          <div className="flex-col show-dropdown-items">
+            <Link className="area-show-dropdown-content-item" to={`/areas/${area.id}/edit`}>Edit Area</Link> 
+          </div>
+        </div>
+      </div>
+    ) : "";
+      // <Link className="area-show-dropdown-content-item" to={`/`}>Suggest Change</Link>;
     
     const addToPageContents = (area.subAreaIds.length === 0 && area.routeIds.length === 0) ? 
         (
@@ -120,17 +130,8 @@ class AreaShow extends React.Component {
             <h1>{area.name} Climbing</h1>
             <div className="area-show-options">
 
-              <div className="dropdown">
-                <div onClick={() => this.handleDropdown('edit')} className="flex-row">
-                  <a className="area-show-dropdown-button">Improve This Page</a>&nbsp;
-                  <img height="6" src={window.images.downArrow} alt="Down Arrow"></img>
-                </div>
-                <div id="area-show-dropdown-content-edit" className="area-show-dropdown-content">
-                  <div className="flex-col show-dropdown-items">
-                    {improvePageLink}
-                  </div>
-                </div>
-              </div>
+
+              {improvePageLink}
 
               <div className="dropdown">
                 <div onClick={() => this.handleDropdown('add')} className="flex-row">
