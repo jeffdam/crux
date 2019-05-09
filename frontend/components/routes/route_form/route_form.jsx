@@ -28,17 +28,12 @@ class RouteForm extends React.Component {
       if (prevProps.match.params.routeId !== this.props.match.params.routeId) {
         this.props.fetchRoute(this.props.match.params.routeId);
       }
-      // if ((this.props.match.path === "/routes/:routeId/edit") && (this.props.route.author_id != this.props.currentUser)) {
-      //   this.props.history.push(`/routes/${this.props.match.params.routeId}`);
-      // }
+      if ((this.props.match.path === "/routes/:routeId/edit") && (this.props.route.author_id != this.props.currentUser)) {
+        this.props.history.push(`/routes/${this.props.match.params.routeId}`);
+      }
     }
-    
-    
-    
-
 
     if (!this.state) this.setState(this.props.route);
-    
   }
 
   handleFAQModal(e) {
@@ -61,13 +56,37 @@ class RouteForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    let submission = Object.assign({}, this.state);
+    const formData = new FormData();
+
+    formData.append('route[area_id]', this.state.area_id);
+    formData.append('route[author_id]', this.state.author_id);
+    formData.append('route[name]', this.state.name);
+    formData.append('route[route_type]', this.state.route_type);
+    formData.append('route[grade]', this.state.grade);
+    formData.append('route[safety]', this.state.safety);
+    formData.append('route[first_ascensionist]', this.state.first_ascensionist);
+    formData.append('route[first_ascent_date]', this.state.first_ascent_date);
+    formData.append('route[length]', this.state.length);
+    formData.append('route[pitches]', this.state.pitches);
+    formData.append('route[protection]', this.state.protection);
+    formData.append('route[description]', this.state.description);
+    formData.append('route[location]', this.state.location);
     
-    if (!document.getElementById("toprope").checked) {
-      submission.toprope = false;
+    for (let i = 0; i < this.state.photos.length; i++) {
+      formData.append('route[photos][]', this.state.photos[i]);
     }
     
-    this.props.formAction(submission)
+    if (document.getElementById("toprope").checked) {
+      formData.append(`route[toprope]`, true);
+    } else {
+      formData.append(`route[toprope]`, false);
+    }
+
+    if (this.props.match.path === "/routes/:routeId/edit") {
+      formData.append('route[id]', this.state.id);
+    }
+    
+    this.props.formAction(formData)
       .then(({ routeId }) => this.props.history.push(`/routes/${routeId}`));
   } 
 
@@ -112,14 +131,8 @@ class RouteForm extends React.Component {
       "5.16"
     ]
 
-    // const ropeGradeDefaultVal = ropeGrades.forEach(ropeGrade => {
-    //   if (route.grade.includes(ropeGrade)) return ropeGrade;
-    // }) 
-
-    let ropeGradeDefaultVal;
-    
+    let ropeGradeDefaultVal;    
     const ropeGradeInput = ropeGrades.map(ropeGrade => {
-      
       if (route.grade.includes(ropeGrade)) {
         ropeGradeDefaultVal = ropeGrade
       }
@@ -132,8 +145,6 @@ class RouteForm extends React.Component {
         >{ropeGrade}</option>
       )
     })
-
-    
 
     const boulderGrades = [
       "VB", "V0-", "V0", "V0+", "V1-", "V1", "V1+", "V2-", "V2", "V2+", "V3-", "V3", "V3+", "V4-", "V4",
@@ -172,8 +183,8 @@ class RouteForm extends React.Component {
         >{safetyOption.label}</option>
       )
     })
-
-    const topropeChecked = route.toprope ? "checked" : "";
+    
+    const topropeChecked = route.toprope ? true : false;
 
     const cancelLink = (this.props.match.params.areaId) ? (
       `/areas/${this.props.match.params.areaId}`
@@ -234,12 +245,16 @@ class RouteForm extends React.Component {
           
           <div className="flex-row route-form-first-ascent">
             <div className="form-component">
-              <h3>First Ascensionist</h3>
+              <div className="flex-row baseline">
+                <h3>First Ascensionist</h3>&nbsp;&nbsp;Optional
+              </div>
               <input type="text" onChange={this.update('first_ascensionist')} value={route.first_ascensionist}/>
             </div>
 
             <div className="form-component">
-              <h3>First Ascent Date</h3>
+              <div className="flex-row baseline">
+                <h3>First Ascent Date</h3>&nbsp;&nbsp;Optional
+              </div>
               <input type="date" onChange={this.update('first_ascent_date')} value={route.first_ascent_date}/>
             </div>
           </div>
@@ -278,13 +293,15 @@ class RouteForm extends React.Component {
                 {typeInput}
               </div>
               <h4>Top Rope</h4>
-              <input 
-                type="checkbox" 
-                id="toprope" 
-                value='true'
-                onChange={this.update('toprope')} 
-                checked={topropeChecked}
-              />Top Rope - you can set up a TR without leading the route.
+              <label>
+                <input 
+                  type="checkbox" 
+                  id="toprope" 
+                  value='true'
+                  onChange={this.update('toprope')} 
+                  checked={topropeChecked}
+                />Top Rope - you can set up a TR without leading the route.
+              </label>
             </div>
             
             <div>
@@ -352,6 +369,29 @@ class RouteForm extends React.Component {
             ></textarea>
             <p className="form-char-limit">{1000 - route.protection.length} characters</p>
           </div>
+
+          <div className="form-component upload-photos">
+            <div className="flex-row baseline">
+              <h3>Upload Photos</h3>&nbsp;&nbsp;Optional
+            </div>
+
+            <div>
+              <h4>Guidelines</h4>
+              <ul>
+                <li>Avoid duplicating existing photos and too many "butt-shots".</li>
+                <li>Photos should be least 600 x 600 pixels.</li>
+                <li>Accepted image formats: .jpg, .png.</li>
+              </ul>
+            </div>
+            
+            <input
+                type="file"
+                onChange={e => this.setState({ photos: e.target.files })}
+                multiple
+                accept=".jpg,.png"
+            />
+
+          </div>
           
           <div className="flex-row form-submission-buttons">
             <input type="submit" value="Save Route" />
@@ -366,7 +406,3 @@ class RouteForm extends React.Component {
 }
 
 export default RouteForm;
-
-
-
-

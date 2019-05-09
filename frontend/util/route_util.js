@@ -12,19 +12,23 @@ export const fetchRoute = id => (
   })
 );
 
-export const createRoute = route => (
+export const createRoute = formData => (
   $.ajax({
     method: "POST",
     url: `/api/routes/`,
-    data: { route }
+    data: formData ,
+    contentType: false,
+    processData: false
   })
 );
 
-export const updateRoute = route => (
+export const updateRoute = formData => (
   $.ajax({
     method: "PATCH",
-    url: `/api/routes/${route.id}`,
-    data: { route }
+    url: `/api/routes/${formData.get('route[id]')}`,
+    data: formData,
+    contentType: false,
+    processData: false
   })
 );
 

@@ -85,6 +85,11 @@ input[type=submit]:hover, button:hover{
   background: $color-blue-hover;
 }
 
+input[type=file] {
+  background: $color-light-grey;
+  padding: 10px;
+}
+
 a {
   color: $color-blue;
   text-decoration: none;
@@ -114,4 +119,8 @@ p {
 
 .form-component {
   margin-bottom: 20px;
+}
+
+.baseline {
+  align-items: baseline;
 }

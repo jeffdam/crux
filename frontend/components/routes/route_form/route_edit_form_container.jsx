@@ -26,6 +26,7 @@ const mapStateToProps = (state, ownProps) => {
       description: route.description,
       location: route.location,
       toprope: route.toprope,
+      photos: []
     };
     area = state.entities.areas[route.areaId];
   }

@@ -129,9 +129,8 @@ li .area-show-header-path-link:hover {
 .show-photos {
   display: flex;
   flex-flow: row wrap;
-  align-content: space-between;
+  // align-content: space-between;
   margin: auto;
-  // justify-content: space-between;
 }
 
 .show-photos-photo {

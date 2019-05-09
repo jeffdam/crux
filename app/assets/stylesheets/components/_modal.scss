@@ -24,7 +24,7 @@
   padding: 10px;
   -webkit-animation: scrollDown 0.4s;
   animation: scrollDown 0.5s;
-  overflow-y: auto;
+  overflow: auto;
   display: flex;
   flex-direction: column;
 }

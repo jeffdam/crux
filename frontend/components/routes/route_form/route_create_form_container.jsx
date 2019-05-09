@@ -23,6 +23,7 @@ const mapStateToProps = (state, ownProps) => {
       description: "", 
       location: "",
       toprope: false,
+      photos: []
     },
     errors: state.errors.route,
     formType: "create"
