@@ -43,7 +43,7 @@ class RouteShow extends React.Component {
       <section className="area-show-page main-width main-padding">
         <RouteShowSidebar neighborRouteIds={route.neighborRouteIds} routes={routes} areaName={areaPath.slice(-1)[0].name} routeId={routeId} />
         <article className="area-show-main-content">
-          <RouteShowHeader areaPath={areaPath} route={route} handleDropdown={(type) => this.handleDropdown(type)} handleAddPhotosModal={this.handleAddPhotosModal} />
+          <RouteShowHeader areaPath={areaPath} route={route} handleDropdown={(type) => this.handleDropdown(type)} handleAddPhotosModal={this.handleAddPhotosModal} currentUser={currentUser} />
           <div className="attr-slides flex-row">
             <RouteShowAttributes route={route} author={author} />
             <AreaShowSlideshow photos={route.photoUrls} />
@@ -58,3 +58,6 @@ class RouteShow extends React.Component {
 
 
 export default RouteShow;
+
+
+

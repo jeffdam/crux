@@ -17,7 +17,7 @@ const RouteShowHeader = ({ route, areaPath, currentUser, handleDropdown, handleA
       </div>
       <div id="area-show-dropdown-content-edit" className="area-show-dropdown-content">
         <div className="flex-col">
-          <Link className="area-show-dropdown-content-item" to={`/areas/${route.id}/edit`}>Edit Route</Link>
+          <Link className="area-show-dropdown-content-item" to={`/routes/${route.id}/edit`}>Edit Route</Link>
         </div>
       </div>
     </div>
