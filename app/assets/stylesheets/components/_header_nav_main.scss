@@ -1,6 +1,6 @@
 .header-main {
   background: black;
-  padding: 10px 20px ;
+  padding: 20px ;
 }
 
 .header-container {
@@ -9,6 +9,10 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+.header-container * {
+  color: white;
 }
 
 .header-right-buttons {
@@ -51,6 +55,6 @@
 }
 
 .username {
-  color: white;
   margin: 0 20px 0 0;
 }
+

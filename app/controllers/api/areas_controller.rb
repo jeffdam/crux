@@ -7,7 +7,10 @@ class Api::AreasController < ApplicationController
   end
 
   def index
-    @areas = Area.includes(:sub_areas).where(parent_id: nil)
+    @areas = Area.includes(:sub_areas).with_attached_photos.where(parent_id: nil)
+    areas_photos = []
+    @areas.each { |area| areas_photos.concat(area.photos) }
+    @photos = areas_photos.sample(5)
   end
 
   def show

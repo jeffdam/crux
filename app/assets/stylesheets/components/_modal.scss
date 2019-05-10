@@ -22,9 +22,10 @@
   background: white;
   border-radius: 5px;
   padding: 10px;
+  box-sizing: border-box;
   -webkit-animation: scrollDown 0.4s;
   animation: scrollDown 0.5s;
-  overflow: auto;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
 }

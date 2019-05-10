@@ -4,7 +4,7 @@ const SessionButtons = ({ currentUser, logout, openModal }) => {
 
   const logoutButton = () => (
     <div className="username-logout-button">
-      <h4 className="username">Welcome, {currentUser.username}</h4>
+      <h4 className="username">Currently logged in as {currentUser.username}.</h4>
       <button className="session-button" onClick={logout}>Log Out</button>
     </div>
   )

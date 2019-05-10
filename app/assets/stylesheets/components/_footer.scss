@@ -5,7 +5,11 @@
   background: black;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 25px;
+}
 
+.footer-container img {
+  height: 50px;
+  margin: 10px;
 }
