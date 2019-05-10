@@ -29,7 +29,8 @@ class AreaShowSlideshow extends React.Component {
     
     return (
       <div className="slideshow">
-        <img src={window.images.photoTemplate} alt=""/>
+        {/* <img src={window.images.photoTemplate} alt="TEST"/> */}
+        <img src={photos[0]} alt=""/>
       </div>
     );
   }
