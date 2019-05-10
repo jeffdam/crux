@@ -90,7 +90,7 @@ const RouteFinderResults = ({ areas, routes, searchParams }) => {
     )
   } else {
     return (
-      <div className="">
+      <div className="route-finder-results">
         <h1>Search Results</h1>
         <ul key="route-finder-table-header" className="route-finder-info flex-row flex-end">
           <li className="route-finder-info-name"><h4>Route Name</h4></li>
