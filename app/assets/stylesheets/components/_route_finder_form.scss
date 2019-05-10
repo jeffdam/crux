@@ -1,5 +1,25 @@
 .route-finder-form {
   width: 300px;
   background: $color-light-grey;
-  padding: 10px;
+  padding: 20px;
+} 
+
+.route-finder-form-component {
+  margin: 5px 0;
+}
+
+.route-finder-form h4 {
+  margin: 5px 0;;
+}
+
+.route-finder-form-rgrade > * {
+  margin-right: 10px;
+}
+
+.route-finder-form-rgrade select {
+  margin-top: 5px;
+}
+
+.route-finder-form input[type=checkbox] {
+  margin: 0 5px 0 10px;
 }

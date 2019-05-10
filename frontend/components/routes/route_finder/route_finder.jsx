@@ -14,6 +14,7 @@ class RouteFinder extends React.Component {
     const { routes, areas } = this.props;
 
     if (routes.length === 0) return null;
+
     
     let searchParams = queryString.parse(this.props.location.search);
     if (!searchParams.pitches) {

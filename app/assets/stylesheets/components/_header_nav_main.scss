@@ -1,6 +1,6 @@
 .header-main {
   background: black;
-  padding: 20px ;
+  padding: 20px 20px;
 }
 
 .header-container {
@@ -57,4 +57,22 @@
 .username {
   margin: 0 20px 0 0;
 }
+
+.header-left {
+  @extend .flex-row;
+  align-items: center;
+}
+
+.header-nav a {
+  padding: 10px;
+  margin: 0px 50px;
+}
+.header-nav a:hover {
+  padding: 10px;
+  color: white;
+  border-radius: 1px;
+  background: rgb(58, 58, 58);
+}
+
+
 

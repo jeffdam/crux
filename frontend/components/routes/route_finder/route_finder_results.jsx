@@ -68,16 +68,17 @@ const RouteFinderResults = ({ areas, routes, searchParams }) => {
     ropeGradeSearch(route) && 
     pitchSearch(route)
   );
-
+  
   const routesList = filteredResults.map((route, idx) => {
     const area = areas[route.areaId];
     const tr = route.toprope ? ", TR" : "";
+    const safety = route.safety === "G" ? "" : route.safety;
     const grey = idx % 2 === 0 ? "grey" : "";
     return (
       <ul key={route.id} className={`route-finder-info flex-row ${grey}`}>
         <li className="route-finder-info-name"><Link to={`/routes/${route.id}`}>{route.name}</Link></li>
         <li className="route-finder-info-name"><Link to={`/areas/${area.id}`}>{area.name}</Link></li>
-        <li className="route-finder-info-attr">{route.grade}{` ${route.safety}`}</li>
+        <li className="route-finder-info-attr">{route.grade}{` ${safety}`}</li>
         <li className="route-finder-info-attr">{route.routeType}{tr}</li>
         <li className="route-finder-info-attr">{route.pitches}</li>
       </ul>

@@ -68,7 +68,7 @@ button {
     height: 18px;
 }
 ::-webkit-scrollbar-thumb {
-    height: 6px;
+    min-height:  50px;
     border: 4px solid rgba(0, 0, 0, 0);
     background-clip: padding-box;
     -webkit-border-radius: 7px;
