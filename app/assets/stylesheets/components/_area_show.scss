@@ -106,7 +106,11 @@ li .area-show-header-path-link:hover {
   min-width: 100px;
   padding: 10px 20px;
   border: 1px solid rgb(213, 212, 212);
-  z-index: 1;
+  z-index: 100;
+}
+
+#area-show-dropdown-content-addPhoto {
+  margin-top: 16px;
 }
 
 .dropdown-content-show {
