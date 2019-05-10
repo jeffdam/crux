@@ -133,12 +133,13 @@ li .area-show-header-path-link:hover {
 .show-photos {
   display: flex;
   flex-flow: row wrap;
+  align-content: center;
 }
 
 .show-photos-photo {
   width: 200px;
   height: 150px;
-  margin: 10px auto;
+  margin: 10px 15px;
   background: $color-light-grey;
   display: flex;
   justify-content: center;

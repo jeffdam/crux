@@ -77,7 +77,7 @@ const RouteFinderResults = ({ areas, routes, searchParams }) => {
     return (
       <ul key={route.id} className={`route-finder-info flex-row ${grey}`}>
         <li className="route-finder-info-name"><Link to={`/routes/${route.id}`}>{route.name}</Link></li>
-        <li className="route-finder-info-name"><Link to={`/areas/${area.id}`}>{area.name}</Link></li>
+        <li className="route-finder-info-name"><Link to={`/areas/${route.areaId}`}>{area.name}</Link></li>
         <li className="route-finder-info-attr">{route.grade}{` ${safety}`}</li>
         <li className="route-finder-info-attr">{route.routeType}{tr}</li>
         <li className="route-finder-info-attr">{route.pitches}</li>

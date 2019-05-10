@@ -7,7 +7,8 @@ const areaReducer = (oldState = {}, action) => {
   let newState;
   switch (action.type) {
     case RECEIVE_AREAS:
-      return action.areas;
+      newState = merge({}, oldState, action.areas);
+      return newState;
     case RECEIVE_AREA:
       newState = merge({}, oldState, action.areas);
       return newState;

@@ -38,7 +38,7 @@ class UploadPhotosForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="upload-photos-form">
         <h3>Upload Photos</h3>
         <h4>Guidelines</h4>
         <ul>
