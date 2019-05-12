@@ -67,7 +67,7 @@ PHOTO_DATA = [
   {key: "action-adult-adventure-946337.jpg", byte_size: 528200, checksum: "3793337b19fb01357c374614f0101a44"},
   {key: "adult-adventure-climb-23385.jpg", byte_size: 275500, checksum: "72d49df369b8052ed731a2ef8c52d874"},
   {key: "adventure-challenge-climb-1340510.jpg", byte_size: 106000, checksum: "e20165e3d5d5ce8cc23555a66abc19d6"},
-  {key: "adventure-climb-climber-256894.jpg", byte_size: 50400 checksum: "4fbf78d7709bf27cb54f3bb51a2024e1"},
+  {key: "adventure-climb-climber-256894.jpg", byte_size: 50400, checksum: "4fbf78d7709bf27cb54f3bb51a2024e1"},
   {key: "climb-2296308_1280.jpg", byte_size: 680300, checksum: "531d5994f93cf4ffce5571eb39e3e096"},
   {key: "climb-2805903_1280.jpg", byte_size: 562600, checksum: "83b284ea85394913c4f393641ac0f8ab"},
   {key: "climbing-1761386_1280.jpg", byte_size: 240300, checksum: "924483ccea3d49df4ad35dbdaa2062b2"},
@@ -124,7 +124,7 @@ end
 count1 = 50
 
 (1..50).each do |i| 
-  (rand(3..5)).times do 
+  (rand(3..4)).times do 
     area = Area.create({
     parent_id: i,
     author_id: rand(3..32),
