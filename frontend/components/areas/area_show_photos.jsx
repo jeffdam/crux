@@ -37,7 +37,7 @@ class AreaShowPhotos extends React.Component {
       toggleButton = <button onClick={this.truncateToggle} className="toggle-button">Show Fewer Photos</button>;
     } else {
       photoUrlArray = photos.slice(0,4);
-      toggleButton = <button onClick={this.truncateToggle} className="toggle-button">Show {photos.length-8} More Photos</button>;
+      toggleButton = <button onClick={this.truncateToggle} className="toggle-button">Show {photos.length-4} More Photos</button>;
     }
 
     const photosList = photoUrlArray.map((photoUrl, idx) => {

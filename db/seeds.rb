@@ -99,7 +99,7 @@ end
 def generate_photos
   photos = PHOTOS.dup
   add_photos = []
-  rand(2..5).times do
+  rand(4..5).times do
     z = rand(0...photos.length)
     photo_to_add = photos[z]
     add_photos.push(photo_to_add)
