@@ -144,7 +144,7 @@ no_sub_area_id = count1
 no_sub_area = []
 
 (51..count1).each do |i| 
-  (rand(3..4)).times do 
+  3.times do 
     area = Area.create({
     parent_id: i,
     author_id: rand(2..32),
