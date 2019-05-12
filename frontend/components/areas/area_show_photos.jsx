@@ -30,21 +30,21 @@ class AreaShowPhotos extends React.Component {
 
     if (photos.length === 0) {
       return null;
-    } else if (photos.length <= 8) {
+    } else if (photos.length <= 4) {
       photoUrlArray = photos;
     } else if (expanded) {
       photoUrlArray = photos;
       toggleButton = <button onClick={this.truncateToggle} className="toggle-button">Show Fewer Photos</button>;
     } else {
-      photoUrlArray = photos.slice(0,8);
+      photoUrlArray = photos.slice(0,4);
       toggleButton = <button onClick={this.truncateToggle} className="toggle-button">Show {photos.length-8} More Photos</button>;
     }
 
     const photosList = photoUrlArray.map((photoUrl, idx) => {
       return (
         <li key={idx} className="show-photos-photo">
-          {/* <img src={window.images.photoTemplate} alt="test" /> */}
-          <img src={photoUrl} alt={`photo-${idx}`} />
+          <img src={window.images.photoTemplate} alt="test" />
+          {/* <img src={photoUrl} alt={`photo-${idx}`} /> */}
         </li>
       )
     })

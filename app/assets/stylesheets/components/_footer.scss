@@ -1,15 +1,24 @@
 .footer-main {
   background: black;
 }
+
+.footer-main img {
+
+}
+
+
 .footer-container {
   background: black;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 25px;
 }
 
 .footer-container img {
   height: 50px;
   margin: 10px;
+}
+.footer-container img:hover {
+    opacity: 0.75;
 }

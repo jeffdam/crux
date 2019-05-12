@@ -9,13 +9,8 @@ The project was designed and built within a two-week timeframe, though I plan to
 
 Features
 ------
-* Secure frontend to backend user authentication using BCrypt.
-* Users can create and edit stories using a Quill-enabled rich text editor.
-* Feed dynamically adapts to display all published stories in an appealing way.
-* Users can comment on posts and edit their responses directly on the page.
-* Users can like posts and follow other users.
-* Stories support images and animated GIFs.
-* Adaptive Feed
+* Secure frontend to backend user authentication using
+BCrypt.
 
 Areas and Routes
 ------

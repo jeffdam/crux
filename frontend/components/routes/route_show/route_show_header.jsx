@@ -36,7 +36,7 @@ const RouteShowHeader = ({ route, areaPath, currentUser, handleDropdown, handleA
           <h1>{route.name}</h1>
           <div className="route-show-header-left-sub">
             <h2>{route.grade}</h2>
-            
+            &nbsp;
             <h2>{routeSafety}</h2>
           </div> 
         </div>
