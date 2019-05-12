@@ -124,7 +124,7 @@ end
 count1 = 50
 
 (1..50).each do |i| 
-  (rand(3..4)).times do 
+  3.times do 
     area = Area.create({
     parent_id: i,
     author_id: rand(3..32),
@@ -235,7 +235,7 @@ end
   rand_n = rand(0...no_sub_area.length)
   toprope_rand = [ true, false, false ].sample
 
-  (rand(3..4)).times do
+  3.times do
     length_rand = rand(50..200)
     pitches_rand = length_rand/100 + 1
 
@@ -273,7 +273,7 @@ TRAD_PRO = [
   rand_n = rand(0...no_sub_area.length)
   toprope_rand = [ true, false, false, false, false ].sample
 
-  (rand(3..4)).times do
+  3.times do
     length_rand = rand(50..3000)
     pitches_rand = length_rand/100 + 1
 
@@ -325,7 +325,7 @@ BOULDER_LOC = [
 
 
 no_sub_area.each do |area_id|
-  (rand(3..4)).times do
+  3.times do
     length_rand = rand(10..30)
     Route.create({
       name: Faker::Hipster.words(2).join(" ").titleize, 
