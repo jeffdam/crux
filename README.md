@@ -27,12 +27,10 @@ The project was designed and built within a two-week timeframe, though I plan to
 * Secure frontend to backend user authentication using
 BCrypt.
 * Implemented modal with smooth transition for styling.
-<br>
 <img src="./app/assets/images/user_auth.gif" width="40%">
 * Only logged in users can create areas and routes.
 * Only the author of the area or route can edit it. 
 * When a user tries to create an area or route, if they are not logged in, they will be promted with the login modal.
-<br>
 <img src="./app/assets/images/protected_route.gif" width="40%">
 
 ### Areas and Routes
