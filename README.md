@@ -1,37 +1,52 @@
-Crux
-Live Demo
-======
+# Crux
+
 [Live Demo](https://crux-fsp.herokuapp.com/#/)
 
 Crux, a Mountain Project clone, is a web app that allows users to find rock climbing routes, photos, and guides throughout the world. It makes use of a Rails/PostgreSQL backend with React.js and Redux on the frontend.
 
 The project was designed and built within a two-week timeframe, though I plan to continue adding improvements over time.
 
-Features
-------
+## Technologies
+
+### Back end
+
+* Ruby 2.5.1
+* Rails 5.2.3
+* PostgreSQL
+
+### Front end
+
+* React
+* Redux
+* Javascript/ES6
+
+## Features
+
+### User Auth
+
 * Secure frontend to backend user authentication using
 BCrypt.
+* Implemented modal with smooth transition for styling.
 
-Areas and Routes
-------
+![user auth screenshot](./app/assets/images/user_auth.gif | width=100) 
 
-Uploading Photos
-------
+### Areas and Routes
 
-Route Finder
-------
 
-Project Design
-------
+### Uploading Photos
 
-Possible Future Features
-------
+
+### Route Finder
+
+
+## Possible Future Features
+
 In the future I would like to add:
+* Area and route comments [In Progress]
 * More robust route finder
-* Area and route comments
-* Photo information and comments
 * Allow users to add routes to a tick list (to-do list)
 * Allow users to tick of routes (mark as complete)
 * Allow users to rate routes
 * User dashboard
+* Photo information and comments
 * Forum
