@@ -64,7 +64,6 @@ def areaPath(parent_id)
 end
 ```
 
-
 Area show page sidebars will change based on if the area contains subareas, routes, or neither.
 
 <img src="./app/assets/images/readme_img/area_show_sidebar_subareas.png" width="30%">
@@ -76,15 +75,26 @@ Subareas in the sidebar contain links to the area and lists the number of routes
 Routes in the sidebar contain links to the route and lists their grade and safety rating if less than "G".
 
 <img src="./app/assets/images/readme_img/area_show_sidebar_new.png" width="30%">
-*Areas that do not contain subareas or routes contain links to add one or the other.*
+
+Areas that do not contain subareas or routes contain links to add one or the other.
 
 ### Routes
 
-### Uploading Photos
+### Photos
 
+Users can upload photos while creating areas or routes and directly on the area and route show pages.
+
+<img src="./app/assets/images/readme_img/photo_upload.gif" width="80%">
+
+Photos appear on the show page and will truncate after 4 photos. A button will appear when there are more than four photos and when clicked will reveal the hidden images.
+
+<img src="./app/assets/images/readme_img/photo_reveal.gif" width="80%">
 
 ### Route Finder
 
+Route finder is a search feature that will narrow down climbing routes based on the contraints you give it.
+
+<img src="./app/assets/images/readme_img/route_finder.gif" width="80%">
 
 ## Possible Future Features
 
