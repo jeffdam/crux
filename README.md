@@ -48,7 +48,9 @@ Only the author of the area or route can edit it. The link to edit the page will
 
 ### Areas
 
-Area show pages contain the route data, a description of the climbing area, instructions on how to get to the area, photos of the area, and a sidebar of the subareas or routes contained within the area.
+Area show pages contain the area data, a description of the climbing area, instructions on how to get to the area, photos of the area, and a sidebar of the subareas or routes contained within the area.
+
+When logged in, users can create new subareas and edit subareas they posted.
 
 <img src="./app/assets/images/readme_img/area_show.png" width="80%">
 
@@ -79,6 +81,12 @@ Routes in the sidebar contain links to the route and lists their grade and safet
 Areas that do not contain subareas or routes contain links to add one or the other.
 
 ### Routes
+
+Route show pages share many of the same features on area show pages. Route show pages contain the route data, a description of the route, a description of the route location, photos of the route, and a sidebar of the neigboring routes.
+
+When logged in, users can create new routes and edit routes they posted.
+
+<img src="./app/assets/images/readme_img/route_show.png" width="80%">
 
 ### Photos
 
