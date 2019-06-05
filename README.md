@@ -61,7 +61,7 @@ Above the area title, there are links to the ancestors of the area. This was ach
 ```ruby
 def areaPath(parent_id)
   return [] if parent_id == nil 
-  area=Area.find(parent_id)
+  area = Area.find(parent_id)
   return areaPath(area.parent_id).concat([area])
 end
 ```
@@ -82,7 +82,7 @@ Areas that do not contain subareas or routes contain links to add one or the oth
 
 ### Routes
 
-Route show pages share many of the same features on area show pages. Route show pages contain the route data, a description of the route, a description of the route location, photos of the route, and a sidebar of the neigboring routes.
+Route show pages share many of the same features as area show pages. Route show pages contain the route data, a description of the route, a description of the route location, photos of the route, and a sidebar of the neigboring routes.
 
 When logged in, users can create new routes and edit routes they posted.
 
