@@ -20,21 +20,42 @@ The project was designed and built within a two-week timeframe, though I plan to
 * Redux
 * Javascript/ES6
 
+### Other tools
+
+* AWS for image storage and uploading
+* Webpack
+
 ## Features
+
+---
+
+### Homepage
+
+Users are immediately taken to a list of climbing areas sorted by state. In the top navigation, users can navigate to the Route Finder, log in, or sign up. Each area in the list has the number of routes contained within them. A count of the total number of routes on the website is tracked next to the list header. These counts update themselves when a new route is created.
+
+<img src="./app/assets/images/readme_img/crux_homepage.png" width="90%">
 
 ### User Auth and Protected Routes
 
-* Secure frontend to backend user authentication using
-BCrypt.
-* Implemented modal with smooth transition for styling.
-<img src="./app/assets/images/user_auth.gif" width="40%">
-* Only logged in users can create areas and routes.
-* Only the author of the area or route can edit it. 
-* When a user tries to create an area or route, if they are not logged in, they will be promted with the login modal.
-<img src="./app/assets/images/protected_route.gif" width="40%">
+Frontend to backend user authentication is secured using BCrypt. The log in and sign up forms are implemented with a modal for a smooth transition.
 
-### Areas and Routes
+<img src="./app/assets/images/readme_img/user_auth.gif" width="80%">
 
+Only logged in users can create areas and routes. Only the author of the area or route can edit it. When a user tries to create an area or route and they are not logged in, they will be promted with the login modal.
+
+<img src="./app/assets/images/readme_img/protected_route.gif" width="80%">
+
+### Areas
+
+<img src="./app/assets/images/readme_img/area_show.png" width="80%">
+
+Area show page sidebars will change based on if the area contains subareas, routes, or neither.
+
+<img src="./app/assets/images/readme_img/area_show_sidebar_subareas.png" width="30%">
+<img src="./app/assets/images/readme_img/area_show_sidebar_routes.png" width="30%">
+<img src="./app/assets/images/readme_img/area_show_sidebar_new.png" width="30%">
+
+### Routes
 
 ### Uploading Photos
 
