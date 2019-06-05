@@ -27,8 +27,6 @@ The project was designed and built within a two-week timeframe, though I plan to
 
 ## Features
 
----
-
 ### Homepage
 
 Users are immediately taken to a list of climbing areas sorted by state. In the top navigation, users can navigate to the Route Finder, log in, or sign up. Each area in the list has the number of routes contained within them. A count of the total number of routes on the website is tracked next to the list header. These counts update themselves when a new route is created.
@@ -41,9 +39,12 @@ Frontend to backend user authentication is secured using BCrypt. The log in and 
 
 <img src="./app/assets/images/readme_img/user_auth.gif" width="80%">
 
-Only logged in users can create areas and routes. Only the author of the area or route can edit it. When a user tries to create an area or route and they are not logged in, they will be promted with the login modal.
+Only logged in users can create areas and routes. When a user tries to create an area or route and they are not logged in, they will be promted with the login modal. Users who attempt view `/add/climb-area/areaId` or `/add/climb-route/areaId` directly while logged out will be redirected to the show page of the area they are attempting to add to.
 
 <img src="./app/assets/images/readme_img/protected_route.gif" width="80%">
+
+Only the author of the area or route can edit it. The link to edit the page will only appear if the user is logged in and is the author. Users who attempt view `/area/areaId/edit` or `/route/routeId/edit` directly while logged out and/or who is not the author will be redirected to the show page of the area or route they are attempting to add to.
+
 
 ### Areas
 
