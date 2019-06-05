@@ -48,13 +48,35 @@ Only the author of the area or route can edit it. The link to edit the page will
 
 ### Areas
 
+Area show pages contain the route data, a description of the climbing area, instructions on how to get to the area, photos of the area, and a sidebar of the subareas or routes contained within the area.
+
+<img src="./app/assets/images/readme_img/area_show_parent_links.png" width="40%">
+
+Above the title of the area, there area links to the ancestors of the area. This was achieved using a recursive method.
+
 <img src="./app/assets/images/readme_img/area_show.png" width="80%">
+
+```ruby
+def areaPath(parent_id)
+  return [] if parent_id == nil 
+  area=Area.find(parent_id)
+  return areaPath(area.parent_id).concat([area])
+end
+```
 
 Area show page sidebars will change based on if the area contains subareas, routes, or neither.
 
 <img src="./app/assets/images/readme_img/area_show_sidebar_subareas.png" width="30%">
+
+Subareas in the sidebar contain links to the area and lists the number of routes it contains.
+
 <img src="./app/assets/images/readme_img/area_show_sidebar_routes.png" width="30%">
+
+Routes in the sidebar contain links to the route and lists their grade and safety rating if less than "G".
+
 <img src="./app/assets/images/readme_img/area_show_sidebar_new.png" width="30%">
+
+Areas that do not contain subareas or routes contain links to add one or the other.
 
 ### Routes
 
