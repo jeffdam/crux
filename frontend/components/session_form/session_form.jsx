@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { closeModal } from '../../actions/modal_actions';
 
 class SessionForm extends React.Component {
   constructor(props) {
