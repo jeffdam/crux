@@ -63,7 +63,7 @@ class AreaShow extends React.Component {
       <div className="dropdown">
         <div onClick={() => this.handleDropdown('edit')} className="flex-row">
           <a className="area-show-dropdown-button">Improve This Page</a>&nbsp;
-                  <img height="6" src={window.images.downArrow} alt="Down Arrow"></img>
+            <img height="6" src={window.images.downArrow} alt="Down Arrow"></img>
         </div>
         <div id="area-show-dropdown-content-edit" className="area-show-dropdown-content">
           <div className="flex-col show-dropdown-items">
