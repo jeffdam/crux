@@ -57,7 +57,7 @@ class AreaShow extends React.Component {
 
     const parentLinks = area.parents.map(parent => (
       <li key={parent.id}>&nbsp;>&nbsp;<Link  to={`/areas/${parent.id}`}>{parent.name}</Link></li>
-    ))
+    ));
     
     const improvePageLink = currentUser === area.authorId ? (
       <div className="dropdown">
@@ -74,35 +74,33 @@ class AreaShow extends React.Component {
     ) : "";
     
     const addToPageContents = (area.subAreaIds.length === 0 && area.routeIds.length === 0) ? 
-        (
-          <>
-            <Link
-              className="area-show-dropdown-content-item"
-              to={`/add/climb-area/${area.id}`}
-              onClick={this.handleAddSubArea}
-            >Add Sub-Area</Link>
-            <Link
-              className="area-show-dropdown-content-item"
-              to={`/add/climb-route/${area.id}`}
-              onClick={this.handleAddRoute}
-            >Add Route</Link>
-          </>
-      ) : area.subAreaIds.length > 0 ? (
+      (
+        <>
           <Link
             className="area-show-dropdown-content-item"
             to={`/add/climb-area/${area.id}`}
             onClick={this.handleAddSubArea}
           >Add Sub-Area</Link>
-        ) : (
           <Link
             className="area-show-dropdown-content-item"
             to={`/add/climb-route/${area.id}`}
             onClick={this.handleAddRoute}
           >Add Route</Link>
-        )
+        </>
+    ) : area.subAreaIds.length > 0 ? (
+      <Link
+        className="area-show-dropdown-content-item"
+        to={`/add/climb-area/${area.id}`}
+        onClick={this.handleAddSubArea}
+      >Add Sub-Area</Link>
+    ) : (
+      <Link
+        className="area-show-dropdown-content-item"
+        to={`/add/climb-route/${area.id}`}
+        onClick={this.handleAddRoute}
+      >Add Route</Link>
+    );
 
-
-        
     return (
       <section className="area-show-page main-width main-padding">
         <AreaShowSidebar 
