@@ -51,7 +51,7 @@ class AreaShow extends React.Component {
   }
 
   render(){
-    const { area, author, subAreas, routes, parents, currentUser } = this.props;
+    const { area, author, subAreas, routes, currentUser } = this.props;
 
     if (!area || !area.authorId) return null;
 
@@ -59,7 +59,7 @@ class AreaShow extends React.Component {
       <li key={parent.id}>&nbsp;>&nbsp;<Link  to={`/areas/${parent.id}`}>{parent.name}</Link></li>
     ))
     
-    const improvePageLink = this.props.currentUser === area.authorId ? (
+    const improvePageLink = currentUser === area.authorId ? (
       <div className="dropdown">
         <div onClick={() => this.handleDropdown('edit')} className="flex-row">
           <a className="area-show-dropdown-button">Improve This Page</a>&nbsp;
@@ -72,7 +72,6 @@ class AreaShow extends React.Component {
         </div>
       </div>
     ) : "";
-      // <Link className="area-show-dropdown-content-item" to={`/`}>Suggest Change</Link>;
     
     const addToPageContents = (area.subAreaIds.length === 0 && area.routeIds.length === 0) ? 
         (
@@ -106,7 +105,6 @@ class AreaShow extends React.Component {
         
     return (
       <section className="area-show-page main-width main-padding">
-        
         <AreaShowSidebar 
           subAreas={subAreas} 
           routes={routes} 
@@ -117,22 +115,15 @@ class AreaShow extends React.Component {
           handleAddSubArea={this.handleAddSubArea}
           handleAddRoute={this.handleAddRoute}
         />
-   
-
         <article className="area-show-main-content">
-
           <ul className="area-show-header-path-link">
             <li><Link to="/">All Locations</Link></li>
             {parentLinks}
           </ul>
-
           <div className="area-show-header">
             <h1>{area.name} Climbing</h1>
             <div className="area-show-options">
-
-
               {improvePageLink}
-
               <div className="dropdown">
                 <div onClick={() => this.handleDropdown('add')} className="flex-row">
                   <a className="area-show-dropdown-button">Add to Page</a>&nbsp;
