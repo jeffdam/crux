@@ -137,16 +137,16 @@ class AreaShow extends React.Component {
             </div>
           </div>
           <div className="attr-slides flex-row">
-            <AreaShowAttributes area={area} author={author}/>
-            <AreaShowSlideshow photos={area.photoUrls}/>
           </div>
           <div className="area-show-main-info">
+            <AreaShowSlideshow photos={area.photoUrls}/>
+            <AreaShowAttributes area={area} author={author}/>
             <h2>Description</h2>
             <p>{area.description}</p>
             <h2>Getting There</h2>
             <p>{area.gettingThere}</p>
-            <AreaShowPhotos photos={area.photoUrls} handleAddPhotosModal={this.handleAddPhotosModal}/>
           </div>
+          <AreaShowPhotos photos={area.photoUrls} handleAddPhotosModal={this.handleAddPhotosModal}/>
         </article>
       </section>
     )
