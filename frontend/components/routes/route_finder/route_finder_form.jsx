@@ -141,7 +141,6 @@ class RouteFinderForm extends React.Component {
             <option value="3">At least 3 pitches</option>
             <option value="4">At least 4 pitches</option>
             <option value="5">At least 5 pitches</option>
-            <option value="6">At least 6 pitches</option>
             <option value="10">At least 10 pitches</option>
             <option value="20">At least 20 pitches</option>
           </select>
