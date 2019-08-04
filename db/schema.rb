@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_07_035407) do
+ActiveRecord::Schema.define(version: 2019_08_04_063710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2019_05_07_035407) do
     t.string "first_ascensionist"
     t.date "first_ascent_date"
     t.string "length", null: false
-    t.string "pitches", null: false
+    t.integer "pitches", null: false
     t.string "protection", null: false
     t.text "description", null: false
     t.datetime "created_at", null: false

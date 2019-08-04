@@ -97,7 +97,12 @@ const RouteFinderResults = ({ areas, routes, searchParams }) => {
   } else {
     return (
       <div className="route-finder-results">
-        <h1>Search Results</h1>
+        <div className="flex-row baseline">
+          <h1>Search Results</h1>
+          <div>&nbsp;&nbsp;
+            {`(${filteredResults.length} results found)`}
+          </div>
+        </div>
         <ul key="route-finder-table-header" className="route-finder-info flex-row flex-end">
           <li className="route-finder-info-name"><h4>Route Name</h4></li>
           <li className="route-finder-info-name"><h4>Route Area</h4></li>
