@@ -52,7 +52,6 @@ const RouteFinderResults = ({ areas, routes, searchParams }) => {
     }
   };
   const pitchSearch = route => {
-
     return (parseInt(route.pitches) >= parseInt(searchParams.pitches));
   };
 
@@ -61,15 +60,21 @@ const RouteFinderResults = ({ areas, routes, searchParams }) => {
     return ropeGrades.slice(minRopeGradeIdx, maxRopeGradeIdx).includes(ropeGrade);
   };
 
-
   const filteredResults = routes.filter(route =>
-    typeSearch(route) &&
-    topropeSearch(route) &&
-    ropeGradeSearch(route) && 
-    pitchSearch(route)
+      typeSearch(route) &&
+      topropeSearch(route) &&
+      ropeGradeSearch(route) &&
+      pitchSearch(route)
   );
-  
-  const routesList = filteredResults.map((route, idx) => {
+
+  const sortedResults = () => {
+    let sortParams = (a, b) => {
+      return a[searchParams.sort_by] < b[searchParams.sort_by] ? -1 : 1;
+    };
+    return filteredResults.sort(sortParams);
+  };
+
+  const routesList = sortedResults().map((route, idx) => {
     const area = areas[route.areaId];
     const tr = route.toprope ? ", TR" : "";
     const safety = route.safety === "G" ? "" : route.safety;

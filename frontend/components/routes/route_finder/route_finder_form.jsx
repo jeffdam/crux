@@ -22,8 +22,8 @@ class RouteFinderForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // this.props.history.push(`/route-finder?location=${location}&is_b=${is_b}&is_t=${is_t}&is_s=${is_s}&is_tr=${is_tr}&b_grade_min=${b_grade_min}&b_grade_max=${b_grade_max}&pitches=${pitches}&sort_by=${sort_by}`);
-    this.props.history.push(`/route-finder?is_b=${this.state.is_b}&is_t=${this.state.is_t}&is_s=${this.state.is_s}&is_tr=${this.state.is_tr}&r_grade_min=${this.state.r_grade_min}&r_grade_max=${this.state.r_grade_max}&pitches=${this.state.pitches}`);
+    const {is_b, is_t, is_tr, is_s, r_grade_min, r_grade_max, pitches, sort_by} = this.state;
+    this.props.history.push(`/route-finder?is_b=${is_b}&is_t=${is_t}&is_s=${is_s}&is_tr=${is_tr}&r_grade_min=${r_grade_min}&r_grade_max=${r_grade_max}&pitches=${pitches}&sort_by=${sort_by}`);
   }
 
   update(field) {
@@ -145,7 +145,17 @@ class RouteFinderForm extends React.Component {
             <option value="20">At least 20 pitches</option>
           </select>
         </section>
-
+        <section className="route-finder-form-component">
+          <h4>Sort</h4>
+          <select onChange={this.update("sort_by")}>
+            <option value="name">--</option>
+            <option value="name">By Name</option>
+            <option value="areaId">By Area</option>
+            <option value="grade">By Grade</option>
+            <option value="routeType">By Type</option>
+            <option value="pitches">By Pitches</option>
+          </select>
+        </section>
         <input type="submit" value="Find Routes"/>
       </form>
     )
