@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="icon" type="image/png" sizes="32x32" href="./app/assets/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./app/assets/images/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= image_url('favicon-32x32.png') %>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= image_url('favicon-16x16.png') %>">
     <title>Crux | Rock Climbing Guides</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,7 +11,6 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
-
   <body>
     <%= yield %>
   </body>
