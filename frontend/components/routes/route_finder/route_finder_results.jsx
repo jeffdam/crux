@@ -69,7 +69,13 @@ const RouteFinderResults = ({ areas, routes, searchParams }) => {
 
   const sortedResults = () => {
     let sortParams = (a, b) => {
-      return a[searchParams.sort_by] < b[searchParams.sort_by] ? -1 : 1;
+      if (searchParams.sort_by === "grade") {
+        let aGrade = a.grade[2] === "1" && a.grade[3] ? a[searchParams.sort_by].slice(2) : "0" + a[searchParams.sort_by].slice(2);
+        let bGrade = b.grade[2] === "1" && b.grade[3] ? b[searchParams.sort_by].slice(2) : "0" + b[searchParams.sort_by].slice(2);
+        return aGrade < bGrade ? -1 : 1;
+      } else {
+        return a[searchParams.sort_by] < b[searchParams.sort_by] ? -1 : 1;
+      }
     };
     return filteredResults.sort(sortParams);
   };
