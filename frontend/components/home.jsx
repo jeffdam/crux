@@ -9,6 +9,8 @@ const Home = () => (
     <AreasIndexHeader />
     <div className="home-header">
       <div>
+        <h3>Route Finder</h3>
+        <p>Tell us what you like, we'll tell you what to climb!</p>
         <RouteFinderForm />
       </div>
     </div>

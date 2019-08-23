@@ -105,10 +105,10 @@ class RouteFinderForm extends React.Component {
               <input id="s" onChange={this.update('s')} type="checkbox" value='true'/>
               Sport
             </label>
-            <label>
+            {/* <label>
               <input id="b" onChange={this.update('b')} type="checkbox" value='true'/>
               Boulder
-            </label>
+            </label> */}
             <label>
               <input id="tr" onChange={this.update('tr')} type="checkbox" value='true'/>
               Top Rope
