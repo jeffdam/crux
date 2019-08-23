@@ -6,10 +6,10 @@
 
 .area-index-header {
   align-items: baseline;
-}
 
-.area-index-header p {
-  margin: 0px 10px;
+  p {
+    margin: 0px 10px;
+  }
 }
 
 .area-index-area-component {
@@ -33,12 +33,11 @@
 .area-index-row {
  @extend .flex-row;
  align-items: baseline;
-}
 
-.area-index-row a {
-  display: block;
-  white-space:nowrap;
-
+  a {
+    display: block;
+    white-space:nowrap;
+  }
 }
 
 .area-index-dotted-border {
