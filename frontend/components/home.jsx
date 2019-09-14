@@ -14,6 +14,7 @@ const Home = () => (
         <p>Tell us what you like, we'll tell you what to climb!</p>
         <RouteFinderForm />
       </div>
+      <RouteRandomListContainer />
     </div>
 
     <AreasIndexContainer />

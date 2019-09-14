@@ -16,7 +16,6 @@ const routeReducer = (oldState = {}, action) => {
       return newState;
     case RECEIVE_AREAS:
       newState = merge({}, oldState, action.routes);
-      debugger
       return newState;
     case REMOVE_ROUTE:
       newState = merge({}, oldState);
