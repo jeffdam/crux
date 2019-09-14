@@ -14,7 +14,6 @@ class RouteRandomList extends React.Component {
 
   render() {
     const { routes } = this.props;
-    if (routes === {}) return null;
     const routeLinks = Object.values(routes).map((route, idx) => {
       return (
         <li key={idx}>

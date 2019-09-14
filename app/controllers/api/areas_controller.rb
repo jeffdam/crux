@@ -11,7 +11,7 @@ class Api::AreasController < ApplicationController
     areas_photos = []
     @areas.each { |area| areas_photos.concat(area.photos) }
     @photos = areas_photos.sample(5)
-    @routes = Route.all.sample(10)
+    @routes = Route.last(10)
   end
 
   def show
