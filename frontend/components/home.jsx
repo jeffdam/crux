@@ -14,6 +14,7 @@ const Home = () => (
         <RouteFinderForm />
       </div>
     </div>
+    
     <AreasIndexContainer />
   </section>
 );
