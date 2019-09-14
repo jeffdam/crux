@@ -2,6 +2,7 @@ import React from 'react';
 import AreasIndexContainer from './areas/areas_index_container';
 import AreasIndexHeader from './areas/areas_index_header';
 import RouteFinderForm from './routes/route_finder/route_finder_form';
+import RouteRandomListContainer from './routes/route_header/route_random_list_container';
 
 
 const Home = () => (
@@ -14,7 +15,7 @@ const Home = () => (
         <RouteFinderForm />
       </div>
     </div>
-    
+
     <AreasIndexContainer />
   </section>
 );
