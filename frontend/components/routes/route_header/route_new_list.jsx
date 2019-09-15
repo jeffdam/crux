@@ -38,7 +38,7 @@ class RouteNewList extends React.Component {
     return (
 
       <section className="new-routes-list-main">
-        <h3>Check Out These New Routes</h3>
+        <h3>Recently Added Routes</h3>
         <ul className="new-routes-list">
           <li>
             <ul className="new-routes-list-info">
