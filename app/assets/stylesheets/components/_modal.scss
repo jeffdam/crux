@@ -78,30 +78,29 @@
   cursor: pointer;
   line-height: 0.5;
   margin-bottom: 10px;
-}
 
-.modal-exit-button:hover {
-  color: rgb(185, 185, 185)
+  &:hover {
+    color: rgb(185, 185, 185)
+  }
 }
 
 .upload-photos-form {
   padding: 0 20px 20px 20px;
   box-sizing: border-box;
-}
 
-.upload-photos-form input[type=file] {
-  width: 100%;
-  margin: 5px 0 10px 0;
-  box-sizing: border-box;
-}
+  input[type=file] {
+    width: 100%;
+    margin: 5px 0 10px 0;
+    box-sizing: border-box;
+  }
+  
+  li {
+    list-style: disc inside;
+    line-height: 1.2;
+  }
 
-.upload-photos-form > *{
-  margin: 10px 0;
-  width: 100%;
+  > *{
+    margin: 10px 0;
+    width: 100%;
+  }
 }
-
-.upload-photos-form li {
-  list-style: disc inside;
-  line-height: 1.2;
-}
-
