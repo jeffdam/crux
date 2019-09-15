@@ -1,0 +1,14 @@
+.new-routes-list {
+  > li:nth-child(even) {
+    background: $color-light-grey;
+  }
+}
+
+.new-routes-list-info {
+  @extend .flex-row;
+  li {
+    line-height: 30px;
+    width: 200px;
+    text-overflow: ellipsis;
+  }
+}

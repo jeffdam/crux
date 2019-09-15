@@ -6,12 +6,16 @@ class Api::AreasController < ApplicationController
     return areaPath(area.parent_id).concat([area])
   end
 
+  def render_not_found
+    render :file => "#{RAILS_ROOT}/public/404.html",  :status => 404
+  end
+
   def index
     @areas = Area.includes(:sub_areas).with_attached_photos.where(parent_id: nil)
     areas_photos = []
     @areas.each { |area| areas_photos.concat(area.photos) }
     @photos = areas_photos.sample(5)
-    @routes = Route.last(10)
+    @routes = Route.includes(:area).last(10)
   end
 
   def show

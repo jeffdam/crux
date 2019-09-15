@@ -1,4 +1,4 @@
-import RouteRandomList from "./route_random_list";
+import RouteNewList from "./route_new_list";
 import { connect } from 'react-redux';
 
 const mapStateToProps = ({ entities }) => {
@@ -13,4 +13,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(RouteRandomList);
+export default connect(mapStateToProps, mapDispatchToProps)(RouteNewList);
