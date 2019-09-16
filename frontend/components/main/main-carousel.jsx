@@ -25,6 +25,12 @@ class MainCarousel extends React.Component {
     this.setState({ currentPhoto: nextPhotoIndex });
   }
 
+  selectPhoto(photo){
+    clearInterval(this.interval);
+    this.changePhoto(photo);
+    this.interval = setInterval(this.changePhoto, 5000);
+  }
+
   render() {
     const { photos } = this.props;
     if (photos.length === 0) return null;
@@ -33,11 +39,11 @@ class MainCarousel extends React.Component {
       <div className="main-carousel">
         <img src={photos[this.state.currentPhoto]} alt="photo" />
         <ul className="carousel-dots">
-          <li id="dot-0" onClick={() => this.changePhoto(0)} className="checked-dot"></li>
-          <li id="dot-1" onClick={() => this.changePhoto(1)}></li>
-          <li id="dot-2" onClick={() => this.changePhoto(2)}></li>
-          <li id="dot-3" onClick={() => this.changePhoto(3)}></li>
-          <li id="dot-4" onClick={() => this.changePhoto(4)}></li>
+          <li id="dot-0" onClick={() => this.selectPhoto(0)} className="checked-dot"></li>
+          <li id="dot-1" onClick={() => this.selectPhoto(1)}></li>
+          <li id="dot-2" onClick={() => this.selectPhoto(2)}></li>
+          <li id="dot-3" onClick={() => this.selectPhoto(3)}></li>
+          <li id="dot-4" onClick={() => this.selectPhoto(4)}></li>
         </ul>
       </div>
     );
