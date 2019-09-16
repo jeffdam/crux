@@ -1,11 +1,11 @@
 .area-index-header {
   @extend .flex-row;
   align-items: flex-start;
-  padding: 20px 0;
+  padding: 20px 0 0 0;
 }
 
 .new-routes-list-main {
-  padding: 20px;
+  margin-left: 20px;
 }
 
 .new-routes-list {
@@ -16,17 +16,25 @@
 
 .new-routes-list-info {
   @extend .flex-row;
+
   li {
-    line-height: 30px;
-    width: 125px;
+    line-height: 25px;
+    overflow: hidden;
+    white-space: nowrap;
     text-overflow: ellipsis;
     padding: 0 10px;
+  }
+
+  li:nth-child(1), li:nth-child(2)  {
+    width: 100px;
+  }
+  li:nth-child(3), li:nth-child(4) {
+    width: 50px;
   }
 }
 
 .main-carousel {
   height: 300px;
-  width: 500px;
   background: red;
   margin-right: 20px;
   

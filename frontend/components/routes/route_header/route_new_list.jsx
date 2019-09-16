@@ -18,10 +18,10 @@ class RouteNewList extends React.Component {
       return (
         <li key={idx}>
           <ul className="new-routes-list-info">
-            <li>
+            <li title={route.name}>
               <Link to={`/routes/${route.id}`}>{route.name}</Link>
             </li>
-            <li>
+            <li title={route.area.name}>
               <Link to={`/areas/${route.area.id}`}>{route.area.name}</Link>
             </li>
             <li>

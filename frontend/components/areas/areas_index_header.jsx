@@ -7,7 +7,7 @@ const AreasIndexHeader = props => {
   
   return (
     <div className="main-width area-index-header">
-      <MainCarousel photos={Object.values(window.images.slideshow)} />
+      <MainCarousel photos={Object.values(window.images.slideshow)} />     
       <div>
         <h3>Route Finder</h3>
         <p>Tell us what you like, we'll tell you what to climb!</p>
