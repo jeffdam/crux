@@ -17,3 +17,45 @@
     padding: 0 10px;
   }
 }
+
+.main-carousel {
+  height: 300px;
+  width: 533px;
+  background: red;
+  
+  img {
+    height: 100%;
+    object-fit: fill;
+  }
+
+}
+
+.carousel-dots {
+  @extend .flex-row;
+  justify-content: center;
+  position: relative;
+  top: -30px;
+
+  li {
+    content: "Check";
+    background: $color-light-grey;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    border: 1px solid black;
+    box-sizing: border-box;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  
+  li + li {
+    margin-left: 5px;
+  }
+  
+  .checked-dot {
+    background: black;
+    border: 1px solid $color-light-grey;
+  }
+}
