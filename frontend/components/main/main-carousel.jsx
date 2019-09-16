@@ -4,25 +4,25 @@ class MainCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      photo: 0
+      currentPhoto: 0,
+      numPhotos: this.props.photos.length
     };
 
     this.changePhoto = this.changePhoto.bind(this);
   }
 
   componentDidMount() {
-    this.interval = setInterval(this.changePhoto, 10000);
+    this.interval = setInterval(this.changePhoto, 5000);
   }
 
   componentWillUnmount() {
     clearInterval(this.interval);
   }
 
-  changePhoto(next){
-    document.getElementById(`dot-${this.state.photo}`).classList.remove("checked-dot");
-    const nextPhotoIndex = next || (this.state.photo + 1) % this.props.photos.length;
+  changePhoto(nextPhotoIndex = ((this.state.currentPhoto + 1) % this.state.numPhotos)){
+    document.getElementById(`dot-${this.state.currentPhoto}`).classList.remove("checked-dot");
     document.getElementById(`dot-${nextPhotoIndex}`).classList.add("checked-dot");
-    this.setState({ photo: nextPhotoIndex });
+    this.setState({ currentPhoto: nextPhotoIndex });
   }
 
   render() {
@@ -31,7 +31,7 @@ class MainCarousel extends React.Component {
 
     return (
       <div className="main-carousel">
-        <img src={photos[this.state.photo]} alt="photo" />
+        <img src={photos[this.state.currentPhoto]} alt="photo" />
         <ul className="carousel-dots">
           <li id="dot-0" onClick={() => this.changePhoto(0)} className="checked-dot"></li>
           <li id="dot-1" onClick={() => this.changePhoto(1)}></li>

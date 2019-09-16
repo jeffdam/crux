@@ -23,7 +23,7 @@ class AreasIndex extends React.Component {
     
     return (
       <div className="area-index-page main-width main-padding ">
-        <div className="area-index-header blue-line flex-row">
+        <div className="area-index-list-header blue-line flex-row">
           <h2 >Rock Climbing Guide</h2>
           <p>{totalRouteCount.toLocaleString()} Routes Shared by Climbers Like You</p>
         </div>

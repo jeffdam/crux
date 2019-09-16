@@ -1,3 +1,9 @@
+.area-index-header {
+  @extend .flex-row;
+  align-items: flex-start;
+  padding: 20px 0;
+}
+
 .new-routes-list-main {
   padding: 20px;
 }
@@ -20,14 +26,15 @@
 
 .main-carousel {
   height: 300px;
-  width: 533px;
+  width: 500px;
   background: red;
+  margin-right: 20px;
   
   img {
     height: 100%;
-    object-fit: fill;
+    width: 100%;
+    object-fit: cover;
   }
-
 }
 
 .carousel-dots {
