@@ -18,7 +18,7 @@
   @extend .flex-row;
 
   li {
-    line-height: 25px;
+    line-height: 34px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -34,7 +34,7 @@
 }
 
 .main-carousel {
-  height: 300px;
+  height: 410px;
   margin-right: 20px;
   
   img {
