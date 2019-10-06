@@ -14,7 +14,6 @@ import RouteFinderContainer from './routes/route_finder/route_finder_container';
 const App = () => (
   <div className="app">
     <Modal />
-    
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/route-finder" component={RouteFinderContainer}/>
