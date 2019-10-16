@@ -33,7 +33,7 @@ class MainCarousel extends React.Component {
 
   render() {
     const { photos } = this.props;
-    if (photos.length === 0) return null;
+    if (photos.length === 0) return null; 
 
     return (
       <div className="main-carousel">
