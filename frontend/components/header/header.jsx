@@ -1,7 +1,6 @@
 import React from 'react';
 import SessionButtonsContainer from './session_buttons_container';
-import { Link, NavLink } from 'react-router-dom';
-// import RouteFinderForm from '../routes/route_finder/route_finder_form';
+import { Link } from 'react-router-dom';
 
 const Header = () => (
   <div>
