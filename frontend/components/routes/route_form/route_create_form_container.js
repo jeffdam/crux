@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import RouteForm from './route_form';
 import { openModal } from '../../../actions/modal_actions';

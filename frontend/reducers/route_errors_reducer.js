@@ -1,5 +1,4 @@
 import { RECEIVE_ROUTE, RECEIVE_ROUTE_ERRORS } from "../actions/route_action";
-import { merge } from "lodash";
 
 const routeErrorsReducer = (oldState = [], action) => {
   Object.freeze(oldState);

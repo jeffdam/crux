@@ -1,7 +1,6 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import UploadPhotosForm from './upload_photos_form';
-import { closeModal, openModal } from '../../actions/modal_actions';
+import { closeModal } from '../../actions/modal_actions';
 import { updateArea } from '../../actions/area_action';
 import { updateRoute } from '../../actions/route_action';
 import { withRouter } from 'react-router-dom';

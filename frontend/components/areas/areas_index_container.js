@@ -1,4 +1,3 @@
-import React from 'react';
 import AreaIndex from './areas_index';
 import { connect } from 'react-redux';
 import { fetchAreas } from '../../actions/area_action';

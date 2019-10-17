@@ -1,5 +1,4 @@
 import { RECEIVE_AREA, RECEIVE_AREA_ERRORS } from "../actions/area_action";
-import { merge } from "lodash";
 
 const areaErrorsReducer = (oldState = [], action) => {
   Object.freeze(oldState);

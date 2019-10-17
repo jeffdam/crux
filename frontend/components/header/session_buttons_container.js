@@ -1,4 +1,3 @@
-import React from 'react';
 import SessionButtons from './session_buttons';
 import {connect} from 'react-redux';
 import {logout} from '../../actions/session_actions';

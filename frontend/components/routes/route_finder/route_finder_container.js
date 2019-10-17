@@ -1,5 +1,3 @@
-
-import React from 'react';
 import { fetchRoutes } from '../../../actions/route_action';
 import RouteFinder from './route_finder';
 import { connect } from 'react-redux';
