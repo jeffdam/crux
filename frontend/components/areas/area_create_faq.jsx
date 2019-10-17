@@ -44,7 +44,7 @@ export default () => {
     <h3>How do I add a route?</h3>
     <p>
       First, make sure the appropriate sub - area exists for this route - usually 
-      a named crag.You may need to create the sub - area first.From the area page, 
+      a named crag. You may need to create the sub - area first. From the area page, 
       click 'Add to Page' on the top right and add your route.
     </p>
     <h3>What should I know about copyrighted material?</h3>

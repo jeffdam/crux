@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { updateArea, fetchArea } from '../../actions/area_action';
 import AreaForm from './area_form';
