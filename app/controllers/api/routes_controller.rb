@@ -43,6 +43,10 @@ class Api::RoutesController < ApplicationController
     @route = Route.find(params[:id])
   end
 
+  def route_finder 
+    @routes = Route.includes(:area).all
+  end
+
   private
   
   def route_params
