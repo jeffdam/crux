@@ -22,7 +22,7 @@
 #
 
 class Route < ApplicationRecord
-  validates :name, :route_type, :author_id, :area_id, :grade, :safety, :length, :pitches, :protection, :description, :location, presence: true
+  validates :name, :route_type, :author_id, :area_id, :rope_grade, :boulder_grade, :safety, :length, :pitches, :protection, :description, :location, presence: true
   validates :toprope, inclusion: { in: [ true, false ] }
 
   belongs_to :author,
