@@ -14,7 +14,7 @@ class AreasIndex extends React.Component {
     
     const parent_areas = areas.map((area, idx) => (
         <AreasIndexItem key={idx} area={area} />
-    ))
+    ));
     
     let totalRouteCount = 0;
     areas.forEach(area => {
