@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getGrade } from '../../../util/route_info_util';
 
 const RouteNewList = (props) => {
   const { routes } = props;
   const routeLinks = Object.values(routes).map((route, idx) => {
+    const safety = route.safety !== "G" ? ` ${route.safety}` : "";
+    const grade = getGrade(route.ropeGrade, route.boulderGrade);
     return (
       <li key={idx}>
         <ul className="new-routes-list-info">
@@ -13,8 +16,8 @@ const RouteNewList = (props) => {
           <li title={route.area.name}>
             <Link to={`/areas/${route.area.id}`}>{route.area.name}</Link>
           </li>
-          <li>
-            {route.grade}
+          <li title={grade + safety}>
+            {grade + safety}
           </li>
           <li>
             {route.routeType}

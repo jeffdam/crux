@@ -29,4 +29,12 @@ const ROUTE_TYPE_OPTIONS = [
   { type: "Trad", label: "Trad - most people use some trad gear. There may also be bolts."},
   { type: "Boulder", label: "Boulder - climbing without the use of ropes or harnesses."},
   { type: "Other", label: "Other - TR (but not trad or sport), snow route, etc."},
-]
+];
+
+export const getGrade = (ropeGrade, boulderGrade) => {
+  if (ropeGrade > -1 && boulderGrade > -1) {
+    return ROPE_GRADES[ropeGrade] + " " + BOULDER_GRADES[boulderGrade];
+  } else {
+    return ROPE_GRADES[ropeGrade] || BOULDER_GRADES[boulderGrade];
+  }
+};
