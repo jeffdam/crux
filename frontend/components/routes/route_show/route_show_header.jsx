@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getGrade } from '../../../util/route_info_util';
 
 const RouteShowHeader = ({ route, areaPath, currentUser, handleDropdown, handleAddPhotosModal}) => {
   
@@ -8,6 +9,7 @@ const RouteShowHeader = ({ route, areaPath, currentUser, handleDropdown, handleA
   ))
 
   const routeSafety = route.safety === "G" ? "" : route.safety;
+  const grade = getGrade(route.ropeGrade, route.boulderGrade);
 
   const improvePageLink = currentUser === route.authorId ? (
     <div className="dropdown">
@@ -35,7 +37,7 @@ const RouteShowHeader = ({ route, areaPath, currentUser, handleDropdown, handleA
         <div className="route-show-header-left">
           <h1>{route.name}</h1>
           <div className="route-show-header-left-sub">
-            <h2>{route.grade}</h2>
+            <h2>{grade}</h2>
             &nbsp;
             <h2>{routeSafety}</h2>
           </div> 
