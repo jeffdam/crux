@@ -47,6 +47,10 @@ class Api::RoutesController < ApplicationController
     @routes = Route.includes(:area).all
   end
 
+  def recently_added_routes
+    @routes = Route.includes(:area).last(10)
+  end
+
   private
   
   def route_params

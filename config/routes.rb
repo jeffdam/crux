@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :areas, only: [:index, :create, :show, :update]
     resources :routes, only: [:index, :create, :show, :update] do
+      get 'recently_added_routes', on: :collection
       get 'route_finder', on: :collection
     end
   end
