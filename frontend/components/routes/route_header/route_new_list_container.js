@@ -8,9 +8,4 @@ const mapStateToProps = ({ entities }) => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(RouteNewList);
+export default connect(mapStateToProps)(RouteNewList);

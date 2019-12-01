@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getGrade } from '../../util/route_info_util';
 
 const AreaShowSidebar = ({ subAreaIds, subAreas, routeIds, routes, areaName, areaId, handleAddSubArea, handleAddRoute}) => {
   
@@ -25,12 +26,13 @@ const AreaShowSidebar = ({ subAreaIds, subAreas, routeIds, routes, areaName, are
   } else {
     titleText = `Routes in ${areaName}`;
     subInfo = routeIds.map((routeId) => {
-      let route = routes[routeId]
-      let type = route.routeType === "Sport" ? "S" : route.routeType === "Trad" ? "T" : "";
-      let typeWithToprope = route.toprope === true && !(type === "") ? `${type},TR` : route.toprope === true ? "TR" : type;
-      let safety = route.safety === "G" ? "" : route.safety;
+      const route = routes[routeId]
+      const type = route.routeType === "Sport" ? "S" : route.routeType === "Trad" ? "T" : "";
+      const typeWithToprope = route.toprope === true && !(type === "") ? `${type},TR` : route.toprope === true ? "TR" : type;
+      const safety = route.safety === "G" ? "" : route.safety;
+      const grade = getGrade(route.ropeGrade, route.boulderGrade);
       return (
-        <li key={routeId}><Link to={`/routes/${routeId}`}>{route.name}</Link> {`${typeWithToprope} ${route.grade} ${safety}`}</li>
+        <li key={routeId}><Link to={`/routes/${routeId}`}>{route.name}</Link> {`${typeWithToprope} ${grade} ${safety}`}</li>
       )
     });   
   }
