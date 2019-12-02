@@ -34,6 +34,11 @@ export const fetchRoutes = () => dispatch => (
     .then(routes => dispatch(receiveRoutes(routes)))
 );
 
+export const fetchRecentlyAddedRoute = () => dispatch => (
+  RouteApiUtil.fetchRecentlyAddedRoute()
+    .then(routes => dispatch(receiveRoutes(routes)))
+);
+
 export const fetchRoute = id => dispatch => (
   RouteApiUtil.fetchRoute(id)
     .then(route => dispatch(receiveRoute(route)))

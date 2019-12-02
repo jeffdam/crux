@@ -12,6 +12,12 @@ export const fetchRoute = id => (
   })
 );
 
+export const fetchRecentlyAddedRoute = () =>
+  $.ajax({
+    method: "GET",
+    url: `/api/routes/recently_added_routes`
+  });
+
 export const createRoute = formData => (
   $.ajax({
     method: "POST",
