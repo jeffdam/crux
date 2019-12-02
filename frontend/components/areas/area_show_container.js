@@ -8,10 +8,7 @@ const mapStateToProps = ({entities, session}, ownProps) => {
 
   const area = entities.areas[ownProps.match.params.areaId];
   
-  let author;
-  let routes = {};
-  let subAreas = {};
-  let parents;
+  let author, routes = {}, subAreas = {}, parents;
   
   if (area && area.authorId) {
     author = entities.users[area.authorId];
@@ -25,11 +22,11 @@ const mapStateToProps = ({entities, session}, ownProps) => {
   }
   
   return {
-    area: area,
-    author: author,
-    subAreas: subAreas,
-    routes: routes,
-    parents: parents,
+    area,
+    author,
+    subAreas,
+    routes,
+    parents,
     currentUser: session.id
   };
 };

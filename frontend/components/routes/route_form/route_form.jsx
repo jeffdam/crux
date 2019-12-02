@@ -54,7 +54,6 @@ class RouteForm extends React.Component {
     Object.keys(this.state).forEach(attribute => {
       formData.append(`route[${attribute}]`, this.state[attribute]);
     });
-    
     for (let i = 0; i < this.state.photos.length; i++) {
       formData.append('route[photos][]', this.state.photos[i]);
     }
