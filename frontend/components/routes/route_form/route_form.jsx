@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ROPE_GRADES, BOULDER_GRADES, ROUTE_SAFETY_OPTIONS, ROUTE_TYPE_OPTIONS } from '../../../util/route_info_util';
+import { getRouteFormErrors } from "../../../util/errors_util";
 
 class RouteForm extends React.Component {
   constructor(props) {
@@ -51,7 +52,6 @@ class RouteForm extends React.Component {
     e.preventDefault();
     const formData = new FormData();
     Object.keys(this.state).forEach(attribute => {
-      console.log(`route[${attribute}]`, this.state[attribute]);
       formData.append(`route[${attribute}]`, this.state[attribute]);
     });
     
@@ -120,37 +120,7 @@ class RouteForm extends React.Component {
       `/routes/${this.props.match.params.routeId}`
       );
 
-    let nameErr = "";
-    let routeErr = "";
-    let gradeErr = "";
-    let safetyErr = "";
-    let lengthErr = "";
-    let pitchesErr = "";
-    let proErr = "";
-    let descErr = "";
-    let locErr = "";
-
-    errors.forEach((error) => {
-      if (error.includes("Name") && nameErr === "") {
-        nameErr = error;
-      } else if (error.includes("Route") && routeErr === "") {
-        routeErr = error;
-      } else if (error.includes("grade") && gradeErr === "") {
-        gradeErr = error;
-      } else if (error.includes("Safety") && safetyErr === "") {
-        safetyErr = error;
-      } else if (error.includes("Length") && lengthErr === "") {
-        lengthErr = error;
-      } else if (error.includes("Pitches") && pitchesErr === "") {
-        pitchesErr = error;
-      } else if (error.includes("Protection") && proErr === "") {
-        proErr = error;
-      } else if (error.includes("Description") && descErr === "") {
-        descErr = error;
-      } else if (error.includes("Location") && locErr === "") {
-        locErr = error;
-      }
-    });
+    const formErrors = getRouteFormErrors(errors);
 
     return (
       <div className="form-page main-padding">
@@ -161,7 +131,7 @@ class RouteForm extends React.Component {
         <form className="route-form-main" onSubmit={this.handleSubmit}>
           
           <div className="form-component">
-            <h3>Route Name</h3><div className="errors">{nameErr}</div>
+            <h3>Route Name</h3><div className="errors">{formErrors.name}</div>
             <input 
               type="text" 
               onChange={this.update('name')} 
@@ -189,7 +159,7 @@ class RouteForm extends React.Component {
 
           <div className="flex-row">
             <div className="form-component">
-              <h3>Length in Feet</h3><div className="errors">{lengthErr}</div>
+              <h3>Length in Feet</h3><div className="errors">{formErrors.length}</div>
               <input 
                 type="number" 
                 onChange={this.update('length')} 
@@ -200,7 +170,7 @@ class RouteForm extends React.Component {
             </div>
 
             <div className="form-component">
-              <h3>Pitches</h3><div className="errors">{pitchesErr}</div>
+              <h3>Pitches</h3><div className="errors">{formErrors.pitches}</div>
               <input 
                 type="number" 
                 onChange={this.update('pitches')} 
@@ -213,7 +183,7 @@ class RouteForm extends React.Component {
           </div>
           <div className="flex-row route-form-route-grade-safety">
             <div className="form-component">
-              <h3>Route Type</h3><div className="errors">{routeErr}</div>
+              <h3>Route Type</h3><div className="errors">{formErrors.route}</div>
               <div className="flex-col route-form-route-type">
                 <h4>Type</h4>
                 {typeInput}
@@ -232,7 +202,7 @@ class RouteForm extends React.Component {
             
             <div>
               <div className="route-form-grade"> 
-                <h3>Grade</h3><div className="errors">{gradeErr}</div>
+                <h3>Grade</h3><div className="errors">{formErrors.grade}</div>
                 <div className="flex-row">
                   <div className="form-component">
                     <h4>Rope Grade</h4>
@@ -254,7 +224,7 @@ class RouteForm extends React.Component {
 
 
               <div className="form-component">
-                <h3>Safety</h3><div className="errors">{safetyErr}</div>
+                <h3>Safety</h3><div className="errors">{formErrors.safety}</div>
                 <select defaultValue={route.safety} onChange={this.update("safety")}>
                   <option disabled value="">-- Select one --</option>
                   {safetyOptionInput}
@@ -264,7 +234,7 @@ class RouteForm extends React.Component {
           </div>
           
           <div className="form-component">
-            <h3>Description</h3><div className="errors">{descErr}</div>
+            <h3>Description</h3><div className="errors">{formErrors.description}</div>
             <textarea 
               onChange={this.update('description')}
               value={route.description} 
@@ -275,7 +245,7 @@ class RouteForm extends React.Component {
           </div>
 
           <div className="form-component">
-            <h3>Location</h3><div className="errors">{locErr}</div>
+            <h3>Location</h3><div className="errors">{formErrors.location}</div>
             <textarea
               onChange={this.update('location')}
               value={route.location}
@@ -286,7 +256,7 @@ class RouteForm extends React.Component {
           </div>
 
           <div className="form-component">
-            <h3>Protection</h3><div className="errors">{proErr}</div>
+            <h3>Protection</h3><div className="errors">{formErrors.protection}</div>
             <textarea
               onChange={this.update('protection')}
               value={route.protection}
