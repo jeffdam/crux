@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { ROPE_GRADES, BOULDER_GRADES, ROUTE_SAFETY_OPTIONS, ROUTE_TYPE_OPTIONS } from '../../../util/route_info_util';
 
 class RouteForm extends React.Component {
   constructor(props) {
@@ -10,7 +11,6 @@ class RouteForm extends React.Component {
   }
 
   componentDidMount() {
-    
     if (this.props.match.path === "/add/climb-route/:areaId") {
       this.props.fetchArea(this.props.match.params.areaId);
       this.props.openModalFAQ();
@@ -20,7 +20,6 @@ class RouteForm extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-
     if (this.props.match.path === "/add/climb-route/:areaId") {
       if (prevProps.match.params.areaId !== this.props.match.params.areaId) {
         this.props.fetchArea(this.props.match.params.areaId);
@@ -33,7 +32,6 @@ class RouteForm extends React.Component {
         this.props.history.push(`/routes/${this.props.match.params.routeId}`);
       }
     }
-
     if (!this.state) this.setState(this.props.route);
   }
 
@@ -44,40 +42,18 @@ class RouteForm extends React.Component {
 
   update(field) {
     return (e) => {
-      if (field === "ropeGrade" || field === "boulderGrade") {
-        const ropeGrade = document.getElementById('selectedRopeGrade') ? document.getElementById('selectedRopeGrade').value : "";
-        const boulderGrade = document.getElementById('selectedBoulderGrade') ? document.getElementById('selectedBoulderGrade').value : "";
-        return this.setState({ ['grade']: ropeGrade + " " + e.target.value + " " + boulderGrade});
-      } else if (field === "toprope") {
-        if (document.getElementById("toprope").checked) {
-          this.setState({ [field]: true });
-        } else {
-          this.setState({ [field]: false });
-        }
-      } else {
-        return this.setState({ [field]: e.target.value });
-      }
+      const value = field === "toprope" ? document.getElementById("toprope").checked : e.target.value;
+      return this.setState({ [field]: value });
     };
   }
   
   handleSubmit(e) {
     e.preventDefault();
-
     const formData = new FormData();
-
-    formData.append('route[area_id]', this.state.area_id);
-    formData.append('route[author_id]', this.state.author_id);
-    formData.append('route[name]', this.state.name);
-    formData.append('route[route_type]', this.state.route_type);
-    formData.append('route[grade]', this.state.grade);
-    formData.append('route[safety]', this.state.safety);
-    formData.append('route[first_ascensionist]', this.state.first_ascensionist);
-    formData.append('route[first_ascent_date]', this.state.first_ascent_date);
-    formData.append('route[length]', this.state.length);
-    formData.append('route[pitches]', this.state.pitches);
-    formData.append('route[protection]', this.state.protection);
-    formData.append('route[description]', this.state.description);
-    formData.append('route[location]', this.state.location);
+    Object.keys(this.state).forEach(attribute => {
+      console.log(`route[${attribute}]`, this.state[attribute]);
+      formData.append(`route[${attribute}]`, this.state[attribute]);
+    });
     
     for (let i = 0; i < this.state.photos.length; i++) {
       formData.append('route[photos][]', this.state.photos[i]);
@@ -86,14 +62,7 @@ class RouteForm extends React.Component {
     if (this.props.match.path === "/routes/:routeId/edit") {
       formData.append('route[id]', this.state.id);
     }
-    
-    if (document.getElementById("toprope").checked) {
-      formData.append(`route[toprope]`, true);
-    } else {
-      formData.append(`route[toprope]`, false);
-    }
 
-    
     this.props.formAction(formData)
       .then(({ routeId }) => this.props.history.push(`/routes/${routeId}`));
   } 
@@ -101,18 +70,9 @@ class RouteForm extends React.Component {
   render() {
     const { area, errors } = this.props;
     const route = this.state;
-    
-    if (!area) return null;
-    if (!route) return null;
-    
-    const routeTypeOptions = [
-      { type: "Sport", label: "Sport - most people lead with just quickdraws."},
-      { type: "Trad", label: "Trad - most people use some trad gear. There may also be bolts."},
-      { type: "Boulder", label: "Boulder - climbing without the use of ropes or harnesses."},
-      { type: "Other", label: "Other - TR (but not trad or sport), snow route, etc."},
-    ]
+    if (!area || !route) return null;
 
-    const typeInput = routeTypeOptions.map(typeOption => {
+    const typeInput = ROUTE_TYPE_OPTIONS.map(typeOption => {
       const checkedType = (route.route_type === typeOption.type) ? "checked" : "";
       return (
         <label key={typeOption.type}>
@@ -127,59 +87,25 @@ class RouteForm extends React.Component {
       )
     })
 
-    const ropeGrades = [
-      "5.0", "5.1", "5.2", "5.3", "5.4", "5.5", "5.6", 
-      "5.7-", "5.7", "5.7+", "5.8-", "5.8", "5.8+", "5.9-", "5.9", "5.9+", 
-      "5.10-", "5.10a", "5.10a/b", "5.10b", "5.10b/c", "5.10c", "5.10c/d", "5.10d", "5.10+", 
-      "5.11-", "5.11a", "5.11a/b", "5.11b", "5.11b/c", "5.11c", "5.11c/d", "5.11d", "5.11+",
-      "5.12-", "5.12a", "5.12a/b", "5.12b", "5.12b/c", "5.12c", "5.12c/d", "5.12d", "5.12+", 
-      "5.13-", "5.13a", "5.13a/b", "5.13b", "5.13b/c", "5.13c", "5.13c/d", "5.13d", "5.13+", 
-      "5.14-", "5.14a", "5.14a/b", "5.14b", "5.14b/c", "5.14c", "5.14c/d", "5.14d", "5.14+", 
-      "5.15-", "5.15a", "5.15a/b", "5.15b", "5.15b/c", "5.15c", "5.15c/d", "5.15d", "5.15+", 
-      "5.16"
-    ]
-
-    let ropeGradeDefaultVal;    
-    const ropeGradeInput = ropeGrades.map(ropeGrade => {
-      if (route.grade.includes(ropeGrade)) {
-        ropeGradeDefaultVal = ropeGrade
-      }
+    const ropeGradeInput = ROPE_GRADES.map((ropeGrade, idx) => {
       return (
         <option 
           key={ropeGrade}
-          value={ropeGrade}
+          value={idx}
         >{ropeGrade}</option>
       )
     })
 
-    const boulderGrades = [
-      "VB", "V0-", "V0", "V0+", "V1-", "V1", "V1+", "V2-", "V2", "V2+", "V3-", "V3", "V3+", "V4-", "V4",
-      "V4+", "V5-", "V5", "V5+", "V6-", "V6", "V6+", "V7-", "V7", "V7+", "V8-", "V8", "V8+", "V9-", "V9",
-      "V9+", "V10-", "V10", "V10+", "V11-", "V11", "V11+", "V12-", "V12", "V12+", "V13-", "V13", "V13+",
-      "V14-", "V14", "V14+", "V15-", "V15", "V15+", "V16-", "V16", "V16+", "V17-", "V17", "V17+",
-    ]
-
-    let boulderGradeDefaultVal; 
-    const boulderGradeInput = boulderGrades.map(boulderGrade => {
-      if (route.grade.includes(boulderGrade)) {
-        boulderGradeDefaultVal = boulderGrade
-      }
+    const boulderGradeInput = BOULDER_GRADES.map((boulderGrade, idx) => {
       return (
         <option
           key={boulderGrade}
-          value={boulderGrade}
+          value={idx}
         >{boulderGrade}</option>
       )
     })
 
-    const safetyOptions = [
-      { type: "G", label: "G - Good protection" },
-      { type: "PG-13", label: "PG-13 - Slightly runout" },
-      { type: "R", label: "R - A fall could be dangerous"},
-      { type: "X", label: "X - A fall could be your last"}
-    ]
-
-    const safetyOptionInput = safetyOptions.map(safetyOption => {
+    const safetyOptionInput = ROUTE_SAFETY_OPTIONS.map(safetyOption => {
       return (
         <option
           key={safetyOption.type}
@@ -209,7 +135,7 @@ class RouteForm extends React.Component {
         nameErr = error;
       } else if (error.includes("Route") && routeErr === "") {
         routeErr = error;
-      } else if (error.includes("Grade") && gradeErr === "") {
+      } else if (error.includes("grade") && gradeErr === "") {
         gradeErr = error;
       } else if (error.includes("Safety") && safetyErr === "") {
         safetyErr = error;
@@ -285,9 +211,7 @@ class RouteForm extends React.Component {
               />
             </div>
           </div>
-
           <div className="flex-row route-form-route-grade-safety">
-
             <div className="form-component">
               <h3>Route Type</h3><div className="errors">{routeErr}</div>
               <div className="flex-col route-form-route-type">
@@ -312,16 +236,16 @@ class RouteForm extends React.Component {
                 <div className="flex-row">
                   <div className="form-component">
                     <h4>Rope Grade</h4>
-                    <select defaultValue={ropeGradeDefaultVal} onChange={this.update("ropeGrade")}>
-                      <option value="">--</option>
+                    <select defaultValue={route.rope_grade} onChange={this.update("rope_grade")}>
+                      <option value={-1}>--</option>
                       {ropeGradeInput}
                     </select>
                   </div>
 
                   <div className="form-component">
                     <h4>Boulder Grade</h4>
-                    <select defaultValue={boulderGradeDefaultVal} onChange={this.update("boulderGrade")}>
-                      <option value="">--</option>
+                    <select defaultValue={route.boulder_grade} onChange={this.update("boulder_grade")}>
+                      <option value={-1}>--</option>
                       {boulderGradeInput}
                     </select>
                   </div>

@@ -24,6 +24,7 @@
 class Route < ApplicationRecord
   validates :name, :route_type, :author_id, :area_id, :rope_grade, :boulder_grade, :safety, :length, :pitches, :protection, :description, :location, presence: true
   validates :toprope, inclusion: { in: [ true, false ] }
+  validate :route_grade_present
 
   belongs_to :author,
     foreign_key: :author_id,
@@ -38,4 +39,11 @@ class Route < ApplicationRecord
     source: :routes
 
   has_many_attached :photos
+
+  private
+  def route_grade_present
+    if rope_grade == -1 && boulder_grade == -1
+      errors.add(:base, "Must have at least one grade")
+    end
+  end
 end

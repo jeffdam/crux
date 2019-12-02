@@ -1,4 +1,4 @@
-const ROPE_GRADES = [
+export const ROPE_GRADES = [
   "5.0", "5.1", "5.2", "5.3", "5.4", "5.5", "5.6", 
   "5.7-", "5.7", "5.7+", "5.8-", "5.8", "5.8+", "5.9-", "5.9", "5.9+", 
   "5.10a", "5.10-", "5.10a/b", "5.10b", "5.10b/c", "5.10c", "5.10+", "5.10c/d", "5.10d",  
@@ -10,21 +10,21 @@ const ROPE_GRADES = [
   "5.16"
 ];
 
-const BOULDER_GRADES = [
+export const BOULDER_GRADES = [
   "VB", "V0-", "V0", "V0+", "V1-", "V1", "V1+", "V2-", "V2", "V2+", "V3-", "V3", "V3+", "V4-", "V4",
   "V4+", "V5-", "V5", "V5+", "V6-", "V6", "V6+", "V7-", "V7", "V7+", "V8-", "V8", "V8+", "V9-", "V9",
   "V9+", "V10-", "V10", "V10+", "V11-", "V11", "V11+", "V12-", "V12", "V12+", "V13-", "V13", "V13+",
   "V14-", "V14", "V14+", "V15-", "V15", "V15+", "V16-", "V16", "V16+", "V17-", "V17", "V17+",
 ];
 
-const ROUTE_SAFETY_OPTIONS = [
+export const ROUTE_SAFETY_OPTIONS = [
   { type: "G", label: "G - Good protection" },
   { type: "PG-13", label: "PG-13 - Slightly runout" },
   { type: "R", label: "R - A fall could be dangerous" },
   { type: "X", label: "X - A fall could be your last" }
 ];
 
-const ROUTE_TYPE_OPTIONS = [
+export const ROUTE_TYPE_OPTIONS = [
   { type: "Sport", label: "Sport - most people lead with just quickdraws."},
   { type: "Trad", label: "Trad - most people use some trad gear. There may also be bolts."},
   { type: "Boulder", label: "Boulder - climbing without the use of ropes or harnesses."},

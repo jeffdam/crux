@@ -10,7 +10,7 @@ class RouteNewList extends React.Component {
 
   render() {
     const { routes } = this.props;
-    if (routes.length > 10) return null;
+    if (routes.length !== 10) return null;
     const routeLinks = routes.map((route, idx) => {
       const safety = route.safety !== "G" ? ` ${route.safety}` : "";
       const grade = getGrade(route.ropeGrade, route.boulderGrade);
