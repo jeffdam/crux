@@ -1,8 +1,18 @@
 import RouteNewList from "./route_new_list";
 import { connect } from 'react-redux';
+import { fetchRecentlyAddedRoute } from "../../../actions/route_action";
 
-const mapStateToProps = ({ entities }) => (
-  { routes: entities.routes }
-);
+const mapStateToProps = ({ entities }) => {
+  const routes = Object.values(entities.routes);
+  return (
+    { routes }
+  );
+};
 
-export default connect(mapStateToProps)(RouteNewList);
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchRecentlyAddedRoute: () => dispatch(fetchRecentlyAddedRoute())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RouteNewList);
