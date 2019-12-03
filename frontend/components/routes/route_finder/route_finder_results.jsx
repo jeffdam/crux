@@ -51,6 +51,7 @@ const RouteFinderResults = ({ areas, routes, searchParams }) => {
       return true;
     }
   };
+  
   const pitchSearch = route => {
     return (parseInt(route.pitches) >= parseInt(searchParams.pitches));
   };

@@ -1,11 +1,9 @@
 import React from 'react';
-
 import queryString from 'query-string';
-import RouteFinderForm from './route_finder_form';
+// import RouteFinderForm from './route_finder_form';
 import RouteFinderResults from './route_finder_results';
 
 class RouteFinder extends React.Component {
-  
   componentDidMount() {
     this.props.fetchRoutes();
   }
@@ -34,7 +32,6 @@ class RouteFinder extends React.Component {
     return (
       <section className="main-width main-padding">
         <h1>Climbing Route Finder</h1>
-        <RouteFinderForm />
         <RouteFinderResults 
           areas={areas}
           routes={routes}

@@ -38,13 +38,24 @@ class Api::RoutesController < ApplicationController
       render json: @route.errors.full_messages, status: 401
     end
   end
-
+  
   def destroy
     @route = Route.find(params[:id])
   end
-
+  
   def route_finder 
-    @routes = Route.includes(:area).all
+    searchParams = {
+      route_type: params["route_type"],
+      rope_grade: params["r_grade_min"].to_i..params["r_grade_max"].to_i,
+      # boulder_grade: params["b_grade_min"].to_i..params["b_grade_max"].to_i,
+      pitches: params["pitches"].to_i..100,
+    }
+    if params["toprope"]
+      searchParams["toprope"] = params["toprope"]
+    end
+
+    # @routes = Route.includes(:area).where(searchParams).order("#{params["sort_by"]} ASC")
+    @routes = Route.includes(:area).where(searchParams)
   end
 
   def recently_added_routes
@@ -70,9 +81,12 @@ class Api::RoutesController < ApplicationController
       :description, 
       :location,
       :toprope,
+      :r_grade_min,
+      :r_grade_max,
+      :b_grade_min,
+      :b_grade_max,
+      :sort_by,
       photos: []
     )
   end
 end
-
-

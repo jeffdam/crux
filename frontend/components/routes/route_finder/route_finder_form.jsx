@@ -1,96 +1,77 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { ROPE_GRADES, BOULDER_GRADES } from '../../../util/route_info_util';
 
 class RouteFinderForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      location: "all",
-      is_b: "",
-      is_t: "",
-      is_s: "",
-      is_tr: false,
-      r_grade_min: "5.0",
-      r_grade_max: "5.16",
-      b_grade_min: "",
-      b_grade_max: "",
-      pitches: 1,
-      sort_by: "name"
-    };
+    this.state = this.props.searchParams;
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    const {is_b, is_t, is_tr, is_s, r_grade_min, r_grade_max, pitches, sort_by} = this.state;
-    this.props.history.push(`/route-finder?is_b=${is_b}&is_t=${is_t}&is_s=${is_s}&is_tr=${is_tr}&r_grade_min=${r_grade_min}&r_grade_max=${r_grade_max}&pitches=${pitches}&sort_by=${sort_by}`);
+    this.props.searchRoutes(this.state)
+      .then(() => {
+        console.log(this.props);
+        this.props.history.push(`/route-finder`);
+      });
   }
 
   update(field) {
     return (e) => {
-      if (field === "t") {
-        if (document.getElementById("t").checked) {
-          this.setState({ ["is_t"]: "Trad" });
-        } else {
-          this.setState({ ["is_t"]: "" });
-        }
-      } else if (field === "s") {
-        if (document.getElementById("s").checked) {
-          this.setState({ ["is_s"]: "Sport" });
-        } else {
-          this.setState({ ["is_s"]: "" });
-        }
-      } else if (field === "b") {
-        if (document.getElementById("b").checked) {
-          this.setState({ ["is_b"]: "Boulder" });
-        } else {
-          this.setState({ ["is_b"]: "" });
-        }
+      if (["t","s","b"].includes(field)) {
+        const sport = document.getElementById("s").checked ? "Sport" : "";
+        const trad = document.getElementById("t").checked ? "Trad" : "";
+        const boulder = document.getElementById("b").checked ? "Boulder" : "";
+        this.setState({ route_type: [sport, trad, boulder] });
       } else if (field === "tr") {
-        if (document.getElementById("tr").checked) {
-          this.setState({ ["is_tr"]: true });
-        } else {
-          this.setState({ ["is_tr"]: false });
-        }
+        this.setState({ toprope: document.getElementById("tr").checked });
+      } else if (field.includes("grade")) {
+        this.setState({ [field]: parseInt(e.target.value) });
       } else {
         this.setState({ [field]: e.target.value });
       }
     };
   }
 
-
-
   render() {
-
-    const ropeGrades = [
-      "5.0", "5.1", "5.2", "5.3", "5.4", "5.5", "5.6",
-      "5.7-", "5.7", "5.7+", "5.8-", "5.8", "5.8+", "5.9-", "5.9", "5.9+",
-      "5.10-", "5.10a", "5.10a/b", "5.10b", "5.10b/c", "5.10c", "5.10c/d", "5.10d", "5.10+",
-      "5.11-", "5.11a", "5.11a/b", "5.11b", "5.11b/c", "5.11c", "5.11c/d", "5.11d", "5.11+",
-      "5.12-", "5.12a", "5.12a/b", "5.12b", "5.12b/c", "5.12c", "5.12c/d", "5.12d", "5.12+",
-      "5.13-", "5.13a", "5.13a/b", "5.13b", "5.13b/c", "5.13c", "5.13c/d", "5.13d", "5.13+",
-      "5.14-", "5.14a", "5.14a/b", "5.14b", "5.14b/c", "5.14c", "5.14c/d", "5.14d", "5.14+",
-      "5.15-", "5.15a", "5.15a/b", "5.15b", "5.15b/c", "5.15c", "5.15c/d", "5.15d", "5.15+",
-      "5.16"
-    ]
-    const ropeGradeMinInput = ropeGrades.map(ropeGrade => {
+    const ropeGradeMinInput = ROPE_GRADES.slice(0, this.state.r_grade_max + 1).map((ropeGrade, idx) => {
       return (
         <option
           key={ropeGrade}
-          value={ropeGrade}
+          value={idx}
         >{ropeGrade}</option>
       )
     })
 
-    const ropeGradeMaxInput = ropeGrades.slice(ropeGrades.indexOf(this.state.r_grade_min)).map(ropeGrade => {
+    const ropeGradeMaxInput = ROPE_GRADES.slice(this.state.r_grade_min).map((ropeGrade, idx) => {
+      const value = idx + this.state.r_grade_min;
       return (
         <option
           key={ropeGrade}
-          value={ropeGrade}
+          value={value}
         >{ropeGrade}</option>
       )
     })
 
+    const boulderGradeMinInput = BOULDER_GRADES.slice(0, this.state.b_grade_max + 1).map((boulderGrade, idx) => {
+      return (
+        <option
+          key={boulderGrade}
+          value={idx}
+        >{boulderGrade}</option>
+      )
+    })
+
+    const boulderGradeMaxInput = BOULDER_GRADES.slice(this.state.b_grade_min).map((boulderGrade, idx) => {
+      const value = idx + this.state.b_grade_min;
+      return (
+        <option
+          key={boulderGrade}
+          value={value}
+        >{boulderGrade}</option>
+      )
+    })
 
     return (
       <form onSubmit={this.handleSubmit} className="route-finder-form flex-col">
@@ -105,10 +86,10 @@ class RouteFinderForm extends React.Component {
               <input id="s" onChange={this.update('s')} type="checkbox" value='true'/>
               Sport
             </label>
-            {/* <label>
+            <label>
               <input id="b" onChange={this.update('b')} type="checkbox" value='true'/>
               Boulder
-            </label> */}
+            </label>
             <label>
               <input id="tr" onChange={this.update('tr')} type="checkbox" value='true'/>
               Top Rope
@@ -120,13 +101,13 @@ class RouteFinderForm extends React.Component {
           <div className="route-finder-form-rgrade flex-row">
             <label className="flex-col">Min:
               <select onChange={this.update("r_grade_min")}>
-                <option value="5.0">--</option>
+                <option value="0">--</option>
                 {ropeGradeMinInput}
               </select>
             </label>
             <label className="flex-col">Max:
               <select onChange={this.update("r_grade_max")}>
-                <option value="5.16">--</option>
+                <option value="71">--</option>
                 {ropeGradeMaxInput}
               </select>
             </label>
@@ -162,4 +143,4 @@ class RouteFinderForm extends React.Component {
   }
 };
 
-export default withRouter(RouteFinderForm);
+export default RouteFinderForm;
