@@ -7,3 +7,10 @@ json.routes do
     end
   end
 end
+json.areas do 
+  @routes.each do |route|
+    json.set! route.area.id do 
+      json.extract! route.area, :id, :name
+    end
+  end
+end
