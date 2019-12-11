@@ -3,10 +3,9 @@ import RouteFinder from './route_finder';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-
 const mapStateToProps = state => {
   return {
-    routes: Object.values(state.entities.routes),
+    routes: Object.values(state.entities.routeFinderResults),
     areas: state.entities.areas
   };
 };
