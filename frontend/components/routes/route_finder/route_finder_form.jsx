@@ -43,8 +43,9 @@ class RouteFinderForm extends React.Component {
       )
     })
 
-    const ropeGradeMaxInput = ROPE_GRADES.slice(this.state.r_grade_min).map((ropeGrade, idx) => {
-      const value = idx + this.state.r_grade_min;
+    const ropeGradeMin = this.state.r_grade_min < 0 ? 0 : this.state.r_grade_min;
+    const ropeGradeMaxInput = ROPE_GRADES.slice(ropeGradeMin).map((ropeGrade, idx) => {
+      const value = idx + ropeGradeMin;
       return (
         <option
           key={ropeGrade}
@@ -61,9 +62,10 @@ class RouteFinderForm extends React.Component {
         >{boulderGrade}</option>
       )
     })
-
-    const boulderGradeMaxInput = BOULDER_GRADES.slice(this.state.b_grade_min).map((boulderGrade, idx) => {
-      const value = idx + this.state.b_grade_min;
+    
+    const boulderGradeMin = this.state.b_grade_min < 0 ? 0 : this.state.b_grade_min;
+    const boulderGradeMaxInput = BOULDER_GRADES.slice(boulderGradeMin).map((boulderGrade, idx) => {
+      const value = idx + boulderGradeMin;
       return (
         <option
           key={boulderGrade}
