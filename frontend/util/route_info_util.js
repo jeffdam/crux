@@ -54,6 +54,14 @@ export const sortRouteFinderResults = (routes, sortParams) => {
     compareFunction = (a, b) => {
       return a[field] - b[field];
     };
+  } else if (sortParams.sort_by === "routeType") {
+    compareFunction = (a, b) => {
+      if (a.routeType < b.routeType) {
+        return -1;
+      } else {
+        return 1;
+      }
+    };
   } else {
     compareFunction = (a, b) => {
       return a[sortParams.sort_by] - b[sortParams.sort_by];
