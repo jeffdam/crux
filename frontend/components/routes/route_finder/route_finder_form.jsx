@@ -18,7 +18,7 @@ class RouteFinderForm extends React.Component {
 
   update(field) {
     return (e) => {
-      if (["t","s","b"].includes(field)) {
+      if (field === "routeType") {
         const sport = document.getElementById("s").checked ? "Sport" : "";
         const trad = document.getElementById("t").checked ? "Trad" : "";
         const boulder = document.getElementById("b").checked ? "Boulder" : "";
@@ -78,15 +78,15 @@ class RouteFinderForm extends React.Component {
           <h4>Type</h4>
           <div className="route-finder-form-type flex-row">
             <label>
-              <input id="t" onChange={this.update('t')} type="checkbox" value='true'/>
+              <input id="t" onChange={this.update('routeType')} type="checkbox" value='true'/>
               Trad
             </label>
             <label>
-              <input id="s" onChange={this.update('s')} type="checkbox" value='true'/>
+              <input id="s" onChange={this.update('routeType')} type="checkbox" value='true'/>
               Sport
             </label>
             <label>
-              <input id="b" onChange={this.update('b')} type="checkbox" value='true'/>
+              <input id="b" onChange={this.update('routeType')} type="checkbox" value='true'/>
               Boulder
             </label>
             <label>
@@ -108,6 +108,23 @@ class RouteFinderForm extends React.Component {
               <select onChange={this.update("r_grade_max")}>
                 <option value="71">--</option>
                 {ropeGradeMaxInput}
+              </select>
+            </label>
+          </div>
+        </section>
+        <section className="route-finder-form-component">
+          <h4>Boulder Grade</h4>
+          <div className="route-finder-form-rgrade flex-row">
+            <label className="flex-col">Min:
+              <select onChange={this.update("b_grade_min")}>
+                <option value="0">--</option>
+                {boulderGradeMinInput}
+              </select>
+            </label>
+            <label className="flex-col">Max:
+              <select onChange={this.update("b_grade_max")}>
+                <option value="54">--</option>
+                {boulderGradeMaxInput}
               </select>
             </label>
           </div>

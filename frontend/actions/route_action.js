@@ -7,8 +7,8 @@ export const RECEIVE_ROUTE_ERRORS = "RECEIVE_ROUTE_ERRORS";
 
 const receiveRoutes = payload => ({
   type: RECEIVE_ROUTES,
-  routes: payload.routes,
-  areas: payload.areas
+  routes: payload.routes || {},
+  areas: payload.areas || {}
 });
 
 const receiveRoute = payload => ({

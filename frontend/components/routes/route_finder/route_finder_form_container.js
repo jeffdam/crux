@@ -8,9 +8,9 @@ const mapStateToProps = state => {
     searchParams: {
       route_type: [],
       toprope: false,
-      r_grade_min: 0,
+      r_grade_min: -1,
       r_grade_max: 70,
-      b_grade_min: 0,
+      b_grade_min: -1,
       b_grade_max: 54,
       pitches: 1,
       sort_by: "name"

@@ -47,14 +47,13 @@ class Api::RoutesController < ApplicationController
     searchParams = {
       route_type: params["route_type"],
       rope_grade: params["r_grade_min"].to_i..params["r_grade_max"].to_i,
-      # boulder_grade: params["b_grade_min"].to_i..params["b_grade_max"].to_i,
+      boulder_grade: params["b_grade_min"].to_i..params["b_grade_max"].to_i,
       pitches: params["pitches"].to_i..100,
     }
     if params["toprope"]
       searchParams["toprope"] = params["toprope"]
     end
 
-    # @routes = Route.includes(:area).where(searchParams).order("#{params["sort_by"]} ASC")
     @routes = Route.includes(:area).where(searchParams)
   end
 
