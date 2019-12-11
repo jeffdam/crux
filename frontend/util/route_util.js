@@ -26,16 +26,6 @@ export const searchRoutes = searchParams => {
   });
 };
 
-// export const searchRoutes = searchParams => (
-//   $.ajax({
-//     method: "GET",
-//     url: `/api/routes/route_finder`,
-//     data: searchParams,
-//     contentType: false,
-//     processData: false
-//   })
-// );
-
 export const createRoute = formData => (
   $.ajax({
     method: "POST",
