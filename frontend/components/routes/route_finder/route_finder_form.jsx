@@ -10,7 +10,17 @@ class RouteFinderForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.searchRoutes(this.state)
+
+    const searchParams = {
+      toprope: this.state.toprope,
+      r_grade_min: this.state.r_grade_min,
+      r_grade_max: this.state.r_grade_max,
+      b_grade_min: this.state.b_grade_min,
+      b_grade_max: this.state.b_grade_max,
+      pitches: this.state.pitches,
+    };
+    searchParams.route_type = this.state.route_type  === "Boulder" ? ["Boulder"] : this.state.rope_type;
+    this.props.searchRoutes(searchParams)
       .then(() => {
         this.props.history.push(`/route-finder?sort_by=${this.state.sort_by}`);
       });
@@ -18,13 +28,24 @@ class RouteFinderForm extends React.Component {
 
   update(field) {
     return (e) => {
-      if (field === "routeType") {
-        const sport = document.getElementById("s").checked ? "Sport" : "";
-        const trad = document.getElementById("t").checked ? "Trad" : "";
-        const boulder = document.getElementById("b").checked ? "Boulder" : "";
-        this.setState({ route_type: [sport, trad, boulder] });
+      if (field === "ropeType") {
+        const sportInput = document.getElementById("s");
+        const tradInput = document.getElementById("t");
+        const sport = sportInput && sportInput.checked ? "Sport" : "";
+        const trad = tradInput && tradInput.checked ? "Trad" : "";
+        this.setState({rope_type: [sport, trad]});
       } else if (field === "tr") {
         this.setState({ toprope: document.getElementById("tr").checked });
+      } else if (field.includes("route_type")) {
+        this.setState({
+          route_type: e.target.value,
+          rope_type: [],
+          r_grade_min: -1,
+          r_grade_max: 70,
+          b_grade_min: -1,
+          b_grade_max: 54,
+          toprope: false
+        });      
       } else if (field.includes("grade")) {
         this.setState({ [field]: parseInt(e.target.value) });
       } else {
@@ -74,46 +95,43 @@ class RouteFinderForm extends React.Component {
       )
     })
 
-    return (
-      <form onSubmit={this.handleSubmit} className="route-finder-form flex-col">
-        <section className="route-finder-form-component">
-          <h4>Type</h4>
-          <div className="route-finder-form-type flex-row">
-            <label>
-              <input id="t" onChange={this.update('routeType')} type="checkbox" value='true'/>
-              Trad
+    const ropeTypes = this.state.route_type === "Rope" ? (
+      <div className="route-finder-form-type flex-row">
+        <label>
+          <input id="t" onChange={this.update('ropeType')} type="checkbox" value='true' />
+          Trad
             </label>
-            <label>
-              <input id="s" onChange={this.update('routeType')} type="checkbox" value='true'/>
-              Sport
+        <label>
+          <input id="s" onChange={this.update('ropeType')} type="checkbox" value='true' />
+          Sport
             </label>
-            <label>
-              <input id="b" onChange={this.update('routeType')} type="checkbox" value='true'/>
-              Boulder
+        <label>
+          <input id="tr" onChange={this.update('tr')} type="checkbox" value='true' />
+          Top Rope
             </label>
-            <label>
-              <input id="tr" onChange={this.update('tr')} type="checkbox" value='true'/>
-              Top Rope
-            </label>
-          </div>
-        </section>
-        <section className="route-finder-form-component">
-          <h4>Rope Grade</h4>
-          <div className="route-finder-form-rgrade flex-row">
-            <label className="flex-col">Min:
+      </div>
+      ) : "";   
+
+     
+    const routeGrade = this.state.route_type === "Rope" ? (
+      <section className="route-finder-form-component">
+        <h4>Rope Grade</h4>
+        <div className="route-finder-form-rgrade flex-row">
+          <label className="flex-col">Min:
               <select onChange={this.update("r_grade_min")}>
-                <option value="0">--</option>
-                {ropeGradeMinInput}
-              </select>
-            </label>
-            <label className="flex-col">Max:
+              <option value="0">--</option>
+              {ropeGradeMinInput}
+            </select>
+          </label>
+          <label className="flex-col">Max:
               <select onChange={this.update("r_grade_max")}>
-                <option value="71">--</option>
-                {ropeGradeMaxInput}
-              </select>
-            </label>
-          </div>
-        </section>
+              <option value="71">--</option>
+              {ropeGradeMaxInput}
+            </select>
+          </label>
+        </div>
+      </section>
+    ) : (
         <section className="route-finder-form-component">
           <h4>Boulder Grade</h4>
           <div className="route-finder-form-rgrade flex-row">
@@ -131,6 +149,21 @@ class RouteFinderForm extends React.Component {
             </label>
           </div>
         </section>
+      );
+
+    return (
+      <form onSubmit={this.handleSubmit} className="route-finder-form flex-col">
+        <section className="route-finder-form-component">
+          <h4>Type</h4>
+          <label className="flex-col">
+            <select id="route_type_form_input" onChange={this.update("route_type")}>
+              <option value="Rope">Rope</option>
+              <option value="Boulder">Boulder</option>
+            </select>
+          </label>
+          { ropeTypes }
+        </section>
+        { routeGrade }
         <div className="flex-row">
           <section className="route-finder-form-component">
             <h4>Pitches</h4>

@@ -6,7 +6,8 @@ import { withRouter } from 'react-router-dom';
 const mapStateToProps = state => {
   return {
     searchParams: {
-      route_type: [],
+      route_type: "Rope",
+      rope_type: [],
       toprope: false,
       r_grade_min: -1,
       r_grade_max: 70,
