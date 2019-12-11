@@ -12,7 +12,7 @@ class RouteFinderForm extends React.Component {
     e.preventDefault();
     this.props.searchRoutes(this.state)
       .then(() => {
-        this.props.history.push(`/route-finder`);
+        this.props.history.push(`/route-finder?sort_by=${this.state.sort_by}`);
       });
   }
 
@@ -131,30 +131,32 @@ class RouteFinderForm extends React.Component {
             </label>
           </div>
         </section>
-        <section className="route-finder-form-component">
-          <h4>Pitches</h4>
-          <select onChange={this.update("pitches")}>
-            <option value="1">--</option>
-            <option value="1">At least 1 pitch</option>
-            <option value="2">At least 2 pitches</option>
-            <option value="3">At least 3 pitches</option>
-            <option value="4">At least 4 pitches</option>
-            <option value="5">At least 5 pitches</option>
-            <option value="10">At least 10 pitches</option>
-            <option value="20">At least 20 pitches</option>
-          </select>
-        </section>
-        <section className="route-finder-form-component">
-          <h4>Sort</h4>
-          <select onChange={this.update("sort_by")}>
-            <option value="name">--</option>
-            <option value="name">By Name</option>
-            <option value="areaId">By Area</option>
-            <option value="grade">By Grade</option>
-            <option value="routeType">By Type</option>
-            <option value="pitches">By Pitches</option>
-          </select>
-        </section>
+        <div className="flex-row">
+          <section className="route-finder-form-component">
+            <h4>Pitches</h4>
+            <select onChange={this.update("pitches")}>
+              <option value="1">--</option>
+              <option value="1">At least 1 pitch</option>
+              <option value="2">At least 2 pitches</option>
+              <option value="3">At least 3 pitches</option>
+              <option value="4">At least 4 pitches</option>
+              <option value="5">At least 5 pitches</option>
+              <option value="10">At least 10 pitches</option>
+              <option value="20">At least 20 pitches</option>
+            </select>
+          </section>
+          <section className="route-finder-form-component">
+            <h4>Sort</h4>
+            <select onChange={this.update("sort_by")}>
+              <option value="name">--</option>
+              <option value="name">By Name</option>
+              <option value="areaId">By Area</option>
+              <option value="grade">By Grade</option>
+              <option value="routeType">By Type</option>
+              <option value="pitches">By Pitches</option>
+            </select>
+          </section>
+        </div>
         <input type="submit" value="Find Routes"/>
       </form>
     )
