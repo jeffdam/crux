@@ -1,15 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getGrade } from '../../../util/route_info_util';
+import { getGrade, sortRouteFinderResults } from '../../../util/route_info_util';
 
-const RouteFinderResults = ({ areas, routes, sortBy }) => {
-  const sortedRoutes = routes.sort((a,b) => {
-    if (a.name.toLowerCase() < b.name.toLowerCase()) {
-      return -1;
-    } else {
-      return 1;
-    }
-  });
+const RouteFinderResults = ({ areas, routes, sortParams }) => {
+  const sortedRoutes = sortRouteFinderResults(routes, sortParams);
   const routesList = sortedRoutes.map((route, idx) => {
     const area = areas[route.routeAreaId];
     const tr = route.toprope ? ", TR" : "";

@@ -9,7 +9,7 @@ const Header = () => (
         <div className="header-left">
           <Link to="/"><img height="50" src={window.images.crux_logo} alt="Crux Logo"></img></Link>
           <div className="header-nav">
-            <Link to="/route-finder">Route Finder</Link>
+            {/* <Link to="/route-finder">Route Finder</Link> */}
           </div>
         </div>
         <div className="header-right-buttons">

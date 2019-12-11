@@ -7,7 +7,7 @@ const mapStateToProps = state => {
   return {
     searchParams: {
       route_type: "Rope",
-      rope_type: [],
+      rope_type: ["Sport", "Trad"],
       toprope: false,
       r_grade_min: -1,
       r_grade_max: 70,

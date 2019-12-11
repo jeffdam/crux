@@ -22,7 +22,7 @@ class RouteFinderForm extends React.Component {
     searchParams.route_type = this.state.route_type  === "Boulder" ? ["Boulder"] : this.state.rope_type;
     this.props.searchRoutes(searchParams)
       .then(() => {
-        this.props.history.push(`/route-finder?sort_by=${this.state.sort_by}`);
+        this.props.history.push(`/route-finder?sort_by=${this.state.sort_by}&route_type=${this.state.route_type}`);
       });
   }
 
@@ -39,7 +39,7 @@ class RouteFinderForm extends React.Component {
       } else if (field.includes("route_type")) {
         this.setState({
           route_type: e.target.value,
-          rope_type: [],
+          rope_type: ["Sport", "Trad"],
           r_grade_min: -1,
           r_grade_max: 70,
           b_grade_min: -1,

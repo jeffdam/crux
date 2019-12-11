@@ -8,14 +8,15 @@ class RouteFinder extends React.Component {
 
   render() {
     const { routes, areas } = this.props;    
-    const sortBy = queryString.parse(this.props.location.search).sort_by;
+    const sortParams = queryString.parse(this.props.location.search);
+    console.log(queryString.parse(this.props.location.search));
     return (
       <section className="main-width main-padding">
         <h1>Climbing Route Finder</h1>
         <RouteFinderResults 
           areas={areas}
           routes={routes}
-          sortBy={sortBy}
+          sortParams={sortParams}
         />
       </section >
     )

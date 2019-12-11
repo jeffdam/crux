@@ -38,3 +38,26 @@ export const getGrade = (ropeGrade, boulderGrade) => {
     return ROPE_GRADES[ropeGrade] || BOULDER_GRADES[boulderGrade];
   }
 };
+
+export const sortRouteFinderResults = (routes, sortParams) => {
+  let compareFunction;
+  if (sortParams.sort_by === "name") {
+    compareFunction = (a, b) => {
+      if (a.name.toLowerCase() < b.name.toLowerCase()) {
+        return -1;
+      } else {
+        return 1;
+      }
+    };
+  } else if (sortParams.sort_by === "grade") {
+    const field = sortParams.route_type === "Rope" ? "ropeGrade" : "boulderGrade";
+    compareFunction = (a, b) => {
+      return a[field] - b[field];
+    };
+  } else {
+    compareFunction = (a, b) => {
+      return a[sortParams.sort_by] - b[sortParams.sort_by];
+    };
+  }
+  return routes.sort(compareFunction);
+};
