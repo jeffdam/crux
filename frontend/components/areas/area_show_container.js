@@ -21,8 +21,8 @@ const mapStateToProps = ({entities, session}, ownProps) => {
       }
     }
     for (let subAreaId of area.subAreaIds) {
-      if (entities.subAreas[subAreaId]) {
-        subAreas[subAreaId] = entities.subAreas[subAreaId];
+      if (entities.areas[subAreaId]) {
+        subAreas[subAreaId] = entities.areas[subAreaId];
       } else {
         subAreas = null;
         break;
