@@ -1,6 +1,7 @@
 import * as RouteApiUtil from '../util/route_util';
 
 export const RECEIVE_ROUTES = "RECEIVE_ROUTES";
+export const RECEIVE_ROUTE_FINDER_RESULTS = "RECEIVE_ROUTE_FINDER_RESULTS";
 export const RECEIVE_ROUTE = "RECEIVE_ROUTE";
 export const REMOVE_ROUTE = "REMOVE_ROUTE";
 export const RECEIVE_ROUTE_ERRORS = "RECEIVE_ROUTE_ERRORS";
@@ -29,9 +30,25 @@ const receiveErrors = (errors) => ({
   errors: errors
 });
 
+const receiveRouteFinderResults = payload => ({
+  type: RECEIVE_ROUTE_FINDER_RESULTS,
+  routes: payload.routes || {},
+  areas: payload.areas || {}
+});
+
 export const fetchRoutes = () => dispatch => (
   RouteApiUtil.fetchRoutes()
     .then(routes => dispatch(receiveRoutes(routes)))
+);
+
+export const fetchRecentlyAddedRoute = () => dispatch => (
+  RouteApiUtil.fetchRecentlyAddedRoute()
+    .then(routes => dispatch(receiveRoutes(routes)))
+);
+
+export const searchRoutes = searchParams => dispatch => (
+  RouteApiUtil.searchRoutes(searchParams)
+    .then(routes => dispatch(receiveRouteFinderResults(routes)))
 );
 
 export const fetchRoute = id => dispatch => (

@@ -5,28 +5,29 @@ import { fetchArea } from '../../../actions/area_action';
 import { createRoute } from '../../../actions/route_action';
 
 const mapStateToProps = (state, ownProps) => {
-  return ({
+  return {
     area: state.entities.areas[ownProps.match.params.areaId],
     route: {
       area_id: ownProps.match.params.areaId,
       author_id: state.session.id,
-      name: "", 
-      route_type: "", 
-      grade: "", 
-      safety: "", 
-      first_ascensionist: undefined, 
-      first_ascent_date: undefined, 
-      length: "", 
-      pitches: "", 
-      protection: "", 
-      description: "", 
+      name: "",
+      route_type: "",
+      rope_grade: -1,
+      boulder_grade: -1,
+      safety: "",
+      first_ascensionist: undefined,
+      first_ascent_date: undefined,
+      length: "",
+      pitches: "",
+      protection: "",
+      description: "",
       location: "",
       toprope: false,
       photos: []
     },
     errors: state.errors.route,
     formType: "create"
-  });
+  };
 };
 
 const mapDispatchToProps = dispatch => {

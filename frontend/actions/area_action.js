@@ -1,21 +1,17 @@
 import * as AreaApiUtil from '../util/area_util';
-import { merge } from 'lodash';
 export const RECEIVE_AREAS = "RECEIVE_AREAS";
 export const RECEIVE_AREA = "RECEIVE_AREA";
 export const REMOVE_AREA = "REMOVE_AREA";
 export const RECEIVE_AREA_ERRORS = "RECEIVE_AREA_ERRORS";
 
 const receiveAreas = payload => {
-  
   return {
     type: RECEIVE_AREAS,
-    areas: payload.areas,
-    routes: payload.routes
+    areas: payload.areas
   };
 };
 
 const receiveArea = payload => {
-  
   return {
   type: RECEIVE_AREA,
   areaId: payload.areaId,

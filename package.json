@@ -6,6 +6,7 @@
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
+    "decamelize": "^3.2.0",
     "lodash": "^4.17.15",
     "query-string": "^6.5.0",
     "react": "^16.8.6",

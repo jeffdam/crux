@@ -1,5 +1,5 @@
 import { RECEIVE_AREAS, RECEIVE_AREA, REMOVE_AREA } from "../actions/area_action";
-import { RECEIVE_ROUTE, RECEIVE_ROUTES } from "../actions/route_action";
+import { RECEIVE_ROUTE, RECEIVE_ROUTES, RECEIVE_ROUTE_FINDER_RESULTS } from "../actions/route_action";
 import { merge } from "lodash";
 
 const areaReducer = (oldState = {}, action) => {
@@ -20,6 +20,9 @@ const areaReducer = (oldState = {}, action) => {
       newState = merge({}, oldState, action.area);
       return newState;
     case RECEIVE_ROUTES:
+      newState = merge({}, oldState, action.areas);
+      return newState;
+    case RECEIVE_ROUTE_FINDER_RESULTS:
       newState = merge({}, oldState, action.areas);
       return newState;
     default:

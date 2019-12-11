@@ -7,11 +7,3 @@ json.areas do
     json.photo_urls @photos.map { |file| url_for(file) }
   end
 end
-
-json.routes do 
-  @routes.each do |route|
-    json.set! route.id do 
-      json.extract! route, :id, :name, :grade, :safety, :route_type, :pitches, :toprope, :area_id, :area
-    end
-  end
-end

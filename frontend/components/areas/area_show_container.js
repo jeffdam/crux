@@ -8,28 +8,35 @@ const mapStateToProps = ({entities, session}, ownProps) => {
 
   const area = entities.areas[ownProps.match.params.areaId];
   
-  let author;
-  let routes = {};
-  let subAreas = {};
-  let parents;
+  let author, routes = {}, subAreas = {}, parents;
   
   if (area && area.authorId) {
     author = entities.users[area.authorId];
-    area.routeIds.forEach(id => {
-      routes[id] = entities.routes[id];
-    });
-    area.subAreaIds.forEach(id => {
-      subAreas[id] = entities.areas[id];
-    });
+    for (let routeId of area.routeIds) {
+      if (entities.routes[routeId]) {
+        routes[routeId] = entities.routes[routeId];
+      } else {
+        routes = null;
+        break;
+      }
+    }
+    for (let subAreaId of area.subAreaIds) {
+      if (entities.areas[subAreaId]) {
+        subAreas[subAreaId] = entities.areas[subAreaId];
+      } else {
+        subAreas = null;
+        break;
+      }
+    }
     parents = area.parents;
   }
   
   return {
-    area: area,
-    author: author,
-    subAreas: subAreas,
-    routes: routes,
-    parents: parents,
+    area,
+    author,
+    subAreas,
+    routes,
+    parents,
     currentUser: session.id
   };
 };

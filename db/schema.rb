@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_04_063710) do
+ActiveRecord::Schema.define(version: 2019_11_30_053948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 2019_08_04_063710) do
     t.string "route_type", null: false
     t.integer "author_id", null: false
     t.integer "area_id", null: false
-    t.string "grade", null: false
     t.string "safety", null: false
     t.string "first_ascensionist"
     t.date "first_ascent_date"
@@ -69,10 +68,13 @@ ActiveRecord::Schema.define(version: 2019_08_04_063710) do
     t.datetime "updated_at", null: false
     t.text "location", null: false
     t.boolean "toprope", default: false
+    t.integer "rope_grade", default: -1, null: false
+    t.integer "boulder_grade", default: -1, null: false
     t.index ["area_id"], name: "index_routes_on_area_id"
     t.index ["author_id"], name: "index_routes_on_author_id"
-    t.index ["grade"], name: "index_routes_on_grade"
+    t.index ["boulder_grade"], name: "index_routes_on_boulder_grade"
     t.index ["pitches"], name: "index_routes_on_pitches"
+    t.index ["rope_grade"], name: "index_routes_on_rope_grade"
     t.index ["route_type"], name: "index_routes_on_route_type"
   end
 

@@ -1,0 +1,28 @@
+import { searchRoutes } from "../../../actions/route_action";
+import { connect } from 'react-redux';
+import RouteFinderForm from './route_finder_form';
+import { withRouter } from 'react-router-dom';
+
+const mapStateToProps = state => {
+  return {
+    searchParams: {
+      route_type: "Rope",
+      rope_type: ["Sport", "Trad"],
+      toprope: false,
+      r_grade_min: -1,
+      r_grade_max: 70,
+      b_grade_min: -1,
+      b_grade_max: 54,
+      pitches: 1,
+      sort_by: "name"
+    }
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    searchRoutes: searchParams => dispatch(searchRoutes(searchParams))
+  };
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RouteFinderForm));

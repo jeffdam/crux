@@ -161,38 +161,22 @@ no_sub_area = []
   end
 end
 
-# (startcount..oldcount).each do |i| 
-#   n = rand(0..3)
-#   no_sub_area.push(i) if n == 0
-#   (n).times do 
-#     area = Area.create({
-#     parent_id: i,
-#     author_id: rand(3..32),
-#     name: Faker::Address.city,
-#     description: DESCRIPTION,
-#     getting_there: GETTING_THERE,
-#     latitude: LAT.sample,
-#     longitude: LONG.sample,
-#     photos: generate_photos
-#     })
-
-#     total_count += 1
-#     no_sub_area.push(total_count)
-#   end
-# end
-
 ROPE_GRADE = [
-  "5.8", "5.8", "5.8", "5.8", "5.8", "5.9", "5.9", "5.9", "5.9", "5.9", "5.10a", "5.10a", "5.10a", "5.10a", "5.10b", "5.10b", "5.10b", "5.10b", 
-  "5.10c", "5.10c", "5.10c", "5.10c", "5.10d", "5.10d", "5.10d", "5.10d", "5.11a", "5.11a", "5.11a", "5.11a", "5.11b", "5.11b", "5.11b", "5.11b", 
-  "5.11c", "5.11c", "5.11c", "5.11c", "5.11d", "5.11d", "5.11d", "5.11d", "5.12a", "5.12a", "5.12a", "5.12b", "5.12b", "5.12b","5.12c", "5.12c", 
-  "5.12c", "5.12d", "5.12d", "5.12d", "5.13a", "5.13a", "5.13a", "5.13b", "5.13b", "5.13c", "5.13c", "5.13d", "5.13d", "5.14a", "5.14b", "5.14c", 
-  "5.14d", "5.15a", "5.15b", "5.15c", "5.15d"
+  11, 11, 11, 11, 11, 14, 14, 14, 14, 14, 
+  16, 16, 16, 16, 19, 19, 19, 19, 21, 21, 21, 21, 24, 24, 24, 24, 
+  25, 25, 25, 25, 28, 28, 28, 28, 30, 30, 30, 30, 33, 33, 33, 33, 
+  34, 34, 34, 37, 37, 37, 39, 39, 39, 42, 42, 42, 
+  43, 43, 43, 46, 46, 48, 48, 51, 51, 
+  52, 55, 57, 60,
+  61, 64, 66, 69 
 ]
 
 BOULDER_GRADE = [
-  "VB","VB","VB","VB", "V0","V0","V0","V0", "V1","V1","V1","V1", "V2","V2","V2","V2", "V3","V3","V3","V3",
-  "V4","V4","V4","V4", "V5","V5","V5","V5", "V6","V6","V6","V6", "V7","V7","V7","V7", "V8","V8","V8","V8",
-  "V9","V9","V9" "V10","V10","V10", "V11","V11","V11", "V12","V12", "V13","V13", "V14", "V15"
+  0, 0, 0, 0, 2, 2, 2, 2, 5, 5, 5, 5, 8, 8, 8, 8, 
+  11, 11, 11, 11, 14, 14, 14, 14, 17, 17, 17, 17, 
+  20, 20, 20, 20, 23, 23, 23, 23, 26, 26, 26, 26, 
+  29, 29, 29, 32, 32, 32, 35, 35, 35, 38, 38, 41, 
+  41, 44,  47
 ]
 
 SAFETY = [
@@ -245,7 +229,7 @@ end
       toprope: toprope_rand,
       author_id: rand(3..32), 
       area_id: no_sub_area[rand_n], 
-      grade: ROPE_GRADE.sample, 
+      rope_grade: ROPE_GRADE.sample, 
       safety: SAFETY.sample, 
       first_ascensionist: CLIMBERS.sample.split("_").join(" "), 
       first_ascent_date: time_rand, 
@@ -283,7 +267,7 @@ TRAD_PRO = [
       toprope: toprope_rand,
       author_id: rand(3..32), 
       area_id: no_sub_area[rand_n], 
-      grade: ROPE_GRADE.sample, 
+      rope_grade: ROPE_GRADE.sample, 
       safety: SAFETY.sample, 
       first_ascensionist: CLIMBERS.sample.split("_").join(" "), 
       first_ascent_date: time_rand, 
@@ -333,7 +317,7 @@ no_sub_area.each do |area_id|
       toprope: false,
       author_id: rand(3..32), 
       area_id: area_id, 
-      grade: BOULDER_GRADE.sample, 
+      boulder_grade: BOULDER_GRADE.sample, 
       safety: SAFETY.sample, 
       first_ascensionist: CLIMBERS.sample.split("_").join(" "), 
       first_ascent_date: time_rand, 

@@ -52,11 +52,9 @@ class AreaShow extends React.Component {
 
   render(){
     const { area, author, subAreas, routes, currentUser } = this.props;
-
-    if (!area || !area.authorId) return null;
-
+    if (!area || !area.authorId || !subAreas || !routes) return null;
     const parentLinks = area.parents.map(parent => (
-      <li key={parent.id}>&nbsp;>&nbsp;<Link  to={`/areas/${parent.id}`}>{parent.name}</Link></li>
+      <li key={parent.id}>&nbsp;>&nbsp;<Link to={`/areas/${parent.id}`}>{parent.name}</Link></li>
     ));
     
     const improvePageLink = currentUser === area.authorId ? (
