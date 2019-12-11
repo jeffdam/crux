@@ -2,10 +2,18 @@
   @extend .flex-row;
   align-items: flex-start;
   padding: 20px 0 0 0;
+
+  p {
+    margin: 0 0 10px 0;
+  }
 }
 
 .new-routes-list-main {
   margin-left: 20px;
+
+  h4 {
+    margin-bottom: 0;
+  }
 }
 
 .new-routes-list {
@@ -18,7 +26,7 @@
   @extend .flex-row;
 
   li {
-    line-height: 34px;
+    line-height: 32px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -34,7 +42,7 @@
 }
 
 .main-carousel {
-  height: 410px;
+  height: 380px;
   margin-right: 20px;
   
   img {
