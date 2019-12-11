@@ -8,10 +8,9 @@ const RouteFinderResults = ({ areas, routes, sortParams }) => {
     const area = areas[route.routeAreaId];
     const tr = route.toprope ? ", TR" : "";
     const safety = route.safety === "G" ? "" : route.safety;
-    const grey = idx % 2 === 0 ? "grey" : "";
     const grade = getGrade(route.ropeGrade, route.boulderGrade);
     return (
-      <ul key={route.id} className={`route-finder-info flex-row ${grey}`}>
+      <ul key={idx} className="route-finder-info flex-row">
         <li className="route-finder-info-name"><Link to={`/routes/${route.id}`}>{route.name}</Link></li>
         <li className="route-finder-info-name"><Link to={`/areas/${route.routeAreaId}`}>{area.name}</Link></li>
         <li className="route-finder-info-attr">{grade}{` ${safety}`}</li>

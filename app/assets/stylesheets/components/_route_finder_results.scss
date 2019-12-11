@@ -1,5 +1,9 @@
 .route-finder-results {
   margin: 20px 0px;
+
+  > ul:nth-child(odd) {
+    background: $color-light-grey;
+  }
 }
 
 .route-finder-info {
@@ -13,8 +17,4 @@
 
 .route-finder-info-name {
   width: 200px;
-}
-
-.grey {
-  background: $color-light-grey;
 }
